@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Collections.Generic;
 
 /**
  * Class to act as a service provider between Planet and Player for trading items.

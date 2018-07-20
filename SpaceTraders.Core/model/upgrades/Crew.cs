@@ -36,32 +36,32 @@ public class Crew : HasPrice, HasSkills {
     
     public int getPrice() {
         //price for a crew member is 10 times his total skills; open to change
-        return skills.totalSkill() * 10;
+        return skills.TotalSkill() * 10;
     }
 
     
     public int getTradeSkill() {
-        return skills.getTradeSkill();
+        return skills.Trading;
     }
 
     
     public int getEngineeringSkill() {
-        return skills.getEngineeringSkill();
+        return skills.Engeneering;
     }
 
     
     public int getPilotSkill() {
-        return skills.getPilotSkill();
+        return skills.Piloting;
     }
 
     
     public int getFightingSkill() {
-        return skills.getFightingSkill();
+        return skills.Fighting;
     }
 
     
     public int getInvestingSkill() {
-        return skills.getInvestingSkill();
+        return skills.Investing;
     }
 
 }

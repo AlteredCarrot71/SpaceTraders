@@ -274,7 +274,7 @@ public class Player : HasSkills {
 
     
     public int getTradeSkill() {
-        int total = skills.getTradeSkill();
+        int total = skills.Trading;
         foreach (Crew member in ship.getCrew()) {
             total += member.getTradeSkill();
         }
@@ -283,7 +283,7 @@ public class Player : HasSkills {
 
     
     public int getEngineeringSkill() {
-        int total = skills.getEngineeringSkill();
+        int total = skills.Engeneering;
         foreach (Crew member in ship.getCrew()) {
             total += member.getEngineeringSkill();
         }
@@ -292,7 +292,7 @@ public class Player : HasSkills {
 
     
     public int getPilotSkill() {
-        int total = skills.getPilotSkill();
+        int total = skills.Piloting;
         foreach (Crew member in ship.getCrew()) {
             total += member.getPilotSkill();
         }
@@ -301,7 +301,7 @@ public class Player : HasSkills {
 
     
     public int getFightingSkill() {
-        int total = skills.getFightingSkill();
+        int total = skills.Fighting;
         foreach (Crew member in ship.getCrew()) {
             total += member.getFightingSkill();
         }
@@ -310,7 +310,7 @@ public class Player : HasSkills {
 
     
     public int getInvestingSkill() {
-        int total = skills.getInvestingSkill();
+        int total = skills.Investing;
         foreach (Crew member in ship.getCrew()) {
             total += member.getInvestingSkill();
         }
