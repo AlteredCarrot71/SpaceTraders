@@ -59,5 +59,10 @@ namespace SpaceTraders
             ShipList.ItemsSource = shipGoods;
 
         }
+
+        private void DoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(PlanetScreen));
+        }
     }
 }

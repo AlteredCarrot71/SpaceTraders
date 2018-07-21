@@ -21,7 +21,7 @@ public class Marketplace
     private Player player;
 
     // Price modifer based on player's trade skill.
-    private int tradeSkillModifier;
+    private int TradeSkillModifier { get; set; }
 
     // Instantiates a marketplace with the given planet's tech level.
     public Marketplace(TechLevel tech, Player playerArg)
@@ -30,7 +30,7 @@ public class Marketplace
         this.player = playerArg;
         productionPrices = new Dictionary<Good, Int32>();
         purchasePrices = new Dictionary<Good, Int32>();
-        tradeSkillModifier = new Random().Next(2*player.getTradeSkill() + 1);
+        TradeSkillModifier = new Random().Next(2*player.getTradeSkill() + 1);
 
         // Initialize goods the planet can produce
         foreach (Good item in Goods.Values)
@@ -38,7 +38,7 @@ public class Marketplace
             // Check if planetTech is higher than minTech for the good
             if (planetTech.CompareTo(item.minTechToProduce()) >= 0)
             {
-                productionPrices.Add(item, adjustPriceOnSkills(item));
+                productionPrices.Add(item, AdjustPriceOnSkills(item));
             }
         }
 
@@ -54,7 +54,7 @@ public class Marketplace
             if (!productionPrices.ContainsKey(item)
                 && planetTech.CompareTo(item.MinTechToUse) >= 0)
             {
-                purchasePrices.Add(item, adjustPriceOnSkills(item));
+                purchasePrices.Add(item, AdjustPriceOnSkills(item));
             }
         }
 
@@ -72,14 +72,14 @@ public class Marketplace
     }
 
     // Returns the price of a good based on a player's trade skill.
-    private int adjustPriceOnSkills(Good good)
+    private int AdjustPriceOnSkills(Good good)
     {
-        return Math.Max(good.price(planetTech) - tradeSkillModifier, 1);
+        return Math.Max(good.price(planetTech) - TradeSkillModifier, 1);
     }
 
     // Player buys {quantity} amount of goods from the planet. If the player
     // can't buy that many, don't let him/her.
-    public bool playerBuys(Good item)
+    public bool PlayerBuys(Good item)
     {
         if (player.Ship.cargoRoomLeft() >= 1 && Supply.Remove(item))
         {
@@ -91,7 +91,7 @@ public class Marketplace
     }
 
     // Player sells goods to the market.
-    public bool playerSells(Good cargo)
+    public bool PlayerSells(Good cargo)
     {
         // if cargo not in keys, can't sell to market
         if (!purchasePrices.ContainsKey(cargo))
@@ -112,7 +112,7 @@ public class Marketplace
     }
 
     // Gets the price for a specific type of Goods.
-    public Int32 getPrice(Good item)
+    public Int32 GetPrice(Good item)
     {
         return purchasePrices.ContainsKey(item) ? purchasePrices[item] : Int32.MaxValue;
     }

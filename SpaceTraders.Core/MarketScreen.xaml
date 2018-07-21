@@ -20,6 +20,7 @@
         <ListBox x:Name="MarketList" HorizontalAlignment="Left" Height="465" Margin="910,175,0,0" VerticalAlignment="Top" Width="390"/>
         <Button x:Name="BuyButton" Content="Buy" HorizontalAlignment="Left" Margin="560,210,0,0" VerticalAlignment="Top" Height="90" Width="250" Background="White" BorderBrush="White" Foreground="Black" FontSize="24"/>
         <Button x:Name="SellButton" Content="Sell" HorizontalAlignment="Left" Margin="560,339,0,0" VerticalAlignment="Top" Height="90" Width="250" Background="White" BorderBrush="White" Foreground="Black" FontSize="24"/>
+        <Button x:Name="DoneButton" Content="Done Shopping!" HorizontalAlignment="Left" Margin="560,610,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="68" Width="268" Background="White" Foreground="Black" FontSize="24" Click="DoneButton_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="600,505,0,0" TextWrapping="Wrap" Text="Credits: 400" VerticalAlignment="Top" Height="75" Width="190" FontSize="24"/>
 
     </Grid>

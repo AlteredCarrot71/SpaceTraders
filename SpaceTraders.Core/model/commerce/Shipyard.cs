@@ -46,7 +46,7 @@ public class Shipyard {
         int total = shipToBuy.getPrice();
 
         foreach (Good cargo in player.Ship.getCargo()) {
-            total -= marketplace.getPrice(cargo);
+            total -= marketplace.GetPrice(cargo);
         }
 
         foreach (HasPrice upgrade in player.GetUpgrades()) {
