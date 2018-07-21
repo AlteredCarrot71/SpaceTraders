@@ -34,14 +34,14 @@ public class MoneyStrategy : EventStrategy {
     
     public String execute(Player player) {
         Random rand = new Random();
-        int money = rand.Next(player.getMoney() * 2 + 1);
-        money -= player.getMoney();
+        int money = rand.Next(player.Money * 2 + 1);
+        money -= player.Money;
 
         if (money == 0) {
             money++;
         }
 
-        player.addMoney(money); //adding negative money is taking money
+        player.ChangeMoney(money); //adding negative money is taking money
 
         if (money > 0) {
             return String.Format(addPhrases[rand.Next(addPhrases.Length)], money);

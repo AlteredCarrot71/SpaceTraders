@@ -51,7 +51,7 @@ namespace SpaceTraders
             Player player = new Player(PlayerName.Text, (int)PilotSkill.Value, (int)FightSkill.Value,
                 (int)EngSkill.Value, (int)TradeSkill.Value, (int)InvestSkill.Value);
             GameInstance game = GameInstance.getInstance();
-            player.addMoney(10000);
+            player.ChangeMoney(10000);
             game.setPlayer(player);
             game.createUniverse();
             this.Frame.Navigate(typeof(MapScreen));

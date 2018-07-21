@@ -38,20 +38,20 @@ namespace SpaceTraders
             MarketTitle.Text = currentPlanet.getName() + " Market";
             marketplace = currentPlanet.getMarketplace();
 
-            foreach (Good good in marketplace.getMerchandise())
+            foreach (Good good in marketplace.Supply)
             {
                 marketGoods.Add(good.toString());
             }
-            if (player.getCargo().Count != 0)
+            if (player.Ship.getCargo().Count != 0)
             {
                 SellButton.IsEnabled = false;
-                foreach (Good good in player.getCargo())
+                foreach (Good good in player.Ship.getCargo())
                 {
                     shipGoods.Add(good.toString());
                 }
             }
 
-            if (player.cargoRoomLeft() < 1)
+            if (player.Ship.cargoRoomLeft() < 1)
             {
                 BuyButton.IsEnabled = true;
             }

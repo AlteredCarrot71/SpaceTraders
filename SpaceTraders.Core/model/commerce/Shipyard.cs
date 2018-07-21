@@ -45,15 +45,15 @@ public class Shipyard {
 
         int total = shipToBuy.getPrice();
 
-        foreach (Good cargo in player.getCargo()) {
+        foreach (Good cargo in player.Ship.getCargo()) {
             total -= marketplace.getPrice(cargo);
         }
 
-        foreach (HasPrice upgrade in player.getUpgrades()) {
+        foreach (HasPrice upgrade in player.GetUpgrades()) {
             total -= upgrade.getPrice();
         }
 
-        total -= player.getShipBasePrice();
+        total -= player.Ship.getPrice();
 
         return total;
     }
@@ -67,8 +67,8 @@ public class Shipyard {
      *        the ship the player wants to buy
      */
     public void buyShip(Ship shipToBuy) {
-        player.subtractMoney(costToBuy(shipToBuy));
-        player.changeShip(shipToBuy);
+        player.ChangeMoney(costToBuy(shipToBuy) * -1);
+        player.Ship = shipToBuy;
     }
 
 }

@@ -41,18 +41,18 @@ public class GoodsStrategy : EventStrategy {
             int msg = rand.Next(getPhrases.Length);
             String output = String.Format(getPhrases[msg], toAdd.toString());
 
-            if (player.cargoRoomLeft() >= 1) {
-                player.addCargo(toAdd);
+            if (player.Ship.cargoRoomLeft() >= 1) {
+                player.Ship.addCargo(toAdd);
             } else {
                 output = output.Substring(0, output.Length - 1);
                 output += ", but you don't have room in your cargo for it!";
             }
             return output;
         } else {
-            if (player.getCargo().Count > 0) {
-                int cargoIndex = rand.Next(player.getCargo().Count);
-                Good toRemove = player.getCargo()[cargoIndex];
-                player.removeCargo(toRemove);
+            if (player.Ship.getCargo().Count > 0) {
+                int cargoIndex = rand.Next(player.Ship.getCargo().Count);
+                Good toRemove = player.Ship.getCargo()[cargoIndex];
+                player.Ship.removeCargo(toRemove);
                 int msg = rand.Next(losePhrases.Length);
                 return String.Format(losePhrases[msg], toRemove.toString());
             } else {

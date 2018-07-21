@@ -45,7 +45,7 @@ namespace SpaceTraders
             game = GameInstance.getInstance();
             universe = game.getSolarSystems();
             playerLocation = game.getCurrentSolarSystem().getPosition();
-            CurrentFuel.Text = "Current Fuel: " + game.getPlayer().getCurrentFuel();
+            CurrentFuel.Text = "Current Fuel: " + game.getPlayer().Ship.getCurrentFuel();
             currentLine = new Line
             {
                 Stroke = new SolidColorBrush(Colors.Transparent),
@@ -124,15 +124,14 @@ namespace SpaceTraders
             SolarSystem p;
             nameMap.TryGetValue((String) ListPlanet.SelectedItem, out p);
             game.setCurrentPlanet(p.getPlanets().ElementAt(0));
-            game.getPlayer().travel(travelDistance);
+            game.getPlayer().Ship.travel(travelDistance);
             RandomEvent randomEvent = EventFactory.createRandomEvent(game.getPlayer());
             String even = randomEvent.Event();
             if (!even.Equals("")) {
                 MessageDialog c = new MessageDialog(even, "Something has happened...");
                 c.ShowAsync();
             }
-            game.getCurrentPlanet().enterMarket(game.getPlayer());
-            game.getCurrentPlanet().enterShipyard(game.getPlayer());
+            
             this.Frame.Navigate(typeof (PlanetScreen));
         }
 

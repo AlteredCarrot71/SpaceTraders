@@ -22,25 +22,25 @@ namespace SpaceTraders
     /// </summary>
     public sealed partial class PlanetScreen : Page
     {
-        private GameInstance gi;
+        private GameInstance game;
         private Planet curPlanet;
         private Player player;
 
         public PlanetScreen()
         {
             this.InitializeComponent();
-            gi = GameInstance.getInstance();
-            curPlanet = gi.getCurrentPlanet();
-            player = gi.getPlayer();
+            game = GameInstance.getInstance();
+            curPlanet = game.getCurrentPlanet();
+            player = game.getPlayer();
             Random r = new Random();
             ColorList cl = new ColorList();
             PlanetImg.Fill = new SolidColorBrush(cl.ElementAt(r.Next(cl.Count)));
-            Refuel.Content = "Refuel: " + player.getRefuelCost() + " cr";
+            Refuel.Content = "Refuel: " + player.GetRefuelCost() + " cr";
             TitleScreen.Text = curPlanet.getName();
             Description.Text = curPlanet.toString() + "\n Resources:  "
-                               + curPlanet.getResource().toString() + "\n\nFuel: " + player.getCurrentFuel()
+                               + curPlanet.getResource().toString() + "\n\nFuel: " + player.Ship.getCurrentFuel()
                                + "\nMoney: "
-                               + player.getMoney();
+                               + player.Money;
 
             if (curPlanet.getTechLevel().Equals(TechLevel.POST_INDUSTRIAL))
             {
@@ -64,21 +64,23 @@ namespace SpaceTraders
 
         private void enterMarket_Click(object sender, RoutedEventArgs e)
         {
+            game.getCurrentPlanet().enterMarket(game.getPlayer());
             this.Frame.Navigate(typeof (MarketScreen));
         }
 
         private void enterShipyard_Click(object sender, RoutedEventArgs e)
         {
+            game.getCurrentPlanet().enterShipyard(game.getPlayer());
             this.Frame.Navigate(typeof (ShipyardScreen));
         }
 
         private void Refuel_Click(object sender, RoutedEventArgs e)
         {
-            player.buyFuel();
+            player.BuyFuel();
             Description.Text = curPlanet.toString() + "\n Resources:  "
-                               + curPlanet.getResource().toString() + "\n\nFuel: " + player.getCurrentFuel()
+                               + curPlanet.getResource().toString() + "\n\nFuel: " + player.Ship.getCurrentFuel()
                                + "\nMoney: "
-                               + player.getMoney();
+                               + player.Money;
             Refuel.Content = "Refuel: " + 0 + " cr";
         }
     }

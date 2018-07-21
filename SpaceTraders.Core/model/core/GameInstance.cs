@@ -264,7 +264,7 @@ public class GameInstance {
 
         }
         String term = "\n\n";
-        gameString.Append(term).Append(" Current Player: ").Append(player.toString()).Append(term);
+        gameString.Append(term).Append(" Current Player: ").Append(player.ToString()).Append(term);
         gameString.Append("Current Planet: ").Append(currentPlanet.toString()).Append(term);
         gameString.Append("Current SolarSystem: ").Append(currentSolarSystem.toString()).Append(term);
 

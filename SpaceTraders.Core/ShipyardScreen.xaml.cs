@@ -34,7 +34,7 @@ namespace SpaceTraders
             this.InitializeComponent();
             GameInstance gm = GameInstance.getInstance();
             this.player = gm.getPlayer();
-            playership = player.getShip();
+            playership = player.Ship;
             currShip.Text = playership.toString();
 
             Planet currentPlanet = gm.getCurrentPlanet();
@@ -58,7 +58,7 @@ namespace SpaceTraders
             };
             }
             ShipCombo.ItemsSource = options;
-            PlayerMoney.Text = player.getMoney().ToString();
+            PlayerMoney.Text = player.Money.ToString();
 
         }
 
