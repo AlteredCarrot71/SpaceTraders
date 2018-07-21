@@ -50,7 +50,7 @@ public class SolarSystem {
      * @return int distance between 2 SolarSystems
      */
     public int distance(SolarSystem other) {
-        return pos.distance(other.getPosition());
+        return pos.Distance(other.getPosition());
     }
 
     /**
@@ -73,7 +73,7 @@ public class SolarSystem {
 
         }
 
-        return "Solar System Name: " + name + "\nPoint: " + pos.toString() + "\n"
+        return "Solar System Name: " + name + "\nPoint: " + pos.ToString() + "\n"
                         + planetString.ToString();
 
     }

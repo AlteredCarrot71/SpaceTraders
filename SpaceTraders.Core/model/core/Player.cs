@@ -138,19 +138,23 @@ public class Player : HasSkills {
     public IList<HasPrice> getUpgrades() {
         IList<HasPrice> upgrades = new List<HasPrice>();
 
-        foreach (HasPrice weapon in ship.getWeapons()) {
-           upgrades.Add(weapon);
-        }  
+        foreach (HasPrice weapon in ship.getWeapons())
+        {
+            upgrades.Add(weapon);
+        }
            
-        foreach (HasPrice shield in ship.getShields()) {
-           upgrades.Add(shield);
-        }  
-           
-        foreach (Crew crew in ship.getCrew()) {
+        foreach (HasPrice shield in ship.getShields())
+        {
+            upgrades.Add(shield);
+        }
+
+        foreach (Crew crew in ship.getCrew())
+        {
             upgrades.Add(crew);
-        }  
+        }
            
-        foreach (AbstractGadget gadget in ship.getGadgets()) {
+        foreach (AbstractGadget gadget in ship.getGadgets())
+        {
             upgrades.Add(gadget);
         }
 

@@ -50,8 +50,8 @@ namespace SpaceTraders
             {
                 Stroke = new SolidColorBrush(Colors.Transparent),
                 StrokeThickness = 5,
-                X1 = playerLocation.getX(),
-                Y1 = playerLocation.getY()
+                X1 = playerLocation.Xpos,
+                Y1 = playerLocation.Ypos
             };
             MapPane.Children.Add(currentLine);
             CreateMap();
@@ -76,7 +76,7 @@ namespace SpaceTraders
                 SolidColorBrush c = new SolidColorBrush(colorList.ElementAt(random.Next(colorList.Count)));
                 Ellipse cor = new Ellipse
                 {
-                    Margin = new Thickness {Top = point.getY(), Left = point.getX()},      
+                    Margin = new Thickness {Top = point.Ypos, Left = point.Xpos},
                     Fill = c,
                     Stroke = c,
                     Height = 15,
@@ -146,7 +146,7 @@ namespace SpaceTraders
             Travel.IsEnabled = true;
             SolarSystem s;
             nameMap.TryGetValue((String)ListPlanet.SelectedItem, out s);
-            travelDistance = s.getPosition().distance(playerLocation);
+            travelDistance = s.getPosition().Distance(playerLocation);
             NeededFuel.Text = "Needed Fuel: " + travelDistance;
         }
     }
