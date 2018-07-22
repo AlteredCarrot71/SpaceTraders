@@ -76,7 +76,7 @@ namespace SpaceTraders
             {
 
                 planetString.Append(" ");
-                planetString.Append(p.toString());
+                planetString.Append(p.GetInfo());
 
             }
 

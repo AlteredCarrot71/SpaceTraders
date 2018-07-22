@@ -27,17 +27,17 @@ namespace SpaceTraders
             ColorList cl = new ColorList();
             PlanetImg.Fill = new SolidColorBrush(cl.ElementAt(r.Next(cl.Count)));
             Refuel.Content = "Refuel: " + player.GetRefuelCost() + " cr";
-            TitleScreen.Text = curPlanet.getName();
-            Description.Text = curPlanet.toString() + "\n Resources:  "
-                               + curPlanet.getResource().Name + "\n\nFuel: " + player.Ship.getCurrentFuel()
+            TitleScreen.Text = curPlanet.Name;
+            Description.Text = curPlanet.GetInfo() + "\n Resources:  "
+                               + curPlanet.Resource.Name + "\n\nFuel: " + player.Ship.getCurrentFuel()
                                + "\nMoney: "
                                + player.Money;
 
-            if (curPlanet.getTechLevel().Equals(TechLevel.POST_INDUSTRIAL))
+            if (curPlanet.Techlevel.Equals(TechLevel.POST_INDUSTRIAL))
             {
                 enterShipyard.IsEnabled = true;
             }
-            else if (curPlanet.getTechLevel().Equals(TechLevel.HI_TECH))
+            else if ( curPlanet.HasShipYard() )
             {
                 enterShipyard.IsEnabled = true;
             }
@@ -53,23 +53,23 @@ namespace SpaceTraders
             this.Frame.Navigate(typeof (MapScreen));
         }
 
-        private void enterMarket_Click(object sender, RoutedEventArgs e)
+        private void EnterMarket_Click(object sender, RoutedEventArgs e)
         {
-            game.getCurrentPlanet().enterMarket(game.getPlayer());
+            game.getCurrentPlanet().EnterMarket(game.getPlayer());
             this.Frame.Navigate(typeof (MarketScreen));
         }
 
-        private void enterShipyard_Click(object sender, RoutedEventArgs e)
+        private void EnterShipyard_Click(object sender, RoutedEventArgs e)
         {
-            game.getCurrentPlanet().enterShipyard(game.getPlayer());
+            game.getCurrentPlanet().EnterShipyard(game.getPlayer());
             this.Frame.Navigate(typeof (ShipyardScreen));
         }
 
         private void Refuel_Click(object sender, RoutedEventArgs e)
         {
             player.BuyFuel();
-            Description.Text = curPlanet.toString() + "\n Resources:  "
-                               + curPlanet.getResource().Name + "\n\nFuel: " + player.Ship.getCurrentFuel()
+            Description.Text = curPlanet.GetInfo() + "\n Resources:  "
+                               + curPlanet.Resource.Name + "\n\nFuel: " + player.Ship.getCurrentFuel()
                                + "\nMoney: "
                                + player.Money;
             Refuel.Content = "Refuel: " + 0 + " cr";

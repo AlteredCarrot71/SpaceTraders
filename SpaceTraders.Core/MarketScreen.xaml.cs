@@ -41,8 +41,8 @@ namespace SpaceTraders
             this.game = GameInstance.getInstance();
             this.player = game.getPlayer();
             currentPlanet = game.getCurrentPlanet();
-            MarketTitle.Text = currentPlanet.getName() + " Market";
-            marketplace = currentPlanet.getMarketplace();
+            MarketTitle.Text = currentPlanet.Name + " Market";
+            marketplace = currentPlanet.Marketplace;
 
             foreach (Good good in marketplace.Supply)
             {

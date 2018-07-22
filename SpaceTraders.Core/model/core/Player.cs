@@ -28,7 +28,7 @@ namespace SpaceTraders
             skills = new SkillSet(tradeSkill, fightSkill, engSkill,
                                             pilotSkill, investSkill);
 
-            Ship = Ship.Gnat();
+            Ship = Ship.Gnat;
         }
 
         // Adds money to the player's money.
@@ -101,7 +101,7 @@ namespace SpaceTraders
             retval += "Engineering skill: " + getEngineeringSkill() + term;
             retval += "Trading Skill: " + getTradeSkill() + term;
             retval += "Investing Skill: " + getInvestingSkill() + term;
-            retval += "Ship: " + Ship.toString();
+            retval += "Ship: " + Ship.Name;
             return retval;
         }
 

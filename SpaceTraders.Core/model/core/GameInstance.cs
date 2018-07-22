@@ -186,7 +186,7 @@ namespace SpaceTraders
 
             String term = "\n\n";
             gameString.Append(term).Append(" Current Player: ").Append(player.GetInfo()).Append(term);
-            gameString.Append("Current Planet: ").Append(currentPlanet.toString()).Append(term);
+            gameString.Append("Current Planet: ").Append(currentPlanet.GetInfo()).Append(term);
             gameString.Append("Current SolarSystem: ").Append(currentSolarSystem.toString()).Append(term);
 
             return gameString.ToString();

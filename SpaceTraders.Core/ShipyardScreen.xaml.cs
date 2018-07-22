@@ -35,26 +35,26 @@ namespace SpaceTraders
             GameInstance gm = GameInstance.getInstance();
             this.player = gm.getPlayer();
             playership = player.Ship;
-            currShip.Text = playership.toString();
+            currShip.Text = playership.Name;
 
             Planet currentPlanet = gm.getCurrentPlanet();
-            shipyard = currentPlanet.getShipyard();
-            ShipyardTitle.Text = currentPlanet.getName() + " Shipyard";
+            shipyard = currentPlanet.Shipyard;
+            ShipyardTitle.Text = currentPlanet.Name + " Shipyard";
 
-            if (currentPlanet.getTechLevel().Equals(TechLevel.POST_INDUSTRIAL))
+            if (currentPlanet.Techlevel.Equals(TechLevel.POST_INDUSTRIAL))
             {
                 options = new ObservableCollection<string>{
-                        Ship.Flea().toString()
+                        Ship.Flea.Name
                 };
             }
-            else if (currentPlanet.getTechLevel().Equals(TechLevel.HI_TECH))
+            else if (currentPlanet.Techlevel.Equals(TechLevel.HI_TECH))
             {
                 options = new ObservableCollection<string>{
-                    Ship.Flea().toString(),
-                    Ship.Gnat().toString(),
-                    Ship.Firefly().toString(),
-                    Ship.Mosquito().toString(),
-                    Ship.Bumblebee().toString()
+                    Ship.Flea.Name,
+                    Ship.Gnat.Name,
+                    Ship.Firefly.Name,
+                    Ship.Mosquito.Name,
+                    Ship.Bumblebee.Name
             };
             }
             ShipCombo.ItemsSource = options;
@@ -64,8 +64,8 @@ namespace SpaceTraders
 
         private void ShipCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Ship selected = (Ship) ShipCombo.SelectedItem;
-            ShipInfo.Text = selected.toString();
+            Ship selected = Ship.Values.Find(x => x.Name.Equals(ShipCombo.SelectedItem.ToString()));
+            ShipInfo.Text = selected.Name;
         }
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)

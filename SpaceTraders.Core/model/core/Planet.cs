@@ -2,170 +2,53 @@ using System;
 
 namespace SpaceTraders
 {
-    /**
-     * A planet in a SolarSystem. It has a tech level, resources, and a name.
-     *
-     * @author Nick
-     *
-     */
+    // A planet in a SolarSystem. It has a tech level, resources, and a name.
     public class Planet
     {
+        // Name of this planet.
+        public String Name { get; private set; }
+        // Tech level for this planet.
+        public TechLevel Techlevel { get; private set; }
+        // Resource for this planet.
+        public Good Resource { get; private set; }
+        // Marketplace specific to this planet.
+        public Marketplace Marketplace { get; private set; }
+        // Shipyard specific to this planet.
+        public Shipyard Shipyard { get; private set; }
 
-        /**
-         * Resource for this planet.
-         */
-        private Good resource;
-        /**
-         * Tech level for this planet.
-         */
-        private TechLevel tech;
-        /**
-         * Name of this planet.
-         */
-        private String name;
-        /**
-         * Marketplace specific to this planet.
-         */
-        private Marketplace marketplace;
-        /**
-         * Shipyard specific to this planet.
-         */
-        private Shipyard shipyard;
-
-        /**
-         * Constructor for Planet.
-         *
-         * @param nameArg
-         *        name of the Planet
-         * @param resourceArg
-         *        resource of the planet
-         * @param techArg
-         *        tech level of the planet
-         */
+        // Constructor for Planet.
         public Planet(String nameArg, Good resourceArg, TechLevel techArg)
         {
-            this.name = nameArg;
-            this.resource = resourceArg;
-            this.tech = techArg;
+            Name = nameArg;
+            Resource = resourceArg;
+            Techlevel = techArg;
         }
 
-        /**
-         * This method initializes the marketplace on a planet. It should be called after the player
-         * visits the planet. It creates a random supply of various goods
-         *
-         * @param player
-         *        the player model
-         * @return the marketplace created
-         */
-        public Marketplace enterMarket(Player player)
+        // This method initializes the marketplace on a planet. It should be called after the player
+        // visits the planet. It creates a random supply of various goods
+        public Marketplace EnterMarket(Player player)
         {
-            marketplace = new Marketplace(tech, player);
-            return marketplace;
+            Marketplace = new Marketplace(Techlevel, player);
+            return Marketplace;
         }
 
-        /**
-         * Initializes a Shipyard for a Planet.
-         *
-         * @param player
-         *        the Player entering the shipyard
-         * @return the shipyard created
-         */
-        public Shipyard enterShipyard(Player player)
+        // Initializes a Shipyard for a Planet.
+        public Shipyard EnterShipyard(Player player)
         {
-            shipyard = new Shipyard(marketplace, player);
-            return shipyard;
+            Shipyard = new Shipyard(Marketplace, player);
+            return Shipyard;
         }
 
-        /**
-         * Gets the Marketplace. Used for shipyard
-         *
-         * @return the shipyard
-         */
-        public Marketplace getMarketplace()
+        // Determines if a Planet has as shipyard (techLevel is HI_TECH).
+        public bool HasShipYard()
         {
-            return marketplace;
+            return Techlevel == TechLevel.HI_TECH;
         }
 
-        /**
-         * Determines if a Planet has as shipyard (techLevel is HI_TECH).
-         *
-         * @return true if Planet is HI_TECH, false otherwise
-         */
-        public bool hasShipYard()
+        public String GetInfo()
         {
-            return tech == TechLevel.HI_TECH;
-        }
-
-        /**
-         * Gets the Shipyard for buying new ships.
-         *
-         * @return the shipyard being used
-         */
-        public Shipyard getShipyard()
-        {
-            return shipyard;
-        }
-
-        /**
-         * Returns the name of the planet.
-         *
-         * @return name: String
-         */
-        public String getName()
-        {
-            return name;
-        }
-
-        /**
-         * Returns the resources of this Planet.
-         *
-         * @return the resources of this planet
-         */
-        public Good getResource()
-        {
-            return resource;
-        }
-
-        /**
-         * Gets tech level of planet.
-         *
-         * @return return tech level of planet
-         */
-        public TechLevel getTechLevel()
-        {
-            return tech;
-        }
-
-
-        public bool equals(Object other)
-        {
-            if (other == null || other.GetType() != typeof(Planet))
-            {
-                return false;
-            }
-            if (other == this)
-            {
-                return true;
-            }
-            Planet planet = (Planet)other;
-            return name.Equals(planet.getName());
-
-        }
-
-
-        public int hashCode()
-        {
-            return name.GetHashCode();
-
-        }
-
-
-        public String toString()
-        {
-
-            return "Planet Name: " + name + "\n\tResources: " + resource
-                            + "\n\tTech: " + tech;
-
+            return "Planet Name: " + Name + "\n\tResources: " + Resource
+                            + "\n\tTech: " + Techlevel;
         }
     }
 }

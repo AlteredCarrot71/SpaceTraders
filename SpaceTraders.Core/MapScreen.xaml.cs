@@ -69,8 +69,8 @@ namespace SpaceTraders
             foreach (SolarSystem s in universe)
             {
 
-                nameMap.Add(s.getPlanets().ElementAt(0).getName(), s);
-                ListPlanet.Items.Add(s.getPlanets().ElementAt(0).getName());
+                nameMap.Add(s.getPlanets().ElementAt(0).Name, s);
+                ListPlanet.Items.Add(s.getPlanets().ElementAt(0).Name);
 
                 Point point = s.getPosition();
                 SolidColorBrush c = new SolidColorBrush(colorList.ElementAt(random.Next(colorList.Count)));

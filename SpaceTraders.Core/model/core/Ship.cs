@@ -12,34 +12,21 @@ namespace SpaceTraders
     {
 
         // makes a flea.
-        public static Ship Flea()
-        {
-            return new Ship("Flea", 10, 0, 0, 0, 1, 500, 1, 2000, 5, 25, -1, -1, 0);
-        }
+        public static Ship Flea = new Ship("Flea", 10, 0, 0, 0, 1, 500, 1, 2000, 5, 25, -1, -1, 0);
 
         // Makes a gnat.
-        public static Ship Gnat()
-        {
-            return new Ship("Gnat", 15, 1, 0, 1, 1, 140, 2, 10000, 50, 100, 0, 0, 1);
-        }
+        public static Ship Gnat = new Ship("Gnat", 15, 1, 0, 1, 1, 140, 2, 10000, 50, 100, 0, 0, 1);
 
         // Makes a firefly.
-        public static Ship Firefly()
-        {
-            return new Ship("Firefly", 20, 1, 1, 1, 1, 170, 3, 25000, 75, 100, 0, 0, 1);
-        }
+        public static Ship Firefly = new Ship("Firefly", 20, 1, 1, 1, 1, 170, 3, 25000, 75, 100, 0, 0, 1);
 
         // makes a mosquito.
-        public static Ship Mosquito()
-        {
-            return new Ship("Mosquito", 15, 2, 1, 1, 1, 130, 5, 30000, 100, 100, 0, 1, 1);
-        }
+        public static Ship Mosquito = new Ship("Mosquito", 15, 2, 1, 1, 1, 130, 5, 30000, 100, 100, 0, 1, 1);
 
         // Makes a bumblebee.
-        public static Ship Bumblebee()
-        {
-            return new Ship("Bumblebee", 25, 1, 2, 2, 2, 150, 7, 60000, 125, 100, 0, 1, 2);
-        }
+        public static Ship Bumblebee = new Ship("Bumblebee", 25, 1, 2, 2, 2, 150, 7, 60000, 125, 100, 0, 1, 2);
+
+        public static readonly List<Ship> Values = new List<Ship> { Flea, Gnat, Firefly, Mosquito, Bumblebee };
 
         // Factory method to make Ships.
         public static Ship ShipFactory(String shipName)
@@ -48,23 +35,23 @@ namespace SpaceTraders
 
             if (name.Equals("flea"))
             {
-                return Ship.Flea();
+                return Ship.Flea;
             }
             else if (name.Equals("gnat"))
             {
-                return Ship.Gnat();
+                return Ship.Gnat;
             }
             else if (name.Equals("firefly"))
             {
-                return Ship.Firefly();
+                return Ship.Firefly;
             }
             else if (name.Equals("mosquito"))
             {
-                return Ship.Mosquito();
+                return Ship.Mosquito;
             }
             else if (name.Equals("bumblebee"))
             {
-                return Ship.Bumblebee();
+                return Ship.Bumblebee;
             }
             else
             {
@@ -112,7 +99,7 @@ namespace SpaceTraders
         /**
          * Name of ship.
          */
-        private String name;
+        public String Name { get; private set; }
 
         /**
          * Min tech level for ship to be sold in shipyard.
@@ -196,7 +183,7 @@ namespace SpaceTraders
             shields = new PresizedList<Shie>(shieldSize);
             gadgets = new PresizedList<AbstractGadget>(gadgetSize);
             crew = new PresizedList<Crew>(crewSize);
-            this.name = nameArg;
+            this.Name = nameArg;
             this.maxFuel = maxFuelArg;
             this.fuelCost = fuelCostArg;
             this.price = priceArg;
@@ -601,12 +588,5 @@ namespace SpaceTraders
             return retval;
 
         }
-
-
-        public String toString()
-        {
-            return name;
-        }
-
     }
 }
