@@ -21,11 +21,6 @@ public class Point
                         + Math.Pow((Ypos - other.Ypos), 2));
     }
 
-    public override String ToString()
-    {
-        return "(" + Xpos + "," + Ypos + ")";
-    }
-
     public int HashCode()
     {
         return Xpos * Ypos;

@@ -10,56 +10,70 @@
 using System;
 using System.Collections.Generic;
 
-public class GoodsStrategy : EventStrategy {
+namespace SpaceTraders
+{
+    public class GoodsStrategy : EventStrategy
+    {
 
-    /**
-     * Phrases for losing an item.
-     */
-    private String[] losePhrases = {"Your {0} fell out of your ship!", "A thief stole your {0}!",
-            "Your {0} broke!",
-            "Your {0} was in a freak cargo accident" + " and is no longer sellable!",
-            "You can't seem to remember where you put that {0}..."};
+        /**
+         * Phrases for losing an item.
+         */
+        private String[] losePhrases = {"Your {0} fell out of your ship!", "A thief stole your {0}!",
+                "Your {0} broke!",
+                "Your {0} was in a freak cargo accident" + " and is no longer sellable!",
+                "You can't seem to remember where you put that {0}..."};
 
-    /**
-     * Phrases for gaining an item.
-     */
-    private String[] getPhrases = {"You found {0} floating in space!",
-            "A retiring trader gave you his last {0}!", "{0} fell from the sky into your hands!",
-            "A shady looking man gave you his {0} and ran away!", "You found free {0} under a bush!"};
+        /**
+         * Phrases for gaining an item.
+         */
+        private String[] getPhrases = {"You found {0} floating in space!",
+                "A retiring trader gave you his last {0}!", "{0} fell from the sky into your hands!",
+                "A shady looking man gave you his {0} and ran away!", "You found free {0} under a bush!"};
 
 
-    
-    public String execute(Player player) {
 
-        Random rand = new Random();
+        public String execute(Player player)
+        {
 
-        if (rand.NextDouble() > .5) {
+            Random rand = new Random();
 
-            List<Good> items = Goods.Values;
-            Good toAdd = items[rand.Next(items.Count)];
+            if (rand.NextDouble() > .5)
+            {
 
-            int msg = rand.Next(getPhrases.Length);
-            String output = String.Format(getPhrases[msg], toAdd.toString());
+                List<Good> items = Goods.Values;
+                Good toAdd = items[rand.Next(items.Count)];
 
-            if (player.Ship.cargoRoomLeft() >= 1) {
-                player.Ship.addCargo(toAdd);
-            } else {
-                output = output.Substring(0, output.Length - 1);
-                output += ", but you don't have room in your cargo for it!";
+                int msg = rand.Next(getPhrases.Length);
+                String output = String.Format(getPhrases[msg], toAdd.Name);
+
+                if (player.Ship.cargoRoomLeft() >= 1)
+                {
+                    player.Ship.addCargo(toAdd);
+                }
+                else
+                {
+                    output = output.Substring(0, output.Length - 1);
+                    output += ", but you don't have room in your cargo for it!";
+                }
+                return output;
             }
-            return output;
-        } else {
-            if (player.Ship.getCargo().Count > 0) {
-                int cargoIndex = rand.Next(player.Ship.getCargo().Count);
-                Good toRemove = player.Ship.getCargo()[cargoIndex];
-                player.Ship.removeCargo(toRemove);
-                int msg = rand.Next(losePhrases.Length);
-                return String.Format(losePhrases[msg], toRemove.toString());
-            } else {
-                return "Your cargo hold broke open," + " but there was nothing in it!";
+            else
+            {
+                if (player.Ship.getCargo().Count > 0)
+                {
+                    int cargoIndex = rand.Next(player.Ship.getCargo().Count);
+                    Good toRemove = player.Ship.getCargo()[cargoIndex];
+                    player.Ship.removeCargo(toRemove);
+                    int msg = rand.Next(losePhrases.Length);
+                    return String.Format(losePhrases[msg], toRemove.Name);
+                }
+                else
+                {
+                    return "Your cargo hold broke open," + " but there was nothing in it!";
+                }
             }
         }
+
     }
 
 }
-

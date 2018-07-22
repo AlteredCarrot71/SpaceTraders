@@ -1,34 +1,40 @@
 using System;
 
 
-/**
- * Strategy for handling fuel events.
- *
- * @author ngraves3
- *
- */
-public class FuelStrategy : EventStrategy {
-
+namespace SpaceTraders
+{
     /**
-     * Phrases for losing fuel.
+     * Strategy for handling fuel events.
+     *
+     * @author ngraves3
+     *
      */
-    private String[] losePhrases = {"{0} units of your fuel leaked out!",
-            "A thief stole {0} units of fuel!"}; //i'm all out of ideas for phrases now
+    public class FuelStrategy : EventStrategy
+    {
 
-    
-    public String execute(Player player) {
+        /**
+         * Phrases for losing fuel.
+         */
+        private String[] losePhrases = {"{0} units of your fuel leaked out!",
+                "A thief stole {0} units of fuel!"}; //i'm all out of ideas for phrases now
 
-        Random rand = new Random();
 
-        int fuelLeakage = rand.Next(player.Ship.getCurrentFuel() + 1);
-        if (fuelLeakage == 0) {
-            fuelLeakage++; // 1 to player.getCurrentFuel()
+        public String execute(Player player)
+        {
+
+            Random rand = new Random();
+
+            int fuelLeakage = rand.Next(player.Ship.getCurrentFuel() + 1);
+            if (fuelLeakage == 0)
+            {
+                fuelLeakage++; // 1 to player.getCurrentFuel()
+            }
+            if (player.Ship.getCurrentFuel() <= 0) return "You left your fuel tank open, but you have no fuel to leak!";
+            player.Ship.travel(fuelLeakage);
+            int msg = rand.Next(losePhrases.Length);
+            return String.Format(losePhrases[msg], fuelLeakage);
         }
-        if (player.Ship.getCurrentFuel() <= 0) return "You left your fuel tank open, but you have no fuel to leak!";
-        player.Ship.travel(fuelLeakage);
-        int msg = rand.Next(losePhrases.Length);
-        return String.Format(losePhrases[msg], fuelLeakage);
+
     }
 
 }
-

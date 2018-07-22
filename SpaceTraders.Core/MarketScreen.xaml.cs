@@ -1,68 +1,92 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace SpaceTraders
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MarketScreen : Page
     {
         private Planet currentPlanet;
         private Marketplace marketplace;
-        private GameInstance gm;
+        private GameInstance game;
         private Player player;
         private ObservableCollection<String> marketGoods = new ObservableCollection<String>();
         private ObservableCollection<String> shipGoods = new ObservableCollection<String>();
+
+        private void EnablingButtons()
+        {
+            if (player.Ship.cargoRoomLeft() > 0)
+            {
+                BuyButton.IsEnabled = true;
+            }
+            else
+            {
+                BuyButton.IsEnabled = false;
+            }
+
+            if ( player.Ship.cargoSize() - player.Ship.cargoRoomLeft() > 0 )
+            {
+                SellButton.IsEnabled = true;
+            }
+            else
+            {
+                SellButton.IsEnabled = false;
+            }
+        }
+
         public MarketScreen()
         {
             this.InitializeComponent();
-            this.gm = GameInstance.getInstance();
-            this.player = gm.getPlayer();
-            currentPlanet = gm.getCurrentPlanet();
+            this.game = GameInstance.getInstance();
+            this.player = game.getPlayer();
+            currentPlanet = game.getCurrentPlanet();
             MarketTitle.Text = currentPlanet.getName() + " Market";
             marketplace = currentPlanet.getMarketplace();
 
             foreach (Good good in marketplace.Supply)
             {
-                marketGoods.Add(good.toString());
-            }
-            if (player.Ship.getCargo().Count != 0)
-            {
-                SellButton.IsEnabled = false;
-                foreach (Good good in player.Ship.getCargo())
-                {
-                    shipGoods.Add(good.toString());
-                }
+                marketGoods.Add(good.Name);
             }
 
-            if (player.Ship.cargoRoomLeft() < 1)
+            foreach (Good good in player.Ship.getCargo())
             {
-                BuyButton.IsEnabled = true;
+                shipGoods.Add(good.Name);
             }
-            MarketList.ItemsSource = marketGoods;
-            ShipList.ItemsSource = shipGoods;
 
+            EnablingButtons();
         }
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            game.setPlayer(player);
             this.Frame.Navigate(typeof(PlanetScreen));
+        }
+
+        private void BuyButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ( MarketList.SelectedItems.Count > 0 )
+            {
+                marketplace.PlayerBuys(Goods.Values.Find(x => x.Name.Contains(MarketList.SelectedValue.ToString())));
+
+                shipGoods.Add(MarketList.SelectedItem.ToString());
+                marketGoods.RemoveAt(MarketList.SelectedIndex);
+            }
+
+            EnablingButtons();
+        }
+
+        private void SellButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ShipList.SelectedItems.Count > 0)
+            {
+                marketplace.PlayerSells(Goods.Values.Find(x => x.Name.Contains(ShipList.SelectedValue.ToString())));
+
+                marketGoods.Add(ShipList.SelectedItem.ToString());
+                shipGoods.RemoveAt(ShipList.SelectedIndex);
+            }
+
+            EnablingButtons();
         }
     }
 }

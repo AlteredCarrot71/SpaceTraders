@@ -44,17 +44,17 @@ namespace SpaceTraders
             if (currentPlanet.getTechLevel().Equals(TechLevel.POST_INDUSTRIAL))
             {
                 options = new ObservableCollection<string>{
-                        Ship.flea().toString()
+                        Ship.Flea().toString()
                 };
             }
             else if (currentPlanet.getTechLevel().Equals(TechLevel.HI_TECH))
             {
                 options = new ObservableCollection<string>{
-                    Ship.flea().toString(),
-                    Ship.gnat().toString(),
-                    Ship.firefly().toString(),
-                    Ship.mosquito().toString(),
-                    Ship.bumblebee().toString()
+                    Ship.Flea().toString(),
+                    Ship.Gnat().toString(),
+                    Ship.Firefly().toString(),
+                    Ship.Mosquito().toString(),
+                    Ship.Bumblebee().toString()
             };
             }
             ShipCombo.ItemsSource = options;

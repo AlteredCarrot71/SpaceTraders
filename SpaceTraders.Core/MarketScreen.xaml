@@ -16,10 +16,10 @@
                 </LinearGradientBrush>
             </TextBlock.Foreground>
         </TextBlock>
-        <ListBox x:Name="ShipList" HorizontalAlignment="Left" Height="465" Margin="65,180,0,0" VerticalAlignment="Top" Width="390"/>
-        <ListBox x:Name="MarketList" HorizontalAlignment="Left" Height="465" Margin="910,175,0,0" VerticalAlignment="Top" Width="390"/>
-        <Button x:Name="BuyButton" Content="Buy" HorizontalAlignment="Left" Margin="560,210,0,0" VerticalAlignment="Top" Height="90" Width="250" Background="White" BorderBrush="White" Foreground="Black" FontSize="24"/>
-        <Button x:Name="SellButton" Content="Sell" HorizontalAlignment="Left" Margin="560,339,0,0" VerticalAlignment="Top" Height="90" Width="250" Background="White" BorderBrush="White" Foreground="Black" FontSize="24"/>
+        <ListView x:Name="ShipList" HorizontalAlignment="Left" Height="465" Margin="65,180,0,0" VerticalAlignment="Top" Width="390" ItemsSource="{x:Bind shipGoods}"/>
+        <ListView x:Name="MarketList" HorizontalAlignment="Left" Height="465" Margin="910,175,0,0" VerticalAlignment="Top" Width="390" ItemsSource="{x:Bind marketGoods}"/>
+        <Button x:Name="BuyButton" Content="Buy" HorizontalAlignment="Left" Margin="560,210,0,0" VerticalAlignment="Top" Height="90" Width="250" Background="White" BorderBrush="White" Foreground="Black" FontSize="24" Click="BuyButton_Click" IsEnabled="False"/>
+        <Button x:Name="SellButton" Content="Sell" HorizontalAlignment="Left" Margin="560,339,0,0" VerticalAlignment="Top" Height="90" Width="250" Background="White" BorderBrush="White" Foreground="Black" FontSize="24" Click="SellButton_Click" IsEnabled="False"/>
         <Button x:Name="DoneButton" Content="Done Shopping!" HorizontalAlignment="Left" Margin="560,610,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="68" Width="268" Background="White" Foreground="Black" FontSize="24" Click="DoneButton_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="600,505,0,0" TextWrapping="Wrap" Text="Credits: 400" VerticalAlignment="Top" Height="75" Width="190" FontSize="24"/>
 
