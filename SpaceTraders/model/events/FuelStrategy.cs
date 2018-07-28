@@ -24,12 +24,12 @@ namespace SpaceTraders
 
             Random rand = new Random();
 
-            int fuelLeakage = rand.Next(player.Ship.getCurrentFuel() + 1);
+            int fuelLeakage = rand.Next(player.Ship.CurrentFuel + 1);
             if (fuelLeakage == 0)
             {
                 fuelLeakage++; // 1 to player.getCurrentFuel()
             }
-            if (player.Ship.getCurrentFuel() <= 0) return "You left your fuel tank open, but you have no fuel to leak!";
+            if (player.Ship.CurrentFuel <= 0) return "You left your fuel tank open, but you have no fuel to leak!";
             player.Ship.travel(fuelLeakage);
             int msg = rand.Next(losePhrases.Length);
             return String.Format(losePhrases[msg], fuelLeakage);

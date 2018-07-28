@@ -10,169 +10,71 @@ namespace SpaceTraders
     // correctly
     public class Ship
     {
-
         // makes a flea.
         public static Ship Flea = new Ship("Flea", 10, 0, 0, 0, 1, 500, 1, 2000, 5, 25, -1, -1, 0);
-
         // Makes a gnat.
         public static Ship Gnat = new Ship("Gnat", 15, 1, 0, 1, 1, 140, 2, 10000, 50, 100, 0, 0, 1);
-
         // Makes a firefly.
         public static Ship Firefly = new Ship("Firefly", 20, 1, 1, 1, 1, 170, 3, 25000, 75, 100, 0, 0, 1);
-
         // makes a mosquito.
         public static Ship Mosquito = new Ship("Mosquito", 15, 2, 1, 1, 1, 130, 5, 30000, 100, 100, 0, 1, 1);
-
         // Makes a bumblebee.
         public static Ship Bumblebee = new Ship("Bumblebee", 25, 1, 2, 2, 2, 150, 7, 60000, 125, 100, 0, 1, 2);
 
         public static readonly List<Ship> Values = new List<Ship> { Flea, Gnat, Firefly, Mosquito, Bumblebee };
 
-        // Factory method to make Ships.
-        public static Ship ShipFactory(String shipName)
-        {
-            String name = shipName.ToLower();
-
-            if (name.Equals("flea"))
-            {
-                return Ship.Flea;
-            }
-            else if (name.Equals("gnat"))
-            {
-                return Ship.Gnat;
-            }
-            else if (name.Equals("firefly"))
-            {
-                return Ship.Firefly;
-            }
-            else if (name.Equals("mosquito"))
-            {
-                return Ship.Mosquito;
-            }
-            else if (name.Equals("bumblebee"))
-            {
-                return Ship.Bumblebee;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         // ship cargo.
         public List<Good> Cargo { get; set; }
 
-        /**
-         * ship weapons.
-         */
+        // ship weapons.
         private PresizedList<Weap> weapons;
 
-        /**
-         * Ship shields.
-         */
+        // Ship shields.
         private PresizedList<Shie> shields;
 
-        /**
-         * Ship gadgets.
-         */
+        // Ship gadgets.
         private PresizedList<AbstractGadget> gadgets;
 
-        /**
-         * Ship crew.
-         */
+        // Ship crew.
         private PresizedList<Crew> crew;
 
-        /**
-         * Maximum fuel this ship can hold.
-         */
-        private int maxFuel;
+        // Maximum fuel this ship can hold.
+        public int MaxFuel { get; private set; }
 
-        /**
-         * whether can ship be seen by others during travel.
-         */
-        private bool isVisible;
+        // the current amount of fuel.
+        public int CurrentFuel { get; private set; }
 
-        /**
-         * the current amount of fuel.
-         */
-        private int currentFuel;
-        /**
-         * Name of ship.
-         */
+        // whether can ship be seen by others during travel.
+        public bool IsVisible { get; set; }
+
+        // Name of ship.
         public String Name { get; private set; }
 
-        /**
-         * Min tech level for ship to be sold in shipyard.
-         */
-        private TechLevel minTechLevel; // use for validation purposes
+        // Min tech level for ship to be sold in shipyard.
+        //private TechLevel minTechLevel;
 
-        /**
-         * cost per unit of fuel.
-         */
+        // cost per unit of fuel.
         private int fuelCost;
 
-        /**
-         * base price of ship.
-         */
+        // base price of ship.
         private int price;
 
-        /**
-         * Bounty on ship.
-         */
+        // Bounty on ship.
         private int bounty;
 
-        /**
-         * hull strength for fights.
-         */
+        // hull strength for fights.
         private int hullStrength;
 
-        /**
-         * Police disposition towards ship.
-         */
+        // Police disposition towards ship.
         private int policeAggression;
 
-        /**
-         * Pirate aggression towards ship.
-         */
+        // Pirate aggression towards ship.
         private int pirateAggression;
 
-        /**
-         * Size of ship.
-         */
-        private int size;
+        // Size of ship.
+        private int Size;
 
-        /**
-         * Private ship constructor. Makes new ships through methods.
-         *
-         * @param nameArg
-         *        name of ship
-         * @param cargoSize
-         *        size of cargo
-         * @param weaponSize
-         *        num of weapons
-         * @param shieldSize
-         *        num of shields
-         * @param gadgetSize
-         *        num of gadgets
-         * @param crewSize
-         *        num of crew
-         * @param maxFuelArg
-         *        maximum amount of fuel for ship
-         * @param fuelCostArg
-         *        cost per price of fuel
-         * @param priceArg
-         *        base prices of ship
-         * @param bountyArg
-         *        bounty if caught
-         * @param hullStrengthArg
-         *        hull strength of ship
-         * @param police
-         *        police disposition
-         * @param pirate
-         *        pirate disposition
-         * @param sizeArg
-         *        size of ship
-         */
+        // Private ship constructor. Makes new ships through methods.
         private Ship(String nameArg, int cargoSize, int weaponSize, int shieldSize, int gadgetSize,
             int crewSize, int maxFuelArg, int fuelCostArg, int priceArg, int bountyArg,
             int hullStrengthArg, int police, int pirate, int sizeArg)
@@ -184,111 +86,57 @@ namespace SpaceTraders
             gadgets = new PresizedList<AbstractGadget>(gadgetSize);
             crew = new PresizedList<Crew>(crewSize);
             this.Name = nameArg;
-            this.maxFuel = maxFuelArg;
+            this.MaxFuel = maxFuelArg;
             this.fuelCost = fuelCostArg;
             this.price = priceArg;
             this.bounty = bountyArg;
             this.hullStrength = hullStrengthArg;
             policeAggression = police;
             pirateAggression = pirate;
-            this.size = sizeArg;
-            currentFuel = maxFuel;
-            isVisible = true;
+            this.Size = sizeArg;
+            CurrentFuel = MaxFuel;
+            IsVisible = true;
         }
 
-        /**
-         * Returns the number of empty slots for cargo.
-         *
-         * @return number of empty slots for cargo
-         */
+        // Returns the number of empty slots for cargo.
         public int cargoRoomLeft()
         {
             return Cargo.Capacity - Cargo.Count;
         }
 
-        /**
-         * Returns the list of cargo the Ship contains.
-         *
-         * @return list of cargo
-         */
+        // Returns the list of cargo the Ship contains.
         public IList<Good> getCargo()
         {
             return Cargo;
         }
 
-        /**
-         * used with CargoGadget.
-         *
-         * @param newCargo
-         *        the new backing cargo for the ship
-         */
+        // used with CargoGadget.
         public void setCargo(PresizedList<Good> newCargo)
         {
             this.Cargo = newCargo;
         }
 
-        /**
-         * Used with FuelGadget.
-         *
-         * @param cost
-         *        the new fuel cost of the ship
-         */
+        // Used with FuelGadget.
         public void setFuelCost(int cost)
         {
             fuelCost = cost;
         }
 
-        /**
-         * Used with CloakingGadget.
-         *
-         * @param canSee
-         *        whether or not the ship is visible
-         */
-        public bool Visible
-        {
-            get { return isVisible; }
-            set { isVisible = value; }
-        }
-
-
-        /**
-         * Adds cargo to the ship.
-         *
-         * @param item
-         *        the item to add
-         * @return true if item was added, false otherwise
-         * @throws IllegalArgumentException
-         *         if item is null
-         */
+        // Adds cargo to the ship.
         public bool addCargo(Good item)
         {
             Cargo.Add(item);
             return true;
         }
 
-        /**
-         * Looks through the cargo to find the given item.
-         *
-         * @param item
-         *        the item to look for. null if item not in cargo
-         * @return the matching item if found or null if no items match
-         * @throws IllegalArgumentException
-         *         if item is null
-         */
-
+        // Looks through the cargo to find the given item.
         public bool removeCargo(Good item)
         {
             Cargo.Remove(item);
             return true;
         }
 
-        /**
-         * Adds a gadget to the ship.
-         *
-         * @param gadget
-         *        the gadget to add
-         * @return true iff gadget was added and effect was applied
-         */
+        // Adds a gadget to the ship.
         public bool addGadget(AbstractGadget gadget)
         {
             if (gadgets.hasRoom())
@@ -300,13 +148,7 @@ namespace SpaceTraders
             return false;
         }
 
-        /**
-         * Removed a gadget from the the ship.
-         *
-         * @param gadget
-         *        the gadget to remove
-         * @return true iff the gadget and its effect were removed
-         */
+        // Removed a gadget from the the ship.
         public bool removeGadget(AbstractGadget gadget)
         {
             if (gadgets.Remove(gadget))
@@ -317,13 +159,7 @@ namespace SpaceTraders
             return false;
         }
 
-        /**
-         * Adds a crew member to the ship.
-         *
-         * @param member
-         *        the Crew member to add
-         * @return true iff the Crew member was added
-         */
+        // Adds a crew member to the ship.
         public bool addCrew(Crew member)
         {
             if (crew.hasRoom())
@@ -334,25 +170,13 @@ namespace SpaceTraders
             return false;
         }
 
-        /**
-         * Removes a crew member from the ship.
-         *
-         * @param member
-         *        the Crew member to remove
-         * @return true iff the Crew member was removed
-         */
+        // Removes a crew member from the ship.
         public bool removeCrew(Crew member)
         {
             return crew.Remove(member);
         }
 
-        /**
-         * Adds the weapon to the ship.
-         *
-         * @param weapon
-         *        the weapon to add
-         * @return true iff the weapon is removed
-         */
+        // Adds the weapon to the ship.
         public bool addWeapon(Weap weapon)
         {
             if (weapons.hasRoom())
@@ -364,25 +188,13 @@ namespace SpaceTraders
             return false;
         }
 
-        /**
-         * Removes the weapon from the ship.
-         *
-         * @param weapon
-         *        the weapon to remove
-         * @return true iff the weapon was removed
-         */
+        // Removes the weapon from the ship.
         public bool removeWeapon(Weap weapon)
         {
             return weapons.Remove(weapon);
         }
 
-        /**
-         * The shield to add the ship.
-         *
-         * @param shield
-         *        the shield to add
-         * @return true iff the shield was added
-         */
+        // The shield to add the ship.
         public bool addShield(Shie shield)
         {
             if (shields.hasRoom())
@@ -394,184 +206,96 @@ namespace SpaceTraders
             return false;
         }
 
-        /**
-         * Removes the shield from the ship.
-         *
-         * @param shield
-         *        the shield to remove
-         * @return true iff the shield was removed
-         */
+        // Removes the shield from the ship.
         public bool removeShield(Shie shield)
         {
             return shields.Remove(shield);
         }
 
-        /**
-         * Remove [distance] units of fuel after travelling distance.
-         *
-         * @param distance
-         *        the distance to travel
-         */
+        // Remove [distance] units of fuel after travelling distance.
         public void travel(int distance)
         {
-            currentFuel -= distance;
+            CurrentFuel -= distance;
         }
 
-        /**
-         * Returns the current amount of fuel.
-         *
-         * @return current fuel
-         */
-        public int getCurrentFuel()
-        {
-            return currentFuel;
-        }
-
-        /**
-         * Adds fuel to the ship.
-         *
-         * @param amount
-         *        the amount of fuel
-         */
+        // Adds fuel to the ship.
         public void buyFuel(int amount)
         {
-            currentFuel += amount;
+            CurrentFuel += amount;
         }
 
-        /**
-         * Returns the maximum amount of fuel.
-         *
-         * @return maxFuel
-         */
-        public int getMaxFuel()
-        {
-            return maxFuel;
-        }
-
-        /*
-         * Getter methods below
-         */
-
-        /**
-         * Returns the fuel cost per unit.
-         *
-         * @return fuel cost per unit
-         */
+        // Returns the fuel cost per unit.
         public int getFuelCost()
         {
             return fuelCost;
         }
 
-        /**
-         * Returns the base price of ship.
-         *
-         * @return base price
-         */
+        // Returns the base price of ship.
         public int getPrice()
         {
             return price;
         }
 
-        /**
-         * Gets max size of cargo.
-         *
-         * @return maximum number of elements in the cargo
-         */
+        // Gets max size of cargo.
         public int cargoSize()
         {
             return Cargo.Capacity;
         }
 
-        /**
-         * Gets max size of weapons.
-         *
-         * @return max num of weapons
-         */
+        // Gets max size of weapons.
         public int weaponsSize()
         {
             return weapons.maxSize();
         }
 
-        /**
-         * Gets max size of shields.
-         *
-         * @return max num of shields.
-         */
+        // Gets max size of shields.
         public int shieldsSize()
         {
             return shields.maxSize();
         }
 
-        /**
-         * Gets max num of crew.
-         *
-         * @return max num of crew
-         */
+        // Gets max num of crew.
         public int crewSize()
         {
             return crew.maxSize();
         }
 
-        /**
-         * Gets max num of gadgets.
-         *
-         * @return max num of gadgets.
-         */
+        // Gets max num of gadgets.
         public int gadgetSize()
         {
             return gadgets.maxSize();
         }
 
-        /**
-         * Returns a list of the ship's weapons.
-         *
-         * @return a list of weapons.
-         */
+        // Returns a list of the ship's weapons.
         public IList<Weap> getWeapons()
         {
             return weapons;
         }
 
-        /**
-         * Returns a list of the ship's shields.
-         *
-         * @return list of shields.
-         */
+        // Returns a list of the ship's shields.
         public IList<Shie> getShields()
         {
             return shields;
         }
 
-        /**
-         * Returns a list of the ship's gadgets.
-         *
-         * @return list of gadgets
-         */
+        // Returns a list of the ship's gadgets.
         public IList<AbstractGadget> getGadgets()
         {
             return gadgets;
         }
 
-        /**
-         * Returns a list of the ship's crew.
-         *
-         * @return a list of the crew.
-         */
+        // Returns a list of the ship's crew.
         public IList<Crew> getCrew()
         {
             return crew;
         }
 
-        /**
-         * Returns a Map of attribute name to atribute value.
-         *
-         * @return map of instance variable -> value
-         */
+        // Returns a Map of attribute name to atribute value.
         public Dictionary<String, Int32> specs()
         {
             Dictionary<String, Int32> retval = new Dictionary<String, Int32>
             {
-                {"Max Fuel", maxFuel},
+                {"Max Fuel", MaxFuel},
                 {"Fuel Cost", fuelCost},
                 {"Base Price", price},
                 {"Bounty", bounty},
@@ -586,7 +310,6 @@ namespace SpaceTraders
             };
 
             return retval;
-
         }
     }
 }

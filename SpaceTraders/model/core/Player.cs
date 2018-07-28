@@ -81,7 +81,7 @@ namespace SpaceTraders
         // Calculates the amount of fuel a player can buy based on money and fuel cost.
         private int CalculateFuelQuantity()
         {
-            int fuelAmount = Ship.getMaxFuel() - Ship.getCurrentFuel();
+            int fuelAmount = Ship.MaxFuel - Ship.CurrentFuel;
 
             if ((fuelAmount * Ship.getFuelCost()) > Money)
             {

@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.ServiceModel.Channels;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 using Windows.UI.Xaml.Shapes;
@@ -47,7 +39,7 @@ namespace SpaceTraders
             curPlanet = game.CurrentPlanet;
             universe = game.getSolarSystems();
             playerLocation = game.getCurrentSolarSystem().Position;
-            CurrentFuel.Text = "Current Fuel: " + game.Player.Ship.getCurrentFuel();
+            CurrentFuel.Text = "Current Fuel: " + game.Player.Ship.CurrentFuel;
             currentLine = new Line
             {
                 Stroke = new SolidColorBrush(Colors.Transparent),
@@ -113,17 +105,15 @@ namespace SpaceTraders
             currentCircle.Stroke = new SolidColorBrush(Colors.White);
         }
 
-        private void Travel_Click(object sender, RoutedEventArgs e)
+        private async void Travel_Click(object sender, RoutedEventArgs e)
         {
-            //SolarSystem p;
-            //nameMap.TryGetValue((String) ListPlanet.SelectedItem, out p);
             game.Player.Ship.travel(travelDistance);
             game.CurrentPlanet = game.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString()));
             RandomEvent randomEvent = EventFactory.createRandomEvent(game.Player);
             String even = randomEvent.Event();
             if (!even.Equals("")) {
                 MessageDialog c = new MessageDialog(even, "Something has happened...");
-                c.ShowAsync();
+                await c.ShowAsync();
             }
             
             this.Frame.Navigate(typeof (PlanetScreen));
@@ -137,8 +127,15 @@ namespace SpaceTraders
         private void ListPlanet_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Travel.IsEnabled = true;
+            Travel.Content = "Travel";
             travelDistance = game.CurrentPlanet.Location.Distance(game.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString())).Location);
             NeededFuel.Text = "Needed Fuel: " + travelDistance;
+
+             if (travelDistance > game.Player.Ship.CurrentFuel)
+            {
+                Travel.IsEnabled = false;
+                Travel.Content = "Too far ...";
+            }
         }
     }
 

@@ -29,7 +29,7 @@ namespace SpaceTraders
             Refuel.Content = "Refuel: " + player.GetRefuelCost() + " cr";
             TitleScreen.Text = curPlanet.Name;
             Description.Text = curPlanet.GetInfo() + "\n Resources:  "
-                               + curPlanet.Resource.Name + "\n\nFuel: " + player.Ship.getCurrentFuel()
+                               + curPlanet.Resource.Name + "\n\nFuel: " + player.Ship.CurrentFuel
                                + "\nMoney: "
                                + player.Money;
 
@@ -68,7 +68,7 @@ namespace SpaceTraders
         {
             player.BuyFuel();
             Description.Text = curPlanet.GetInfo() + "\n Resources:  "
-                               + curPlanet.Resource.Name + "\n\nFuel: " + player.Ship.getCurrentFuel()
+                               + curPlanet.Resource.Name + "\n\nFuel: " + player.Ship.CurrentFuel
                                + "\nMoney: "
                                + player.Money;
             Refuel.Content = "Refuel: " + 0 + " cr";

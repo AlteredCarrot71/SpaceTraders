@@ -24,10 +24,10 @@ namespace SpaceTraders
     public sealed partial class ShipyardScreen : Page
     {
         private Shipyard shipyard;
-        private Ship currentShip;
+        //private Ship currentShip;
+        //private int costToBuy;
         private Player player;
         private ObservableCollection<string> options;
-        private int costToBuy;
         private Ship playership;
         public ShipyardScreen()
         {
