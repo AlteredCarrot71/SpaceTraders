@@ -15,13 +15,16 @@ namespace SpaceTraders
         public Marketplace Marketplace { get; private set; }
         // Shipyard specific to this planet.
         public Shipyard Shipyard { get; private set; }
+        // Planet location
+        public Point Location { get; private set; }
 
         // Constructor for Planet.
-        public Planet(String nameArg, Good resourceArg, TechLevel techArg)
+        public Planet(String nameArg, Good resourceArg, TechLevel techArg, Point locationArg)
         {
             Name = nameArg;
             Resource = resourceArg;
             Techlevel = techArg;
+            Location = locationArg;
         }
 
         // This method initializes the marketplace on a planet. It should be called after the player

@@ -31,6 +31,7 @@ namespace SpaceTraders
         private ISet<SolarSystem> universe;
         private ColorList colorList = new ColorList();
         private GameInstance game;
+        private Planet curPlanet;
         private int travelDistance;
         private Point playerLocation;
         private Point currentCirclePoint;
@@ -42,10 +43,11 @@ namespace SpaceTraders
         public MapScreen()
         {
             this.InitializeComponent();
-            game = GameInstance.getInstance();
+            game = GameInstance.Instance;
+            curPlanet = game.CurrentPlanet;
             universe = game.getSolarSystems();
-            playerLocation = game.getCurrentSolarSystem().getPosition();
-            CurrentFuel.Text = "Current Fuel: " + game.getPlayer().Ship.getCurrentFuel();
+            playerLocation = game.getCurrentSolarSystem().Position;
+            CurrentFuel.Text = "Current Fuel: " + game.Player.Ship.getCurrentFuel();
             currentLine = new Line
             {
                 Stroke = new SolidColorBrush(Colors.Transparent),
@@ -55,24 +57,17 @@ namespace SpaceTraders
             };
             MapPane.Children.Add(currentLine);
             CreateMap();
-
         }
 
-        /**
-     * Creates the map for the map screen.
-     *
-     */
-
+        // Creates the map for the map screen.
         private void CreateMap()
         {
-
             foreach (SolarSystem s in universe)
             {
+                nameMap.Add(s.Planets.ElementAt(0).Name, s);
+                ListPlanet.Items.Add(s.Planets.ElementAt(0).Name);
 
-                nameMap.Add(s.getPlanets().ElementAt(0).Name, s);
-                ListPlanet.Items.Add(s.getPlanets().ElementAt(0).Name);
-
-                Point point = s.getPosition();
+                Point point = s.Position;
                 SolidColorBrush c = new SolidColorBrush(colorList.ElementAt(random.Next(colorList.Count)));
                 Ellipse cor = new Ellipse
                 {
@@ -116,16 +111,15 @@ namespace SpaceTraders
             currentCircle = clickedCircle;
             currentCirclePoint = chosenPlanet;
             currentCircle.Stroke = new SolidColorBrush(Colors.White);
-            
         }
 
         private void Travel_Click(object sender, RoutedEventArgs e)
         {
-            SolarSystem p;
-            nameMap.TryGetValue((String) ListPlanet.SelectedItem, out p);
-            game.setCurrentPlanet(p.getPlanets().ElementAt(0));
-            game.getPlayer().Ship.travel(travelDistance);
-            RandomEvent randomEvent = EventFactory.createRandomEvent(game.getPlayer());
+            //SolarSystem p;
+            //nameMap.TryGetValue((String) ListPlanet.SelectedItem, out p);
+            game.Player.Ship.travel(travelDistance);
+            game.CurrentPlanet = game.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString()));
+            RandomEvent randomEvent = EventFactory.createRandomEvent(game.Player);
             String even = randomEvent.Event();
             if (!even.Equals("")) {
                 MessageDialog c = new MessageDialog(even, "Something has happened...");
@@ -143,9 +137,7 @@ namespace SpaceTraders
         private void ListPlanet_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Travel.IsEnabled = true;
-            SolarSystem s;
-            nameMap.TryGetValue((String)ListPlanet.SelectedItem, out s);
-            travelDistance = s.getPosition().Distance(playerLocation);
+            travelDistance = game.CurrentPlanet.Location.Distance(game.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString())).Location);
             NeededFuel.Text = "Needed Fuel: " + travelDistance;
         }
     }
@@ -153,7 +145,7 @@ namespace SpaceTraders
     public class ColorList : List<Windows.UI.Color>
     {
         public ColorList()
-            {
+        {
             this.Add(Windows.UI.Colors.Blue);
             this.Add(Windows.UI.Colors.BlueViolet);
             this.Add(Windows.UI.Colors.Brown);

@@ -6,7 +6,6 @@ namespace SpaceTraders
     // This class represents the Player and his state.
     public class Player : HasSkills
     {
-
         // Nameof character.
         public String Name { get; private set; }
 

@@ -50,9 +50,9 @@ namespace SpaceTraders
                 PlayerName.Text == String.Empty) return;
             Player player = new Player(PlayerName.Text, (int)PilotSkill.Value, (int)FightSkill.Value,
                 (int)EngSkill.Value, (int)TradeSkill.Value, (int)InvestSkill.Value);
-            GameInstance game = GameInstance.getInstance();
+            GameInstance game = GameInstance.Instance;
             player.ChangeMoney(10000);
-            game.setPlayer(player);
+            game.Player = player;
             game.createUniverse();
             this.Frame.Navigate(typeof(MapScreen));
         }

@@ -10,21 +10,33 @@ namespace SpaceTraders
     public class GameInstance
     {
         // Reference to the Singleton GameInstance.
-        private static readonly GameInstance instance = new GameInstance();
-        // The player playing.
-        private Player player;
+        private static readonly Lazy<GameInstance> lazy = new Lazy<GameInstance>(() => new GameInstance());
+
+        public static GameInstance Instance
+        {
+            get { return lazy.Value; }
+        }
+        
+        private GameInstance()
+        {
+            //
+        }
+
+        // Player
+        public Player Player { get; set; }
+        
         // The solar systems in the game.
         private ISet<SolarSystem> solarSystems = new HashSet<SolarSystem>();
+
         // The planets in the game.
-        private ISet<Planet> planets = new HashSet<Planet>();
-        // The points which are the locations of the solar systems.
-        private ISet<Point> points = new HashSet<Point>();
+        public List<Planet> Planets { get; private set; }
+        
         // Player's current location.
-        private Planet currentPlanet;
+        public Planet CurrentPlanet { get; set; }
+
         // Players current location.
         private SolarSystem currentSolarSystem;
-        // Flag to check if game was created.
-        // private bool saveDirectoryCreated = false;
+        
         // All the planet names. May or may not use all of them.
         private String[] planetNames = {"Acamar", "Adahn", "Aldea", "Andevian", "Antedi", "Balosnee",
             "Baratas", "Brax", "Bretel", "Calondia", "Campor", "Capelle", "Carzon", "Castor",
@@ -50,18 +62,6 @@ namespace SpaceTraders
             "Yew", "Yojimbo",
             "Zalkon", "Zuul"};
 
-        // Private constructor for Singleton. Prevents others from accessing
-        private GameInstance()
-        { 
-            //private constructor for singleton
-        }
-
-        // Gets the only GameInstance.
-        public static GameInstance getInstance()
-        {
-            return instance;
-        }
-
         // Creates a universe with number of planets equal to the length of our default list of planet names.
         public void createUniverse()
         {
@@ -71,9 +71,9 @@ namespace SpaceTraders
         // create universe with specified number of planets.
         public void createUniverse(int number)
         {
+            Planets = new List<Planet>();
+
             solarSystems.Clear();
-            planets.Clear();
-            points.Clear();
             Random rand = new Random();
             int startingLocation = rand.Next(number) - 1;
             int planetCount = 0;
@@ -84,16 +84,17 @@ namespace SpaceTraders
                 int techLevelNum = rand.Next(Enum.GetValues(typeof(TechLevel)).Length);
 
                 Point point = new Point(rand.Next(340) + 5, rand.Next(340) + 5);
-                while (points.Contains(point))
+                while ( Planets.Exists(x => x.Location.Equals(point)) )
                 {
                     point = new Point(rand.Next(340) + 5, rand.Next(340) + 5);
                 }
-                points.Add(point);
-                Planet planet =
-                        new Planet(planetNames[planetCount],
-                                Goods.Values[resourceNum],
-                                (TechLevel)techLevelNum);
-                planets.Add(planet);
+
+                Planet planet = new Planet( planetNames[planetCount],
+                                            Goods.Values[resourceNum],
+                                            (TechLevel)techLevelNum, 
+                                            point
+                                          );
+                Planets.Add(planet);
 
                 planetCount++;
                 SolarSystem solarsystem =
@@ -105,36 +106,11 @@ namespace SpaceTraders
 
                 if (startingLocation == i)
                 {
-                    setCurrentPlanet(planet);
+                    CurrentPlanet = planet;
                     setCurrentSolarSystem(solarsystem);
                 }
 
             }
-
-        }
-
-        // Gets the player's current planet.
-        public Planet getCurrentPlanet()
-        {
-            return currentPlanet;
-        }
-
-        // Sets the player's location to a planet.
-        public void setCurrentPlanet(Planet destination)
-        {
-            this.currentPlanet = destination;
-        }
-
-        // Returns the player for the instance of this game.
-        public Player getPlayer()
-        {
-            return player;
-        }
-
-        // Sets a player for this game instance.
-        public void setPlayer(Player data)
-        {
-            player = data;
         }
 
         // Returns the solar system the player is in.
@@ -161,18 +137,6 @@ namespace SpaceTraders
             this.solarSystems = solarSystemSet;
         }
 
-        // Returns a set of the planets.
-        public ISet<Planet> getPlanets()
-        {
-            return planets;
-        }
-
-        // Sets the planet to the Set<Planet> arg.
-        public void setPlanets(ISet<Planet> planetSet)
-        {
-            this.planets = planetSet;
-        }
-
         public String toString()
         {
 
@@ -185,17 +149,11 @@ namespace SpaceTraders
             }
 
             String term = "\n\n";
-            gameString.Append(term).Append(" Current Player: ").Append(player.GetInfo()).Append(term);
-            gameString.Append("Current Planet: ").Append(currentPlanet.GetInfo()).Append(term);
+            gameString.Append(term).Append(" Current Player: ").Append(Player.GetInfo()).Append(term);
+            gameString.Append("Current Planet: ").Append(CurrentPlanet.GetInfo()).Append(term);
             gameString.Append("Current SolarSystem: ").Append(currentSolarSystem.toString()).Append(term);
 
             return gameString.ToString();
-        }
-
-        // Returns the set of points.
-        public ISet<Point> getPoints()
-        {
-            return points;
         }
     }
 }

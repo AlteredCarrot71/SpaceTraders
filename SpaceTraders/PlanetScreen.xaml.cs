@@ -20,9 +20,9 @@ namespace SpaceTraders
         public PlanetScreen()
         {
             this.InitializeComponent();
-            game = GameInstance.getInstance();
-            curPlanet = game.getCurrentPlanet();
-            player = game.getPlayer();
+            game = GameInstance.Instance;
+            curPlanet = game.CurrentPlanet;
+            player = game.Player;
             Random r = new Random();
             ColorList cl = new ColorList();
             PlanetImg.Fill = new SolidColorBrush(cl.ElementAt(r.Next(cl.Count)));
@@ -45,7 +45,6 @@ namespace SpaceTraders
             {
                 enterShipyard.IsEnabled = false;
             }
-
         }
 
         private void ToMap_Click(object sender, RoutedEventArgs e)
@@ -55,13 +54,13 @@ namespace SpaceTraders
 
         private void EnterMarket_Click(object sender, RoutedEventArgs e)
         {
-            game.getCurrentPlanet().EnterMarket(game.getPlayer());
+            game.CurrentPlanet.EnterMarket(game.Player);
             this.Frame.Navigate(typeof (MarketScreen));
         }
 
         private void EnterShipyard_Click(object sender, RoutedEventArgs e)
         {
-            game.getCurrentPlanet().EnterShipyard(game.getPlayer());
+            game.CurrentPlanet.EnterShipyard(game.Player);
             this.Frame.Navigate(typeof (ShipyardScreen));
         }
 

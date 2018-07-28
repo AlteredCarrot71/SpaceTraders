@@ -38,9 +38,9 @@ namespace SpaceTraders
         public MarketScreen()
         {
             this.InitializeComponent();
-            this.game = GameInstance.getInstance();
-            this.player = game.getPlayer();
-            currentPlanet = game.getCurrentPlanet();
+            this.game = GameInstance.Instance;
+            this.player = game.Player;
+            currentPlanet = game.CurrentPlanet;
             MarketTitle.Text = currentPlanet.Name + " Market";
             marketplace = currentPlanet.Marketplace;
 
@@ -59,7 +59,7 @@ namespace SpaceTraders
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            game.setPlayer(player);
+            game.Player = player;
             this.Frame.Navigate(typeof(PlanetScreen));
         }
 

@@ -35,7 +35,7 @@ namespace SpaceTraders
         /// </summary>
         public App()
         {
-            game = GameInstance.getInstance();
+            game = GameInstance.Instance;
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
             
@@ -55,7 +55,7 @@ namespace SpaceTraders
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            game = GameInstance.getInstance();
+            game = GameInstance.Instance;
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,

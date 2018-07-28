@@ -32,12 +32,12 @@ namespace SpaceTraders
         public ShipyardScreen()
         {
             this.InitializeComponent();
-            GameInstance gm = GameInstance.getInstance();
-            this.player = gm.getPlayer();
+            GameInstance game = GameInstance.Instance;
+            this.player = game.Player;
             playership = player.Ship;
             currShip.Text = playership.Name;
 
-            Planet currentPlanet = gm.getCurrentPlanet();
+            Planet currentPlanet = game.CurrentPlanet;
             shipyard = currentPlanet.Shipyard;
             ShipyardTitle.Text = currentPlanet.Name + " Shipyard";
 

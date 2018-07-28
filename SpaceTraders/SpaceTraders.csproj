@@ -123,6 +123,7 @@
     <Compile Include="model\core\SkillSet.cs" />
     <Compile Include="model\core\SolarSystem.cs" />
     <Compile Include="model\core\TechLevel.cs" />
+    <Compile Include="model\core\Universe.cs" />
     <Compile Include="model\core\Utilities.cs" />
     <Compile Include="model\events\EventFactory.cs" />
     <Compile Include="model\events\EventStrategy.cs" />
@@ -163,6 +164,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Resources\Planet.txt" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -194,12 +196,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="SpaceTraders_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.5</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SpaceTraders_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
