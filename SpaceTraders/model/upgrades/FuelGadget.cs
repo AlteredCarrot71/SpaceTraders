@@ -12,41 +12,29 @@ namespace SpaceTraders
 {
     public class FuelGadget : AbstractGadget
     {
-
-        /**
-         * Divide current fuel cost by this amount.
-         */
+        // Divide current fuel cost by this amount.
         private int fuelModifier = 2;
 
-        /**
-         * Need to know original cost to avoid truncation errors.
-         */
+        // Need to know original cost to avoid truncation errors.
         private int originalFuelCost;
 
-        /**
-         * Constructor for a fuel gadget.
-         * 
-         * @param ship
-         *        the ship to affect
-         */
+        // Constructor for a fuel gadget.
         public FuelGadget(Ship ship)
             : base("Efficient Engine", ship)
         {
-            originalFuelCost = ship.getFuelCost();
+            originalFuelCost = ship.FuelCost;
         }
-
 
         public override int getPrice()
         {
             return 500;
         }
 
-
         protected override bool effect()
         {
             if (!effectApplied)
             {
-                ship.setFuelCost(Math.Max(1, originalFuelCost / fuelModifier));
+                ship.FuelCost = Math.Max(1, originalFuelCost / fuelModifier);
                 effectApplied = true;
                 return true;
             }
@@ -54,17 +42,15 @@ namespace SpaceTraders
             return false;
         }
 
-
         protected override bool uneffect()
         {
             if (effectApplied)
             {
-                ship.setFuelCost(originalFuelCost);
+                ship.FuelCost = originalFuelCost;
                 effectApplied = false;
                 return true;
             }
             return false;
         }
-
     }
 }

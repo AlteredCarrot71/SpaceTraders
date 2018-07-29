@@ -1,71 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace SpaceTraders
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ShipyardScreen : Page
     {
-        private Shipyard shipyard;
-        //private Ship currentShip;
-        //private int costToBuy;
-        private Player player;
+        //private Shipyard shipyard;
         private ObservableCollection<string> options;
-        private Ship playership;
+
         public ShipyardScreen()
         {
             this.InitializeComponent();
-            GameInstance game = GameInstance.Instance;
-            this.player = game.Player;
-            playership = player.Ship;
-            currShip.Text = playership.Name;
 
-            Planet currentPlanet = game.CurrentPlanet;
-            shipyard = currentPlanet.Shipyard;
-            ShipyardTitle.Text = currentPlanet.Name + " Shipyard";
+            currShip.Text = GameInstance.Instance.Player.Ship.Name;
+            ShipInfo.Text = GameInstance.Instance.Player.Ship.Text;
+            ShipyardTitle.Text = GameInstance.Instance.CurrentPlanet.Name + " Shipyard";
 
-            if (currentPlanet.Techlevel.Equals(TechLevel.POST_INDUSTRIAL))
+            options = new ObservableCollection<string>();
+
+            foreach ( Ship ship in Ship.Values.FindAll(x => x.MinTechLevel <= GameInstance.Instance.CurrentPlanet.Techlevel ) )
             {
-                options = new ObservableCollection<string>{
-                        Ship.Flea.Name
-                };
+                options.Add(ship.Name);
             }
-            else if (currentPlanet.Techlevel.Equals(TechLevel.HI_TECH))
-            {
-                options = new ObservableCollection<string>{
-                    Ship.Flea.Name,
-                    Ship.Gnat.Name,
-                    Ship.Firefly.Name,
-                    Ship.Mosquito.Name,
-                    Ship.Bumblebee.Name
-            };
-            }
+
             ShipCombo.ItemsSource = options;
-            PlayerMoney.Text = player.Money.ToString();
-
+            PlayerMoney.Text = GameInstance.Instance.Player.Money.ToString();
         }
 
         private void ShipCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Ship selected = Ship.Values.Find(x => x.Name.Equals(ShipCombo.SelectedItem.ToString()));
-            ShipInfo.Text = selected.Name;
+            ShipInfo.Text = selected.Text;
         }
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)

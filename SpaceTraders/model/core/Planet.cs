@@ -38,7 +38,7 @@ namespace SpaceTraders
         // Initializes a Shipyard for a Planet.
         public Shipyard EnterShipyard(Player player)
         {
-            Shipyard = new Shipyard(Marketplace, player);
+            Shipyard = new Shipyard(Marketplace);
             return Shipyard;
         }
 

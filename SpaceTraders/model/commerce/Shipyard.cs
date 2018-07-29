@@ -1,83 +1,46 @@
-using System.Runtime.Serialization;
-/**
- * Class representing the Shipyard where a player can upgrade and swap ships.
- *
- * @author ngraves3
- *
- */
-
+// Class representing the Shipyard where a player can upgrade and swap ships.
 namespace SpaceTraders
 {
-
     public class Shipyard
     {
-
-        /**
-         * Knows about market to get prices for goods.
-         */
+        // Knows about market to get prices for goods.
         private Marketplace marketplace;
 
-        /**
-         * Knows about player to get ship and add/remove money.
-         */
-        private Player player;
-
-        /**
-         * Constructor for shipyard.
-         *
-         * @param marketplaceArg
-         *        the market to draw cargo prices from
-         * @param playerArg
-         *        the player buying the ship
-         */
-        public Shipyard(Marketplace marketplaceArg, Player playerArg)
+        // Constructor for shipyard.
+        public Shipyard(Marketplace marketplaceArg)
         {
-            this.marketplace = marketplaceArg;
-            this.player = playerArg;
+            marketplace = marketplaceArg;
         }
 
-        /**
-         * Returns the cost (or income) to buy the ship. If cost is negative, than
-         * the player will receive money upon changing the ship. the cost of the
-         * ship is decreased for each item in the cargo
-         *
-         * @param shipToBuy
-         *        the ship to buy
-         * @return the net cost of the ship to buy
-         */
-        public int costToBuy(Ship shipToBuy)
+        // Returns the cost (or income) to buy the ship. If cost is negative, than
+        // the player will receive money upon changing the ship. the cost of the
+        // ship is decreased for each item in the cargo
+        public int CostToBuy(Ship shipToBuy)
         {
+            int total = shipToBuy.Price;
 
-            int total = shipToBuy.getPrice();
-
-            foreach (Good cargo in player.Ship.getCargo())
+            foreach (Good cargo in GameInstance.Instance.Player.Ship.getCargo())
             {
                 total -= marketplace.GetPrice(cargo);
             }
 
-            foreach (HasPrice upgrade in player.GetUpgrades())
+            foreach (HasPrice upgrade in GameInstance.Instance.Player.GetUpgrades())
             {
                 total -= upgrade.getPrice();
             }
 
-            total -= player.Ship.getPrice();
+            total -= GameInstance.Instance.Player.Ship.Price;
 
             return total;
         }
 
-        /**
-         * The player buys a ship. This method removes the ship from the player and
-         * assigns the new ship to the player. It also removes or adds the
-         * appropriate amount of money from the player
-         *
-         * @param shipToBuy
-         *        the ship the player wants to buy
-         */
-        public void buyShip(Ship shipToBuy)
+        // The player buys a ship. This method removes the ship from the player and
+        // assigns the new ship to the player. It also removes or adds the
+        // appropriate amount of money from the player
+        public void BuyShip(Ship shipToBuy)
         {
-            player.ChangeMoney(costToBuy(shipToBuy) * -1);
-            player.Ship = shipToBuy;
+            GameInstance.Instance.Player.ChangeMoney(CostToBuy(shipToBuy) * -1);
+            GameInstance.Instance.Player.Ship = shipToBuy;
         }
-
     }
 }

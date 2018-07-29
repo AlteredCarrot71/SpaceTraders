@@ -131,12 +131,6 @@ namespace SpaceTraders
             return solarSystems;
         }
 
-        // Sets the solar systems to the given set.
-        public void setSolarSystems(ISet<SolarSystem> solarSystemSet)
-        {
-            this.solarSystems = solarSystemSet;
-        }
-
         public String toString()
         {
 

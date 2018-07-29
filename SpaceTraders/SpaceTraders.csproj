@@ -197,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SpaceTraders_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">

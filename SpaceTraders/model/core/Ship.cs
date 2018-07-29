@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace SpaceTraders
 {
@@ -11,15 +10,30 @@ namespace SpaceTraders
     public class Ship
     {
         // makes a flea.
-        public static Ship Flea = new Ship("Flea", 10, 0, 0, 0, 1, 500, 1, 2000, 5, 25, -1, -1, 0);
+        public static Ship Flea = new Ship( "Flea", 10, 0, 0, 0, 1, 500, 1, 2000, 5, 25, -1, -1, 
+                                            TechLevel.EARLY_INDUSTRIAL,
+                                            Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetStringForUri(new System.Uri("ms-appx:///Strings/en-US/Resources/Flea.Description"))
+                                          );
         // Makes a gnat.
-        public static Ship Gnat = new Ship("Gnat", 15, 1, 0, 1, 1, 140, 2, 10000, 50, 100, 0, 0, 1);
+        public static Ship Gnat = new Ship( "Gnat", 15, 1, 0, 1, 1, 140, 2, 10000, 50, 100, 0, 0, 
+                                            TechLevel.INDUSTRIAL,
+                                            Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Gnat/Description")
+                                          );
         // Makes a firefly.
-        public static Ship Firefly = new Ship("Firefly", 20, 1, 1, 1, 1, 170, 3, 25000, 75, 100, 0, 0, 1);
+        public static Ship Firefly = new Ship( "Firefly", 20, 1, 1, 1, 1, 170, 3, 25000, 75, 100, 0, 0, 
+                                               TechLevel.INDUSTRIAL,
+                                               Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Firefly/Description")
+                                             );
         // makes a mosquito.
-        public static Ship Mosquito = new Ship("Mosquito", 15, 2, 1, 1, 1, 130, 5, 30000, 100, 100, 0, 1, 1);
+        public static Ship Mosquito = new Ship( "Mosquito", 15, 2, 1, 1, 1, 130, 5, 30000, 100, 100, 0, 1, 
+                                                TechLevel.POST_INDUSTRIAL,
+                                                Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Mosquito/Description")
+                                              );
         // Makes a bumblebee.
-        public static Ship Bumblebee = new Ship("Bumblebee", 25, 1, 2, 2, 2, 150, 7, 60000, 125, 100, 0, 1, 2);
+        public static Ship Bumblebee = new Ship( "Bumblebee", 25, 1, 2, 2, 2, 150, 7, 60000, 125, 100, 0, 1, 
+                                                 TechLevel.HI_TECH,
+                                                 Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Bumblebee/Description")
+                                               );
 
         public static readonly List<Ship> Values = new List<Ship> { Flea, Gnat, Firefly, Mosquito, Bumblebee };
 
@@ -47,17 +61,18 @@ namespace SpaceTraders
         // whether can ship be seen by others during travel.
         public bool IsVisible { get; set; }
 
-        // Name of ship.
+        // Name and description of ship.
         public String Name { get; private set; }
+        public String Text { get; private set; }
 
         // Min tech level for ship to be sold in shipyard.
         //private TechLevel minTechLevel;
 
         // cost per unit of fuel.
-        private int fuelCost;
+        public int FuelCost { get; set; }
 
         // base price of ship.
-        private int price;
+        public int Price { get; private set; }
 
         // Bounty on ship.
         private int bounty;
@@ -71,13 +86,13 @@ namespace SpaceTraders
         // Pirate aggression towards ship.
         private int pirateAggression;
 
-        // Size of ship.
-        private int Size;
+        // Min TechLevel to buy a ship
+        public TechLevel MinTechLevel { get; private set; }
 
         // Private ship constructor. Makes new ships through methods.
         private Ship(String nameArg, int cargoSize, int weaponSize, int shieldSize, int gadgetSize,
             int crewSize, int maxFuelArg, int fuelCostArg, int priceArg, int bountyArg,
-            int hullStrengthArg, int police, int pirate, int sizeArg)
+            int hullStrengthArg, int police, int pirate, TechLevel minTechLevelArg, String text)
         {
             //cargo = new Good[cargoSize];
             Cargo = new List<Good>(cargoSize);
@@ -87,15 +102,16 @@ namespace SpaceTraders
             crew = new PresizedList<Crew>(crewSize);
             this.Name = nameArg;
             this.MaxFuel = maxFuelArg;
-            this.fuelCost = fuelCostArg;
-            this.price = priceArg;
+            this.FuelCost = fuelCostArg;
+            this.Price = priceArg;
             this.bounty = bountyArg;
             this.hullStrength = hullStrengthArg;
-            policeAggression = police;
-            pirateAggression = pirate;
-            this.Size = sizeArg;
-            CurrentFuel = MaxFuel;
-            IsVisible = true;
+            this.policeAggression = police;
+            this.pirateAggression = pirate;
+            this.CurrentFuel = MaxFuel;
+            this.IsVisible = true;
+            this.MinTechLevel = minTechLevelArg;
+            this.Text = text;
         }
 
         // Returns the number of empty slots for cargo.
@@ -114,12 +130,6 @@ namespace SpaceTraders
         public void setCargo(PresizedList<Good> newCargo)
         {
             this.Cargo = newCargo;
-        }
-
-        // Used with FuelGadget.
-        public void setFuelCost(int cost)
-        {
-            fuelCost = cost;
         }
 
         // Adds cargo to the ship.
@@ -224,18 +234,6 @@ namespace SpaceTraders
             CurrentFuel += amount;
         }
 
-        // Returns the fuel cost per unit.
-        public int getFuelCost()
-        {
-            return fuelCost;
-        }
-
-        // Returns the base price of ship.
-        public int getPrice()
-        {
-            return price;
-        }
-
         // Gets max size of cargo.
         public int cargoSize()
         {
@@ -296,8 +294,8 @@ namespace SpaceTraders
             Dictionary<String, Int32> retval = new Dictionary<String, Int32>
             {
                 {"Max Fuel", MaxFuel},
-                {"Fuel Cost", fuelCost},
-                {"Base Price", price},
+                {"Fuel Cost", FuelCost},
+                {"Base Price", Price},
                 {"Bounty", bounty},
                 {"Hull Strength", hullStrength},
                 {"Police Disposition", policeAggression},
