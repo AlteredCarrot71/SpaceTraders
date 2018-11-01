@@ -17,7 +17,7 @@ namespace SpaceTraders
         private Dictionary<Good, Int32> purchasePrices;
 
         // A list of goods the market has for sale.
-        public IList<Good> Supply { get; private set; }
+        public List<Good> Supply { get; private set; }
 
         // The player buying.
         private Player player;
@@ -26,10 +26,10 @@ namespace SpaceTraders
         private int TradeSkillModifier { get; set; }
 
         // Instantiates a marketplace with the given planet's tech level.
-        public Marketplace(TechLevel tech, Player playerArg)
+        public Marketplace()
         {
-            this.planetTech = tech;
-            this.player = playerArg;
+            this.planetTech = Game.Instance.CurrentPlanet.Techlevel;
+            this.player = Game.Instance.Player;
             productionPrices = new Dictionary<Good, Int32>();
             purchasePrices = new Dictionary<Good, Int32>();
             TradeSkillModifier = new Random().Next(2 * player.getTradeSkill() + 1);
@@ -83,11 +83,11 @@ namespace SpaceTraders
         // can't buy that many, don't let him/her.
         public bool PlayerBuys(Good item)
         {
-            if ( player.Ship.cargoRoomLeft() > 0 )
+            if ( player.Ship.CargoRoomLeft() > 0 )
             {
                 Supply.Remove(item);
                 player.Ship.addCargo(item);
-                player.ChangeMoney(purchasePrices[item] * -1);
+                player.Money -= purchasePrices[item];
                 return true;
             }
             else
@@ -103,7 +103,7 @@ namespace SpaceTraders
             {
                 player.Ship.removeCargo(item);
                 Supply.Add(item);
-                player.ChangeMoney(purchasePrices[item]);
+                player.Money += purchasePrices[item];
                 return true;
             }
             else

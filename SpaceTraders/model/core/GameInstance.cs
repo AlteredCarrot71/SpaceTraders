@@ -1,23 +1,32 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization;
 using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
+using Windows.Storage;
 
 // Singleton game monitor. The game model will control the passing of turns and
 // random events
 
 namespace SpaceTraders
 {
-    public class GameInstance
+    public class Game
     {
-        // Reference to the Singleton GameInstance.
-        private static readonly Lazy<GameInstance> lazy = new Lazy<GameInstance>(() => new GameInstance());
+        // Folder, that stores the saved states
+        private readonly Windows.Storage.StorageFolder LocalFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
 
-        public static GameInstance Instance
+        // Reference to the Singleton GameInstance.
+        private static readonly Lazy<Game> lazy = new Lazy<Game>(() => new Game());
+
+        public static Game Instance
         {
             get { return lazy.Value; }
         }
         
-        private GameInstance()
+        private Game()
         {
             //
         }
@@ -83,17 +92,19 @@ namespace SpaceTraders
                 int resourceNum = rand.Next(Goods.Values.Count);
                 int techLevelNum = rand.Next(Enum.GetValues(typeof(TechLevel)).Length);
 
-                Point point = new Point(rand.Next(340) + 5, rand.Next(340) + 5);
+                Point point = new Point { Xpos = rand.Next(340) + 5, Ypos = rand.Next(340) + 5 };
                 while ( Planets.Exists(x => x.Location.Equals(point)) )
                 {
-                    point = new Point(rand.Next(340) + 5, rand.Next(340) + 5);
+                    point = new Point { Xpos = rand.Next(340) + 5, Ypos = rand.Next(340) + 5 };
                 }
 
-                Planet planet = new Planet( planetNames[planetCount],
-                                            Goods.Values[resourceNum],
-                                            (TechLevel)techLevelNum, 
-                                            point
-                                          );
+                Planet planet = new Planet
+                {
+                    Name = planetNames[planetCount],
+                    Techlevel = (TechLevel)techLevelNum,
+                    Resource = Goods.Values[resourceNum],
+                    Location = point
+                };
                 Planets.Add(planet);
 
                 planetCount++;
@@ -148,6 +159,34 @@ namespace SpaceTraders
             gameString.Append("Current SolarSystem: ").Append(currentSolarSystem.toString()).Append(term);
 
             return gameString.ToString();
+        }
+
+        public void SaveState()
+        {
+            //string path = LocalFolder.Path.ToString() + "/savegame.xml";
+            //FileStream fileStream = new FileStream(path, FileMode.Create);
+
+            //XmlWriterSettings settings = new XmlWriterSettings
+            //{
+            //    Indent = true
+            //};
+
+            //XmlWriter writer = XmlWriter.Create(fileStream, settings);
+            //DataContractSerializer serializer = new DataContractSerializer(Game.Instance.GetType());
+            //serializer.WriteObject(writer, Game.Instance);
+        }
+
+        public void LoadState()
+        {
+            //string path = LocalFolder.Path.ToString() + "/" + Game.Instance.Player.Name.ToString() + ".xml";
+            //using (Stream stream = new MemoryStream())
+            //{
+            //    byte[] data = System.Text.Encoding.UTF8.GetBytes(path);
+            //    stream.Write(data, 0, data.Length);
+            //    stream.Position = 0;
+            //    DataContractSerializer deserializer = new DataContractSerializer(Game.Instance.GetType());
+            //    deserializer.ReadObject(stream);
+            //}
         }
     }
 }

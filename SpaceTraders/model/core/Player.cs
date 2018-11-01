@@ -7,10 +7,10 @@ namespace SpaceTraders
     public class Player : HasSkills
     {
         // Nameof character.
-        public String Name { get; private set; }
+        public String Name { get; set; }
 
         // Skills of character.
-        public SkillSet Skills { get; private set; }
+        public SkillSet Skills { get; set; }
 
         // Players money.
         public int Money { get; set; }
@@ -18,23 +18,8 @@ namespace SpaceTraders
         // Player's ship.
         public Ship Ship { get; set; }
 
-        // Constrcutor for player.
-        public Player(String nameArg, int pilotSkill, int fightSkill, int engSkill,
-            int tradeSkill, int investSkill)
-        {
-            Name = nameArg;
-
-            Skills = new SkillSet(tradeSkill, fightSkill, engSkill,
-                                            pilotSkill, investSkill);
-
-            Ship = Ship.Gnat;
-        }
-
-        // Adds money to the player's money.
-        public void ChangeMoney(int income)
-        {
-            Money += income;
-        }
+        // Consstrcutor for player.
+        public Player() { }
 
         // Returns a list of the current upgrades of the ship.
         public IList<HasPrice> GetUpgrades()
@@ -68,8 +53,8 @@ namespace SpaceTraders
         public void BuyFuel()
         {
             int quantity = CalculateFuelQuantity();
-            Ship.buyFuel(quantity);
-            ChangeMoney((quantity * Ship.FuelCost) * -1);
+            Ship.CurrentFuel += quantity;
+            Money -= (quantity * Ship.FuelCost);
         }
 
         // Returns the total cost of refueling a ship.
@@ -117,10 +102,10 @@ namespace SpaceTraders
 
         public int getEngineeringSkill()
         {
-            int total = Skills.Engeneering;
+            int total = Skills.Engineering;
             foreach (Crew member in Ship.getCrew())
             {
-                total += member.Skills.Engeneering;
+                total += member.Skills.Engineering;
             }
             return total;
         }

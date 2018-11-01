@@ -7,9 +7,9 @@ namespace SpaceTraders
         private Marketplace marketplace;
 
         // Constructor for shipyard.
-        public Shipyard(Marketplace marketplaceArg)
+        public Shipyard()
         {
-            marketplace = marketplaceArg;
+            marketplace = Game.Instance.CurrentPlanet.Marketplace;
         }
 
         // Returns the cost (or income) to buy the ship. If cost is negative, than
@@ -19,17 +19,17 @@ namespace SpaceTraders
         {
             int total = shipToBuy.Price;
 
-            foreach (Good cargo in GameInstance.Instance.Player.Ship.getCargo())
+            foreach (Good cargo in Game.Instance.Player.Ship.getCargo())
             {
                 total -= marketplace.GetPrice(cargo);
             }
 
-            foreach (HasPrice upgrade in GameInstance.Instance.Player.GetUpgrades())
+            foreach (HasPrice upgrade in Game.Instance.Player.GetUpgrades())
             {
                 total -= upgrade.getPrice();
             }
 
-            total -= GameInstance.Instance.Player.Ship.Price;
+            total -= Game.Instance.Player.Ship.Price;
 
             return total;
         }
@@ -39,8 +39,8 @@ namespace SpaceTraders
         // appropriate amount of money from the player
         public void BuyShip(Ship shipToBuy)
         {
-            GameInstance.Instance.Player.ChangeMoney(CostToBuy(shipToBuy) * -1);
-            GameInstance.Instance.Player.Ship = shipToBuy;
+            Game.Instance.Player.Money -= CostToBuy(shipToBuy);
+            Game.Instance.Player.Ship = shipToBuy;
         }
     }
 }

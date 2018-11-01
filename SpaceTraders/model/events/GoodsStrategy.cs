@@ -46,7 +46,7 @@ namespace SpaceTraders
                 int msg = rand.Next(getPhrases.Length);
                 String output = String.Format(getPhrases[msg], toAdd.Name);
 
-                if (player.Ship.cargoRoomLeft() >= 1)
+                if (player.Ship.CargoRoomLeft() >= 1)
                 {
                     player.Ship.addCargo(toAdd);
                 }

@@ -1,47 +1,29 @@
-
-
-/**
- * A class representing shields for use in combat.
- * 
- * @author ngraves3
- *
- */
-
 using System;
 
-public static class Shield
+// A class representing shields for use in combat.
+namespace SpaceTraders
 {
-    /**
-     * A basic shield.
-     */
-    public static readonly Shie ENERGY_SHIELD = new Shie("Energy Shield", 0);
-    /**
-     * A premium shield.
-     */
-    public static readonly Shie REFLECTIVE_SHIELD = new Shie("Reflective Shield", 1);
-
-
-}
-
-public class Shie : HasPrice
-{
-    private int ord;
-    private String name;
-
-    public Shie(String name, int ord)
+    public static class Shields
     {
-        this.name = name;
-        this.ord = ord;
+        // A basic shield.
+        public static readonly Shield ENERGY_SHIELD = new Shield
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Shield/Energy/Name"),
+            Price = 500
+        };
+        // A premium shield.
+        public static readonly Shield REFLECTIVE_SHIELD = new Shield
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Shield/Reflective/Name"),
+            Price = 1000
+        };
     }
 
-    public int getPrice()
+    public class Shield
     {
-        return 500*(ord + 1);
-    }
+        public String Name { get; set; }
+        public int Price { get; set; }
 
-
-    public String toString()
-    {
-        return name;
+        public Shield() { }
     }
 }

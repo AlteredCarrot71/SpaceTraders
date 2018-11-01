@@ -13,19 +13,19 @@ namespace SpaceTraders
         {
             this.InitializeComponent();
 
-            currShip.Text = GameInstance.Instance.Player.Ship.Name;
-            ShipInfo.Text = GameInstance.Instance.Player.Ship.Text;
-            ShipyardTitle.Text = GameInstance.Instance.CurrentPlanet.Name + " Shipyard";
+            currShip.Text = Game.Instance.Player.Ship.Name;
+            ShipInfo.Text = Game.Instance.Player.Ship.Text;
+            ShipyardTitle.Text = Game.Instance.CurrentPlanet.Name + " Shipyard";
 
             options = new ObservableCollection<string>();
 
-            foreach ( Ship ship in Ship.Values.FindAll(x => x.MinTechLevel <= GameInstance.Instance.CurrentPlanet.Techlevel ) )
+            foreach ( Ship ship in Ship.Values.FindAll(x => x.MinTechLevel <= Game.Instance.CurrentPlanet.Techlevel ) )
             {
                 options.Add(ship.Name);
             }
 
             ShipCombo.ItemsSource = options;
-            PlayerMoney.Text = GameInstance.Instance.Player.Money.ToString();
+            PlayerMoney.Text = Game.Instance.Player.Money.ToString();
         }
 
         private void ShipCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)

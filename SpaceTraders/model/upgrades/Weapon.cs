@@ -1,50 +1,34 @@
-
-
-/**
- * A class representing a weapon for combat.
- *
- * @author ngraves3
- *
- */
-
 using System;
 
-public static class Weapon 
+namespace SpaceTraders
 {
-    /**
-     * A standard laser.
-     */
-    public static readonly Weap PULSE_LASER = new Weap("Pulse Laser", 0);
-    /**
-     * A better laser.
-     */
-    public static readonly Weap BEAM_LASER = new Weap("Beam Laser", 1);
-    /**
-     * The best laser.
-     */
-    public static readonly Weap MILITARY_LASER = new Weap("Military Laser", 2);
-}
-
-public class Weap : HasPrice
-{
-    private int ord;
-    private String name;
-
-    public Weap(String name, int ord)
+    public static class Weapons
     {
-        this.name = name;
-        this.ord = ord;
+        // A standard laser.
+        public static readonly Weapon PULSE_LASER = new Weapon
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Weapon/Pulse/Name"),
+            Price = 500
+        };
+        // A better laser.
+        public static readonly Weapon BEAM_LASER = new Weapon
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Weapon/Beam/Name"),
+            Price = 1000
+        };
+        // The best laser.
+        public static readonly Weapon MILITARY_LASER = new Weapon
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Weapon/Military/Name"),
+            Price = 1500
+        };
     }
 
-    public int getPrice()
+    public class Weapon
     {
-        return 500*(ord + 1);
+        public String Name { get; set; }
+        public int Price { get; set; }
+
+        public Weapon() { }
     }
-
-
-    public String toString()
-    {
-        return name;
-    }
-
 }

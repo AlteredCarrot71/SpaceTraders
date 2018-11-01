@@ -4,15 +4,11 @@ using System;
 public class Point
 {
 
-    public int Xpos { get; private set; }
-    public int Ypos { get; private set; }
+    public int Xpos { get; set; }
+    public int Ypos { get; set; }
 
     // Constructor.
-    public Point(int x, int y)
-    {
-        Xpos = x;
-        Ypos = y;
-    }
+    public Point() { }
 
     // Returns the distance between 2 points. Casts hypotenuse to an int.
     public int Distance(Point other)

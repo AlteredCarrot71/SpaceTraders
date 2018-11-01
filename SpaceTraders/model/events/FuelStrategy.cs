@@ -30,11 +30,9 @@ namespace SpaceTraders
                 fuelLeakage++; // 1 to player.getCurrentFuel()
             }
             if (player.Ship.CurrentFuel <= 0) return "You left your fuel tank open, but you have no fuel to leak!";
-            player.Ship.travel(fuelLeakage);
+            player.Ship.CurrentFuel -= fuelLeakage;
             int msg = rand.Next(losePhrases.Length);
             return String.Format(losePhrases[msg], fuelLeakage);
         }
-
     }
-
 }

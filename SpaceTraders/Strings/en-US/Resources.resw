@@ -117,19 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Bumblebee.Description" xml:space="preserve">
+  <data name="Good.Firearms.Name" xml:space="preserve">
+    <value>Firearms</value>
+  </data>
+  <data name="Good.Food.Name" xml:space="preserve">
+    <value>Food</value>
+  </data>
+  <data name="Good.Furs.Name" xml:space="preserve">
+    <value>Furs</value>
+  </data>
+  <data name="Good.Games.Name" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="Good.Machines.Name" xml:space="preserve">
+    <value>Machines</value>
+  </data>
+  <data name="Good.Medicine.Name" xml:space="preserve">
+    <value>Medicine</value>
+  </data>
+  <data name="Good.Narcotics.Name" xml:space="preserve">
+    <value>Narcotics</value>
+  </data>
+  <data name="Good.Ore.Name" xml:space="preserve">
+    <value>Ore</value>
+  </data>
+  <data name="Good.Robots.Name" xml:space="preserve">
+    <value>Robots</value>
+  </data>
+  <data name="Good.Water.Name" xml:space="preserve">
+    <value>Water</value>
+  </data>
+  <data name="Shield.Energy.Name" xml:space="preserve">
+    <value>Energy Shield</value>
+  </data>
+  <data name="Shield.Reflective.Name" xml:space="preserve">
+    <value>Reflective Shield</value>
+  </data>
+  <data name="Ship.Bumblebee.Description" xml:space="preserve">
     <value>The Bumblebee is the stronger sister of the Firefly. It has the same amount of cargo bays and same hull strength, can carry one extra shield and one extra gadget, and best of all, has extra crew quarters available so you can take a mercenary with you. It can travel up to 15 parsecs on a tank.</value>
   </data>
-  <data name="Firefly.Description" xml:space="preserve">
+  <data name="Ship.Firefly.Description" xml:space="preserve">
     <value>The Firefly is the poor trader's dream. It is fairly cheap, has no less than 20 cargo bays, one of each equipment type slot, and can travel up to 17 parsecs on a tank.</value>
   </data>
-  <data name="Flea.Description" xml:space="preserve">
+  <data name="Ship.Flea.Description" xml:space="preserve">
     <value>The Flea is the cheapest ship type. It is small, has few cargo holds, a weak hull and no weapon, shield or gadget slots. It is capable, however, of travelling 20 parsecs on its fuel tanks, allowing you to jump over great distances. When you have an escape pod and you need to use it, you can convert the pod, which is basically a Flea without fuel tanks and cargo bays, into a Flea in a few days time for a few credits. This is always worth your while, since the Flea can be sold for a higher price than you needed to invest to build it, and it will allow you to travel off a solar system where you have been dropped off, even if there are no ships to buy there.</value>
   </data>
-  <data name="Gnat.Description" xml:space="preserve">
+  <data name="Ship.Gnat.Description" xml:space="preserve">
     <value>The Gnat is the type of ship you start out with. It is a suitable ship for a starting trader. You can carry one weapon and one gadget, and have 15 cargo holds available. The maximum range it can travel on one tank is 14 parsecs.</value>
   </data>
-  <data name="Mosquito.Description" xml:space="preserve">
+  <data name="Ship.Mosquito.Description" xml:space="preserve">
     <value>Those who aspire quick money by pirating, can do no better than buying a Mosquito in the early stages of their career. It can travel up to 13 parsecs on a tank, has a fairly strong hull, and can carry two weapons next to one shield and one gadget. Its cargo holds are equal to a Gnat's.</value>
+  </data>
+  <data name="TechLevel.AGRICULTURE.Name" xml:space="preserve">
+    <value>Agricultural</value>
+  </data>
+  <data name="TechLevel.EARLY_INDUSTRIAL.Name" xml:space="preserve">
+    <value>Early industrial</value>
+  </data>
+  <data name="TechLevel.HI_TECH.Name" xml:space="preserve">
+    <value>Hi-tech</value>
+  </data>
+  <data name="TechLevel.INDUSTRIAL.Name" xml:space="preserve">
+    <value>Industrial</value>
+  </data>
+  <data name="TechLevel.MEDIEVAL.Name" xml:space="preserve">
+    <value>Medieval</value>
+  </data>
+  <data name="TechLevel.POST_INDUSTRIAL.Name" xml:space="preserve">
+    <value>Post-industrial</value>
+  </data>
+  <data name="TechLevel.PRE_AG.Name" xml:space="preserve">
+    <value>Pre-agricultural</value>
+  </data>
+  <data name="TechLevel.RENAISSANCE.Name" xml:space="preserve">
+    <value>Renaissance</value>
+  </data>
+  <data name="Weapon.Beam.Name" xml:space="preserve">
+    <value>Beam Laser</value>
+  </data>
+  <data name="Weapon.Military.Name" xml:space="preserve">
+    <value>Military Laser</value>
+  </data>
+  <data name="Weapon.Pulse.Name" xml:space="preserve">
+    <value>Pulse Laser</value>
   </data>
 </root>

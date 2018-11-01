@@ -7,70 +7,172 @@ namespace SpaceTraders
     public class Goods
     {
         // values for Water good.
-        public static readonly Good WATER = new Good(TechLevel.PRE_AG, TechLevel.PRE_AG, TechLevel.MEDIEVAL, 30, 3, 4, 30,
-            50, "Water");
+        public static readonly Good WATER = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Water/Name"),
+            MinTechToProduce = TechLevel.PRE_AG,
+            MinTechToUse = TechLevel.PRE_AG,
+            MainProducer = TechLevel.MEDIEVAL,
+            BasePrice = 30,
+            PriceIncreasePerLevel = 3,
+            Variance = 4,
+            MinSpacePrice = 30,
+            MaxSpacePrice = 50
+        };
 
         // Values for Furs good.
-        public static readonly Good FURS = new Good(TechLevel.PRE_AG, TechLevel.PRE_AG, TechLevel.PRE_AG, 250, 10, 10, 230,
-            280, "Furs");
+        public static readonly Good FURS = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Furs/Name"),
+            MinTechToProduce = TechLevel.PRE_AG,
+            MinTechToUse = TechLevel.PRE_AG,
+            MainProducer = TechLevel.PRE_AG,
+            BasePrice = 250,
+            PriceIncreasePerLevel = 10,
+            Variance = 10,
+            MinSpacePrice = 230,
+            MaxSpacePrice = 280
+        };
 
         // Values for Food good.
-        public static readonly Good FOOD = new Good(TechLevel.AGRICULTURE, TechLevel.PRE_AG, TechLevel.AGRICULTURE, 100, 5,
-            5, 90, 260, "Food");
+        public static readonly Good FOOD = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Food/Name"),
+            MinTechToProduce = TechLevel.AGRICULTURE,
+            MinTechToUse = TechLevel.PRE_AG,
+            MainProducer = TechLevel.AGRICULTURE,
+            BasePrice = 100,
+            PriceIncreasePerLevel = 5,
+            Variance = 5,
+            MinSpacePrice = 90,
+            MaxSpacePrice = 260
+        };
 
         // Values for Ore good.
-        public static readonly Good ORE = new Good(TechLevel.MEDIEVAL, TechLevel.MEDIEVAL, TechLevel.RENAISSANCE, 350, 20,
-            10, 350, 420, "Ore");
+        public static readonly Good ORE = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Ore/Name"),
+            MinTechToProduce = TechLevel.MEDIEVAL,
+            MinTechToUse = TechLevel.MEDIEVAL,
+            MainProducer = TechLevel.RENAISSANCE,
+            BasePrice = 250,
+            PriceIncreasePerLevel = 20,
+            Variance = 10,
+            MinSpacePrice = 350,
+            MaxSpacePrice = 420
+        };
 
         // Values for Game good.
-        public static readonly Good GAMES = new Good(TechLevel.RENAISSANCE, TechLevel.AGRICULTURE,
-            TechLevel.POST_INDUSTRIAL, 250, -10, 5, 160, 270, "Games");
+        public static readonly Good GAMES = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Games/Name"),
+            MinTechToProduce = TechLevel.RENAISSANCE,
+            MinTechToUse = TechLevel.AGRICULTURE,
+            MainProducer = TechLevel.POST_INDUSTRIAL,
+            BasePrice = 250,
+            PriceIncreasePerLevel = -10,
+            Variance = 5,
+            MinSpacePrice = 160,
+            MaxSpacePrice = 270
+        };
 
         // Values for Firearm good.
-        public static readonly Good FIREARMS = new Good(TechLevel.RENAISSANCE, TechLevel.AGRICULTURE,
-            TechLevel.INDUSTRIAL, 1250, -75, 100, 600, 1100, "Firearms");
+        public static readonly Good FIREARMS = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Firearms/Name"),
+            MinTechToProduce = TechLevel.RENAISSANCE,
+            MinTechToUse = TechLevel.AGRICULTURE,
+            MainProducer = TechLevel.INDUSTRIAL,
+            BasePrice = 1250,
+            PriceIncreasePerLevel = -75,
+            Variance = 100,
+            MinSpacePrice = 600,
+            MaxSpacePrice = 1100
+        };
 
         // Values for Medicine good.
-        public static readonly Good MEDICINE = new Good(TechLevel.EARLY_INDUSTRIAL, TechLevel.AGRICULTURE,
-            TechLevel.POST_INDUSTRIAL, 650, -20, 10, 400, 700, "Medicine");
+        public static readonly Good MEDICINE = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Medicine/Name"),
+            MinTechToProduce = TechLevel.EARLY_INDUSTRIAL,
+            MinTechToUse = TechLevel.AGRICULTURE,
+            MainProducer = TechLevel.POST_INDUSTRIAL,
+            BasePrice = 650,
+            PriceIncreasePerLevel = -20,
+            Variance = 10,
+            MinSpacePrice = 400,
+            MaxSpacePrice = 700
+        };
 
         // Values for Machines good.
-        public static readonly Good MACHINES = new Good(TechLevel.EARLY_INDUSTRIAL, TechLevel.RENAISSANCE,
-            TechLevel.INDUSTRIAL, 900, -30, 5, 600, 800, "Machines");
+        public static readonly Good MACHINES = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Machines/Name"),
+            MinTechToProduce = TechLevel.EARLY_INDUSTRIAL,
+            MinTechToUse = TechLevel.RENAISSANCE,
+            MainProducer = TechLevel.INDUSTRIAL,
+            BasePrice = 900,
+            PriceIncreasePerLevel = -30,
+            Variance = 5,
+            MinSpacePrice = 600,
+            MaxSpacePrice = 800
+        };
 
         // Values for Narcotics good.
-        public static readonly Good NARCOTICS = new Good(TechLevel.INDUSTRIAL, TechLevel.PRE_AG, TechLevel.INDUSTRIAL,
-            3500, -125, 150, 2000, 3000, "Narcotics");
+        public static readonly Good NARCOTICS = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Narcotics/Name"),
+            MinTechToProduce = TechLevel.INDUSTRIAL,
+            MinTechToUse = TechLevel.PRE_AG,
+            MainProducer = TechLevel.INDUSTRIAL,
+            BasePrice = 3500,
+            PriceIncreasePerLevel = -125,
+            Variance = 150,
+            MinSpacePrice = 2000,
+            MaxSpacePrice = 3000
+        };
 
         // Values for Robots good.
-        public static readonly Good ROBOTS = new Good(TechLevel.POST_INDUSTRIAL, TechLevel.EARLY_INDUSTRIAL,
-            TechLevel.HI_TECH, 5000, -150, 100, 3500, 5000, "Robots");
+        public static readonly Good ROBOTS = new Good
+        {
+            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Good/Robots/Name"),
+            MinTechToProduce = TechLevel.POST_INDUSTRIAL,
+            MinTechToUse = TechLevel.EARLY_INDUSTRIAL,
+            MainProducer = TechLevel.HI_TECH,
+            BasePrice = 5000,
+            PriceIncreasePerLevel = -150,
+            Variance = 100,
+            MinSpacePrice = 3500,
+            MaxSpacePrice = 5000
+        };
 
         public static readonly List<Good> Values = new List<Good>() { WATER, FURS, FOOD, ORE, GAMES, FIREARMS, MEDICINE, MACHINES, NARCOTICS, ROBOTS };
     }
 
     public class Good
     {
-        // Min tech to produce on Planet.
-        public TechLevel MinTechToProduce { get; private set; }
-        // Min tech to sell to a planet.
-        public TechLevel MinTechToUse { get; private set; }
-        // Main producer of this good.
-        private TechLevel MainProducer { get; set; }
-        // Base price of this good.
-        private int BasePrice { get; set; }
-        // Delta price per level.
-        private int PriceIncreasePerLevel { get; set; }
-        // Amount of randomness allowed in price.
-        private int Variance { get; set; }
-        // Min price for trader encounters.
-        private int MinSpacePrice { get; set; }
-        // Max price for trader encounters.
-        private int MaxSpacePrice { get; set; }
+        public String Name { get; set; }
 
-        public String Name { get; private set; }
+        // Min tech to produce on Planet.
+        public TechLevel MinTechToProduce { get; set; }
+        // Min tech to sell to a planet.
+        public TechLevel MinTechToUse { get; set; }
+        // Main producer of this good.
+        public TechLevel MainProducer { get; set; }
+        // Base price of this good.
+        public int BasePrice { get; set; }
+        // Delta price per level.
+        public int PriceIncreasePerLevel { get; set; }
+        // Amount of randomness allowed in price.
+        public int Variance { get; set; }
+        // Min price for trader encounters.
+        public int MinSpacePrice { get; set; }
+        // Max price for trader encounters.
+        public int MaxSpacePrice { get; set; }
 
         // Constructor for a Goods object.
+        public Good() { }
+
         public Good(TechLevel minTechProduceLocal, TechLevel minTechToUseLocal,
             TechLevel mainProducerLocal, int basePriceLocal, int priceIncreasePerLevelLocal,
             int varianceLocal, int minSpacePriceLocal, int maxSpacePriceLocal, String aname)

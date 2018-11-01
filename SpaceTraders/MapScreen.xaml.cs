@@ -22,7 +22,6 @@ namespace SpaceTraders
 
         private ISet<SolarSystem> universe;
         private ColorList colorList = new ColorList();
-        private GameInstance game;
         private Planet curPlanet;
         private int travelDistance;
         private Point playerLocation;
@@ -35,11 +34,10 @@ namespace SpaceTraders
         public MapScreen()
         {
             this.InitializeComponent();
-            game = GameInstance.Instance;
-            curPlanet = game.CurrentPlanet;
-            universe = game.getSolarSystems();
-            playerLocation = game.getCurrentSolarSystem().Position;
-            CurrentFuel.Text = "Current Fuel: " + game.Player.Ship.CurrentFuel;
+            curPlanet = Game.Instance.CurrentPlanet;
+            universe = Game.Instance.getSolarSystems();
+            playerLocation = Game.Instance.getCurrentSolarSystem().Position;
+            CurrentFuel.Text = "Current Fuel: " + Game.Instance.Player.Ship.CurrentFuel;
             currentLine = new Line
             {
                 Stroke = new SolidColorBrush(Colors.Transparent),
@@ -91,8 +89,11 @@ namespace SpaceTraders
             currentLine.Y2 = clickedCircle.Clip.Rect.Y + (currentCircle.Clip.Rect.Height/2);
             currentLine.Stroke = new SolidColorBrush(Colors.Red);
 
-            Point chosenPlanet = new Point((int) ((int) clickedCircle.Clip.Rect.X + (currentCircle.Clip.Rect.Width/2)),
-                            (int) ((int)clickedCircle.Clip.Rect.Y + (currentCircle.Clip.Rect.Height / 2)));
+            Point chosenPlanet = new Point
+            {
+                Xpos = (int)((int)clickedCircle.Clip.Rect.X + (currentCircle.Clip.Rect.Width / 2)),
+                Ypos = (int)((int)clickedCircle.Clip.Rect.Y + (currentCircle.Clip.Rect.Height / 2))
+            };
             /*
             currentLine.X1 = currentCircle.Clip.Rect.X + (currentCircle.Clip.Rect.Width/2);
             currentLine.Y1 = currentCircle.Clip.Rect.Y + (currentCircle.Clip.Rect.Height/2);
@@ -107,9 +108,9 @@ namespace SpaceTraders
 
         private async void Travel_Click(object sender, RoutedEventArgs e)
         {
-            game.Player.Ship.travel(travelDistance);
-            game.CurrentPlanet = game.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString()));
-            RandomEvent randomEvent = EventFactory.createRandomEvent(game.Player);
+            Game.Instance.Player.Ship.CurrentFuel -= travelDistance;
+            Game.Instance.CurrentPlanet = Game.Instance.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString()));
+            RandomEvent randomEvent = EventFactory.createRandomEvent(Game.Instance.Player);
             String even = randomEvent.Event();
             if (!even.Equals("")) {
                 MessageDialog c = new MessageDialog(even, "Something has happened...");
@@ -128,10 +129,10 @@ namespace SpaceTraders
         {
             Travel.IsEnabled = true;
             Travel.Content = "Travel";
-            travelDistance = game.CurrentPlanet.Location.Distance(game.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString())).Location);
+            travelDistance = Game.Instance.CurrentPlanet.Location.Distance(Game.Instance.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString())).Location);
             NeededFuel.Text = "Needed Fuel: " + travelDistance;
 
-             if (travelDistance > game.Player.Ship.CurrentFuel)
+            if (travelDistance > Game.Instance.Player.Ship.CurrentFuel)
             {
                 Travel.IsEnabled = false;
                 Travel.Content = "Too far ...";

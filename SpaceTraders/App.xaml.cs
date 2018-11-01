@@ -28,14 +28,14 @@ namespace SpaceTraders
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
 #endif
-        private GameInstance game;
+        private Game game;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
-            game = GameInstance.Instance;
+            game = Game.Instance;
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
             
@@ -55,7 +55,7 @@ namespace SpaceTraders
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            game = GameInstance.Instance;
+            game = Game.Instance;
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,

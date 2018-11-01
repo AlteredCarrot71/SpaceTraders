@@ -7,10 +7,7 @@ public class Crew : HasPrice {
     public SkillSet Skills { get; set; }
 
     // Constructor for the crew member.
-    public Crew(int trade, int fight, int eng, int pilot, int invest)
-    {
-        Skills = new SkillSet(trade, fight, eng, pilot, invest);
-    }
+    public Crew() { }
 
     public int getPrice()
     {

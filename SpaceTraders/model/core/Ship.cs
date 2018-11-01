@@ -10,30 +10,104 @@ namespace SpaceTraders
     public class Ship
     {
         // makes a flea.
-        public static Ship Flea = new Ship( "Flea", 10, 0, 0, 0, 1, 500, 1, 2000, 5, 25, -1, -1, 
-                                            TechLevel.EARLY_INDUSTRIAL,
-                                            Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetStringForUri(new System.Uri("ms-appx:///Strings/en-US/Resources/Flea.Description"))
-                                          );
+        public static Ship Flea = new Ship 
+        {
+            Name = "Flea",
+            Cargo = new List<Good>(10),
+            Weapons = new List<Weapon>(0),
+            Shields = new List<Shield>(0),
+            Gadgets = new List<AbstractGadget>(0),
+            Crew = new List<Crew>(1),
+            MaxFuel = 500,
+            FuelCost = 1,
+            Price = 2000,
+            Bounty = 5,
+            HullStrength = 25,
+            PoliceAggression = -1,
+            PirateAggression = -1,
+            MinTechLevel = TechLevel.EARLY_INDUSTRIAL,
+            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Flea/Description")
+        };
+
         // Makes a gnat.
-        public static Ship Gnat = new Ship( "Gnat", 15, 1, 0, 1, 1, 140, 2, 10000, 50, 100, 0, 0, 
-                                            TechLevel.INDUSTRIAL,
-                                            Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Gnat/Description")
-                                          );
+        public static Ship Gnat = new Ship
+        {
+            Name = "Gnat",
+            Cargo = new List<Good>(15),
+            Weapons = new List<Weapon>(1),
+            Shields = new List<Shield>(0),
+            Gadgets = new List<AbstractGadget>(1),
+            Crew = new List<Crew>(1),
+            MaxFuel = 140,
+            FuelCost = 2,
+            Price = 10000,
+            Bounty = 50,
+            HullStrength = 100,
+            PoliceAggression = 0,
+            PirateAggression = 0,
+            MinTechLevel = TechLevel.INDUSTRIAL,
+            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Gnat/Description")
+        };
+
         // Makes a firefly.
-        public static Ship Firefly = new Ship( "Firefly", 20, 1, 1, 1, 1, 170, 3, 25000, 75, 100, 0, 0, 
-                                               TechLevel.INDUSTRIAL,
-                                               Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Firefly/Description")
-                                             );
+        public static Ship Firefly = new Ship
+        {
+            Name = "Firefly",
+            Cargo = new List<Good>(20),
+            Weapons = new List<Weapon>(1),
+            Shields = new List<Shield>(1),
+            Gadgets = new List<AbstractGadget>(1),
+            Crew = new List<Crew>(1),
+            MaxFuel = 170,
+            FuelCost = 3,
+            Price = 25000,
+            Bounty = 75,
+            HullStrength = 100,
+            PoliceAggression = 0,
+            PirateAggression = 0,
+            MinTechLevel = TechLevel.INDUSTRIAL,
+            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Firefly/Description")
+        };
+
         // makes a mosquito.
-        public static Ship Mosquito = new Ship( "Mosquito", 15, 2, 1, 1, 1, 130, 5, 30000, 100, 100, 0, 1, 
-                                                TechLevel.POST_INDUSTRIAL,
-                                                Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Mosquito/Description")
-                                              );
+        public static Ship Mosquito = new Ship
+        {
+            Name = "Mosquito",
+            Cargo = new List<Good>(15),
+            Weapons = new List<Weapon>(2),
+            Shields = new List<Shield>(1),
+            Gadgets = new List<AbstractGadget>(1),
+            Crew = new List<Crew>(1),
+            MaxFuel = 130,
+            FuelCost = 5,
+            Price = 30000,
+            Bounty = 100,
+            HullStrength = 100,
+            PoliceAggression = 0,
+            PirateAggression = 1,
+            MinTechLevel = TechLevel.POST_INDUSTRIAL,
+            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Mosquito/Description")
+        };
+
         // Makes a bumblebee.
-        public static Ship Bumblebee = new Ship( "Bumblebee", 25, 1, 2, 2, 2, 150, 7, 60000, 125, 100, 0, 1, 
-                                                 TechLevel.HI_TECH,
-                                                 Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Bumblebee/Description")
-                                               );
+        public static Ship Bumblebee = new Ship
+        {
+            Name = "Bumblebee",
+            Cargo = new List<Good>(25),
+            Weapons = new List<Weapon>(1),
+            Shields = new List<Shield>(2),
+            Gadgets = new List<AbstractGadget>(2),
+            Crew = new List<Crew>(2),
+            MaxFuel = 150,
+            FuelCost = 7,
+            Price = 60000,
+            Bounty = 125,
+            HullStrength = 100,
+            PoliceAggression = 0,
+            PirateAggression = 1,
+            MinTechLevel = TechLevel.HI_TECH,
+            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Bumblebee/Description")
+        };
 
         public static readonly List<Ship> Values = new List<Ship> { Flea, Gnat, Firefly, Mosquito, Bumblebee };
 
@@ -41,22 +115,22 @@ namespace SpaceTraders
         public List<Good> Cargo { get; set; }
 
         // ship weapons.
-        private PresizedList<Weap> weapons;
+        public List<Weapon> Weapons { get; set; }
 
         // Ship shields.
-        private PresizedList<Shie> shields;
+        public List<Shield> Shields { get; set; }
 
         // Ship gadgets.
-        private PresizedList<AbstractGadget> gadgets;
+        public List<AbstractGadget> Gadgets { get; set; }
 
         // Ship crew.
-        private PresizedList<Crew> crew;
+        public List<Crew> Crew { get; set; }
 
         // Maximum fuel this ship can hold.
-        public int MaxFuel { get; private set; }
+        public int MaxFuel { get; private set; }  
 
         // the current amount of fuel.
-        public int CurrentFuel { get; private set; }
+        public int CurrentFuel { get; set; }
 
         // whether can ship be seen by others during travel.
         public bool IsVisible { get; set; }
@@ -65,9 +139,6 @@ namespace SpaceTraders
         public String Name { get; private set; }
         public String Text { get; private set; }
 
-        // Min tech level for ship to be sold in shipyard.
-        //private TechLevel minTechLevel;
-
         // cost per unit of fuel.
         public int FuelCost { get; set; }
 
@@ -75,47 +146,25 @@ namespace SpaceTraders
         public int Price { get; private set; }
 
         // Bounty on ship.
-        private int bounty;
+        public int Bounty { get; private set; }
 
         // hull strength for fights.
-        private int hullStrength;
+        public int HullStrength { get; private set; }
 
         // Police disposition towards ship.
-        private int policeAggression;
+        public int PoliceAggression { get; private set; }
 
         // Pirate aggression towards ship.
-        private int pirateAggression;
+        public int PirateAggression { get; private set; }
 
         // Min TechLevel to buy a ship
         public TechLevel MinTechLevel { get; private set; }
 
         // Private ship constructor. Makes new ships through methods.
-        private Ship(String nameArg, int cargoSize, int weaponSize, int shieldSize, int gadgetSize,
-            int crewSize, int maxFuelArg, int fuelCostArg, int priceArg, int bountyArg,
-            int hullStrengthArg, int police, int pirate, TechLevel minTechLevelArg, String text)
-        {
-            //cargo = new Good[cargoSize];
-            Cargo = new List<Good>(cargoSize);
-            weapons = new PresizedList<Weap>(weaponSize);
-            shields = new PresizedList<Shie>(shieldSize);
-            gadgets = new PresizedList<AbstractGadget>(gadgetSize);
-            crew = new PresizedList<Crew>(crewSize);
-            this.Name = nameArg;
-            this.MaxFuel = maxFuelArg;
-            this.FuelCost = fuelCostArg;
-            this.Price = priceArg;
-            this.bounty = bountyArg;
-            this.hullStrength = hullStrengthArg;
-            this.policeAggression = police;
-            this.pirateAggression = pirate;
-            this.CurrentFuel = MaxFuel;
-            this.IsVisible = true;
-            this.MinTechLevel = minTechLevelArg;
-            this.Text = text;
-        }
+        public Ship() { }
 
         // Returns the number of empty slots for cargo.
-        public int cargoRoomLeft()
+        public int CargoRoomLeft()
         {
             return Cargo.Capacity - Cargo.Count;
         }
@@ -129,14 +178,19 @@ namespace SpaceTraders
         // used with CargoGadget.
         public void setCargo(PresizedList<Good> newCargo)
         {
-            this.Cargo = newCargo;
+            Cargo = newCargo;
         }
 
         // Adds cargo to the ship.
         public bool addCargo(Good item)
         {
-            Cargo.Add(item);
-            return true;
+            if (Cargo.Count < Cargo.Capacity)
+            {
+                Cargo.Add(item);
+                return true;
+            }
+
+            return false;
         }
 
         // Looks through the cargo to find the given item.
@@ -149,9 +203,9 @@ namespace SpaceTraders
         // Adds a gadget to the ship.
         public bool addGadget(AbstractGadget gadget)
         {
-            if (gadgets.hasRoom())
+            if (Gadgets.Count < Gadgets.Capacity)
             {
-                gadgets.Add(gadget);
+                Gadgets.Add(gadget);
                 return gadget.applyEffect();
             }
 
@@ -161,7 +215,7 @@ namespace SpaceTraders
         // Removed a gadget from the the ship.
         public bool removeGadget(AbstractGadget gadget)
         {
-            if (gadgets.Remove(gadget))
+            if (Gadgets.Remove(gadget))
             {
                 return gadget.removeEffect();
             }
@@ -172,9 +226,10 @@ namespace SpaceTraders
         // Adds a crew member to the ship.
         public bool addCrew(Crew member)
         {
-            if (crew.hasRoom())
+            if (Crew.Count < Crew.Capacity)
             {
-                return crew.Add(member);
+                Crew.Add(member);
+                return true;
             }
 
             return false;
@@ -183,15 +238,15 @@ namespace SpaceTraders
         // Removes a crew member from the ship.
         public bool removeCrew(Crew member)
         {
-            return crew.Remove(member);
+            return Crew.Remove(member);
         }
 
         // Adds the weapon to the ship.
-        public bool addWeapon(Weap weapon)
+        public bool addWeapon(Weapon weapon)
         {
-            if (weapons.hasRoom())
+            if (Weapons.Count < Weapons.Capacity)
             {
-                weapons.Add(weapon);
+                Weapons.Add(weapon);
                 return true;
             }
 
@@ -199,17 +254,17 @@ namespace SpaceTraders
         }
 
         // Removes the weapon from the ship.
-        public bool removeWeapon(Weap weapon)
+        public bool removeWeapon(Weapon weapon)
         {
-            return weapons.Remove(weapon);
+            return Weapons.Remove(weapon);
         }
 
         // The shield to add the ship.
-        public bool addShield(Shie shield)
+        public bool addShield(Shield shield)
         {
-            if (shields.hasRoom())
+            if (Shields.Count < Shields.Capacity)
             {
-                shields.Add(shield);
+                Shields.Add(shield);
                 return true;
             }
 
@@ -217,21 +272,9 @@ namespace SpaceTraders
         }
 
         // Removes the shield from the ship.
-        public bool removeShield(Shie shield)
+        public bool removeShield(Shield shield)
         {
-            return shields.Remove(shield);
-        }
-
-        // Remove [distance] units of fuel after travelling distance.
-        public void travel(int distance)
-        {
-            CurrentFuel -= distance;
-        }
-
-        // Adds fuel to the ship.
-        public void buyFuel(int amount)
-        {
-            CurrentFuel += amount;
+            return Shields.Remove(shield);
         }
 
         // Gets max size of cargo.
@@ -243,50 +286,50 @@ namespace SpaceTraders
         // Gets max size of weapons.
         public int weaponsSize()
         {
-            return weapons.maxSize();
+            return Weapons.Capacity;
         }
 
         // Gets max size of shields.
         public int shieldsSize()
         {
-            return shields.maxSize();
+            return Shields.Capacity;
         }
 
         // Gets max num of crew.
         public int crewSize()
         {
-            return crew.maxSize();
+            return Crew.Capacity;
         }
 
         // Gets max num of gadgets.
         public int gadgetSize()
         {
-            return gadgets.maxSize();
+            return Gadgets.Capacity;
         }
 
         // Returns a list of the ship's weapons.
-        public IList<Weap> getWeapons()
+        public IList<Weapon> getWeapons()
         {
-            return weapons;
+            return Weapons;
         }
 
         // Returns a list of the ship's shields.
-        public IList<Shie> getShields()
+        public IList<Shield> getShields()
         {
-            return shields;
+            return Shields;
         }
 
         // Returns a list of the ship's gadgets.
         public IList<AbstractGadget> getGadgets()
         {
-            return gadgets;
+            return Gadgets;
         }
 
         // Returns a list of the ship's crew.
         public IList<Crew> getCrew()
         {
-            return crew;
-        }
+            return Crew;
+         }
 
         // Returns a Map of attribute name to atribute value.
         public Dictionary<String, Int32> specs()
@@ -296,10 +339,10 @@ namespace SpaceTraders
                 {"Max Fuel", MaxFuel},
                 {"Fuel Cost", FuelCost},
                 {"Base Price", Price},
-                {"Bounty", bounty},
-                {"Hull Strength", hullStrength},
-                {"Police Disposition", policeAggression},
-                {"Pirate Aggression", pirateAggression},
+                {"Bounty", Bounty},
+                {"Hull Strength", HullStrength},
+                {"Police Disposition", PoliceAggression},
+                {"Pirate Aggression", PirateAggression},
                 {"Cargo Size", cargoSize()},
                 {"Weapons Size", weaponsSize()},
                 {"Crew Size", crewSize()},

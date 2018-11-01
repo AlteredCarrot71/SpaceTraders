@@ -6,39 +6,33 @@ namespace SpaceTraders
     public class Planet
     {
         // Name of this planet.
-        public String Name { get; private set; }
+        public String Name { get; set; }
         // Tech level for this planet.
-        public TechLevel Techlevel { get; private set; }
+        public TechLevel Techlevel { get; set; }
         // Resource for this planet.
-        public Good Resource { get; private set; }
-        // Marketplace specific to this planet.
-        public Marketplace Marketplace { get; private set; }
-        // Shipyard specific to this planet.
-        public Shipyard Shipyard { get; private set; }
+        public Good Resource { get; set; }
         // Planet location
-        public Point Location { get; private set; }
+        public Point Location { get; set; }
+        // Marketplace specific to this planet.
+        public Marketplace Marketplace { get; set; }
+        // Shipyard specific to this planet.
+        public Shipyard Shipyard { get; set; }
 
         // Constructor for Planet.
-        public Planet(String nameArg, Good resourceArg, TechLevel techArg, Point locationArg)
-        {
-            Name = nameArg;
-            Resource = resourceArg;
-            Techlevel = techArg;
-            Location = locationArg;
-        }
+        public Planet() { }
 
         // This method initializes the marketplace on a planet. It should be called after the player
         // visits the planet. It creates a random supply of various goods
         public Marketplace EnterMarket(Player player)
         {
-            Marketplace = new Marketplace(Techlevel, player);
+            Marketplace = new Marketplace();
             return Marketplace;
         }
 
         // Initializes a Shipyard for a Planet.
         public Shipyard EnterShipyard(Player player)
         {
-            Shipyard = new Shipyard(Marketplace);
+            Shipyard = new Shipyard();
             return Shipyard;
         }
 
@@ -50,8 +44,9 @@ namespace SpaceTraders
 
         public String GetInfo()
         {
-            return "Planet Name: " + Name + "\n\tResources: " + Resource
-                            + "\n\tTech: " + Techlevel;
+            return "Planet Name: " + Name + 
+                   "\nResources: " + Resource.Name +
+                   "\nTech: " + Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("TechLevel/" + Techlevel.ToString() + "/Name");
         }
     }
 }

@@ -49,17 +49,19 @@ namespace SpaceTraders
                 int resourceNum = rand.Next(Goods.Values.Count);
                 int techLevelNum = rand.Next(Enum.GetValues(typeof(TechLevel)).Length);
 
-                Point point = new Point(rand.Next(340) + 5, rand.Next(340) + 5);
+                Point point = new Point { Xpos = rand.Next(340) + 5, Ypos = rand.Next(340) + 5 };
                 while ( Planets.Exists(x => x.Location.Equals(point)) )
                 {
-                    point = new Point(rand.Next(340) + 5, rand.Next(340) + 5);
+                    point = new Point { Xpos = rand.Next(340) + 5, Ypos = rand.Next(340) + 5 };
                 }
 
-                Planet PlanetToAdd = new Planet( planet,
-                                                 Goods.Values[resourceNum],
-                                                 (TechLevel)techLevelNum,
-                                                 point
-                                               );
+                Planet PlanetToAdd = new Planet
+                {
+                    Name = planet,
+                    Resource = Goods.Values[resourceNum],
+                    Techlevel = (TechLevel)techLevelNum,
+                    Location = point
+                };
                 Planets.Add(PlanetToAdd);
 
                 if (startingLocation == i)

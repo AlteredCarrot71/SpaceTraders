@@ -13,7 +13,7 @@ namespace SpaceTraders
 
         private void EnablingButtons()
         {
-            if (GameInstance.Instance.Player.Ship.cargoRoomLeft() > 0)
+            if (Game.Instance.Player.Ship.CargoRoomLeft() > 0)
             {
                 BuyButton.IsEnabled = true;
             }
@@ -22,7 +22,7 @@ namespace SpaceTraders
                 BuyButton.IsEnabled = false;
             }
 
-            if (GameInstance.Instance.Player.Ship.cargoSize() - GameInstance.Instance.Player.Ship.cargoRoomLeft() > 0 )
+            if (Game.Instance.Player.Ship.cargoSize() - Game.Instance.Player.Ship.CargoRoomLeft() > 0 )
             {
                 SellButton.IsEnabled = true;
             }
@@ -36,15 +36,15 @@ namespace SpaceTraders
         {
             this.InitializeComponent();
 
-            MarketTitle.Text = GameInstance.Instance.CurrentPlanet.Name + " Market";
-            marketplace = GameInstance.Instance.CurrentPlanet.Marketplace;
+            MarketTitle.Text = Game.Instance.CurrentPlanet.Name + " Market";
+            marketplace = Game.Instance.CurrentPlanet.Marketplace;
 
             foreach (Good good in marketplace.Supply)
             {
                 marketGoods.Add(good.Name);
             }
 
-            foreach (Good good in GameInstance.Instance.Player.Ship.getCargo())
+            foreach (Good good in Game.Instance.Player.Ship.getCargo())
             {
                 shipGoods.Add(good.Name);
             }
@@ -54,6 +54,7 @@ namespace SpaceTraders
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            Game.Instance.SaveState();
             this.Frame.Navigate(typeof(PlanetScreen));
         }
 

@@ -48,13 +48,25 @@ namespace SpaceTraders
         {
             if (!(EngSkill.Value + TradeSkill.Value + FightSkill.Value + InvestSkill.Value + PilotSkill.Value <= 15) ||
                 PlayerName.Text == String.Empty) return;
-            Player player = new Player(PlayerName.Text, (int)PilotSkill.Value, (int)FightSkill.Value,
-                (int)EngSkill.Value, (int)TradeSkill.Value, (int)InvestSkill.Value);
-            GameInstance game = GameInstance.Instance;
-            player.ChangeMoney(10000);
-            game.Player = player;
-            game.createUniverse();
-            this.Frame.Navigate(typeof(MapScreen));
+
+            Game.Instance.Player = new Player
+                                        {
+                                            Name = PlayerName.Text,
+                                            Skills = new SkillSet
+                                                            {
+                                                                Trading = (int)TradeSkill.Value,
+                                                                Fighting = (int)FightSkill.Value,
+                                                                Engineering = (int)EngSkill.Value,
+                                                                Piloting = (int)PilotSkill.Value,
+                                                                Investing = (int)InvestSkill.Value
+                                                            },
+                                            Money = 10000,
+                                            Ship = Ship.Gnat
+                                        };
+            Game.Instance.createUniverse();
+
+            // Planet screen will be the starting point of game
+            this.Frame.Navigate(typeof(PlanetScreen));
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

@@ -46,7 +46,7 @@ namespace SpaceTraders
                 money++;
             }
 
-            player.ChangeMoney(money); //adding negative money is taking money
+            player.Money = money; //adding negative money is taking money
 
             if (money > 0)
             {

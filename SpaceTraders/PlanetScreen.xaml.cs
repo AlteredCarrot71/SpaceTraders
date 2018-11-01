@@ -4,23 +4,18 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SpaceTraders
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class PlanetScreen : Page
     {
-        private GameInstance game;
+        private Game game;
         private Planet curPlanet;
         private Player player;
 
         public PlanetScreen()
         {
             this.InitializeComponent();
-            game = GameInstance.Instance;
+            game = Game.Instance;
             curPlanet = game.CurrentPlanet;
             player = game.Player;
             Random r = new Random();
@@ -28,10 +23,9 @@ namespace SpaceTraders
             PlanetImg.Fill = new SolidColorBrush(cl.ElementAt(r.Next(cl.Count)));
             Refuel.Content = "Refuel: " + player.GetRefuelCost() + " cr";
             TitleScreen.Text = curPlanet.Name;
-            Description.Text = curPlanet.GetInfo() + "\n Resources:  "
-                               + curPlanet.Resource.Name + "\n\nFuel: " + player.Ship.CurrentFuel
-                               + "\nMoney: "
-                               + player.Money;
+            Description.Text = curPlanet.GetInfo();
+            Fuel.Text = "Fuel: " + player.Ship.CurrentFuel;
+            Money.Text = "Money: " + player.Money;
 
             if (curPlanet.Techlevel.Equals(TechLevel.POST_INDUSTRIAL))
             {
@@ -67,10 +61,8 @@ namespace SpaceTraders
         private void Refuel_Click(object sender, RoutedEventArgs e)
         {
             player.BuyFuel();
-            Description.Text = curPlanet.GetInfo() + "\n Resources:  "
-                               + curPlanet.Resource.Name + "\n\nFuel: " + player.Ship.CurrentFuel
-                               + "\nMoney: "
-                               + player.Money;
+            Fuel.Text = "Fuel: " + player.Ship.CurrentFuel;
+            Money.Text = "Money: " + player.Money;
             Refuel.Content = "Refuel: " + 0 + " cr";
         }
     }
