@@ -11,7 +11,7 @@
 using System;
 using System.Collections.Generic;
 
-public abstract class AbstractCommand : CommandPattern {
+public abstract class AbstractCommand : ICommandPattern {
 
     /**
      * applyEffect := true, removeEffect := false.
@@ -24,8 +24,8 @@ public abstract class AbstractCommand : CommandPattern {
      * @return true if effect was applied, false otherwise
      */
     
-    public bool applyEffect() {
-        if (effect()) {
+    public bool ApplyEffect() {
+        if (Effect()) {
             stack.Push(true);
             return true;
         }
@@ -38,9 +38,9 @@ public abstract class AbstractCommand : CommandPattern {
      * @return true if effect was undone, false otherwise
      */
     
-    public bool removeEffect() {
+    public bool RemoveEffect() {
         if (stack.Peek()) {
-            if (uneffect()) {
+            if (Uneffect()) {
                 return stack.Pop(); //we know top of stack is 'true'
             }
         }
@@ -53,12 +53,12 @@ public abstract class AbstractCommand : CommandPattern {
      *
      * @return bool whether the effect was actually applied
      */
-    protected abstract bool effect();
+    protected abstract bool Effect();
 
     /**
      * The way to remove the effect.
      *
      * @return bool whether the effect was actually removed
      */
-    protected abstract bool uneffect();
+    protected abstract bool Uneffect();
 }

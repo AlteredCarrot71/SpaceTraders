@@ -53,7 +53,7 @@ namespace SpaceTraders
         }
 
 
-        protected override bool effect()
+        protected override bool Effect()
         {
             if (!effectApplied)
             {
@@ -75,7 +75,7 @@ namespace SpaceTraders
         }
 
 
-        protected override bool uneffect()
+        protected override bool Uneffect()
         {
             if (effectApplied)
             {

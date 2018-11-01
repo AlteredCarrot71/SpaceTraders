@@ -61,9 +61,13 @@ namespace SpaceTraders
                                                                 Investing = (int)InvestSkill.Value
                                                             },
                                             Money = 10000,
-                                            Ship = Ship.Gnat
+                                            Ship = Ships.Gnat
                                         };
             Game.Instance.createUniverse();
+
+            Game.Instance.Player.Ship.IsVisible = false;
+            Game.Instance.Player.Ship.CurrentFuel = Ships.Gnat.MaxFuel;
+            Game.Instance.Player.Ship.CurrentHullStrength = Ships.Gnat.HullStrength;
 
             // Planet screen will be the starting point of game
             this.Frame.Navigate(typeof(PlanetScreen));

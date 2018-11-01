@@ -30,7 +30,7 @@ namespace SpaceTraders
             return 500;
         }
 
-        protected override bool effect()
+        protected override bool Effect()
         {
             if (!effectApplied)
             {
@@ -42,7 +42,7 @@ namespace SpaceTraders
             return false;
         }
 
-        protected override bool uneffect()
+        protected override bool Uneffect()
         {
             if (effectApplied)
             {

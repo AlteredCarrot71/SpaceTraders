@@ -3,14 +3,10 @@ using System.Collections.Generic;
 
 namespace SpaceTraders
 {
-    // This class represents a Ship object. A ship contains cargo, weapons, shields,
-    // gadgets, and crew. It also has fuel, a purchasing price, and NPC disposition
-    // modifiers. Converted from enum to class so object would be serialized
-    // correctly
-    public class Ship
+    public static class Ships
     {
         // makes a flea.
-        public static Ship Flea = new Ship 
+        public static readonly Ship Flea = new Ship
         {
             Name = "Flea",
             Cargo = new List<Good>(10),
@@ -30,7 +26,7 @@ namespace SpaceTraders
         };
 
         // Makes a gnat.
-        public static Ship Gnat = new Ship
+        public static readonly Ship Gnat = new Ship
         {
             Name = "Gnat",
             Cargo = new List<Good>(15),
@@ -50,7 +46,7 @@ namespace SpaceTraders
         };
 
         // Makes a firefly.
-        public static Ship Firefly = new Ship
+        public static readonly Ship Firefly = new Ship
         {
             Name = "Firefly",
             Cargo = new List<Good>(20),
@@ -70,7 +66,7 @@ namespace SpaceTraders
         };
 
         // makes a mosquito.
-        public static Ship Mosquito = new Ship
+        public static readonly Ship Mosquito = new Ship
         {
             Name = "Mosquito",
             Cargo = new List<Good>(15),
@@ -90,7 +86,7 @@ namespace SpaceTraders
         };
 
         // Makes a bumblebee.
-        public static Ship Bumblebee = new Ship
+        public static readonly Ship Bumblebee = new Ship
         {
             Name = "Bumblebee",
             Cargo = new List<Good>(25),
@@ -110,6 +106,16 @@ namespace SpaceTraders
         };
 
         public static readonly List<Ship> Values = new List<Ship> { Flea, Gnat, Firefly, Mosquito, Bumblebee };
+    }
+
+    // This class represents a Ship object. A ship contains cargo, weapons, shields,
+    // gadgets, and crew. It also has fuel, a purchasing price, and NPC disposition
+    // modifiers. Converted from enum to class so object would be serialized
+    // correctly
+    public class Ship
+    {
+        // Name of a ship.
+        public String Name { get; set; }
 
         // ship cargo.
         public List<Good> Cargo { get; set; }
@@ -127,41 +133,40 @@ namespace SpaceTraders
         public List<Crew> Crew { get; set; }
 
         // Maximum fuel this ship can hold.
-        public int MaxFuel { get; private set; }  
-
-        // the current amount of fuel.
-        public int CurrentFuel { get; set; }
-
-        // whether can ship be seen by others during travel.
-        public bool IsVisible { get; set; }
-
-        // Name and description of ship.
-        public String Name { get; private set; }
-        public String Text { get; private set; }
+        public int MaxFuel { get; set; }
 
         // cost per unit of fuel.
         public int FuelCost { get; set; }
 
         // base price of ship.
-        public int Price { get; private set; }
+        public int Price { get; set; }
 
         // Bounty on ship.
-        public int Bounty { get; private set; }
+        public int Bounty { get; set; }
 
         // hull strength for fights.
-        public int HullStrength { get; private set; }
+        public int HullStrength { get; set; }
 
         // Police disposition towards ship.
-        public int PoliceAggression { get; private set; }
+        public int PoliceAggression { get; set; }
 
         // Pirate aggression towards ship.
-        public int PirateAggression { get; private set; }
+        public int PirateAggression { get; set; }
 
         // Min TechLevel to buy a ship
-        public TechLevel MinTechLevel { get; private set; }
+        public TechLevel MinTechLevel { get; set; }
 
-        // Private ship constructor. Makes new ships through methods.
-        public Ship() { }
+        // Description of a ship
+        public String Text { get; set; }
+
+        // the current amount of fuel.
+        public int CurrentFuel { get; set; }
+
+        // the current amount of hull strength
+        public int CurrentHullStrength { get; set; }
+        
+        // whether can ship be seen by others during travel.
+        public bool IsVisible { get; set; }
 
         // Returns the number of empty slots for cargo.
         public int CargoRoomLeft()
@@ -201,23 +206,23 @@ namespace SpaceTraders
         }
 
         // Adds a gadget to the ship.
-        public bool addGadget(AbstractGadget gadget)
+        public bool AddGadget(AbstractGadget gadget)
         {
             if (Gadgets.Count < Gadgets.Capacity)
             {
                 Gadgets.Add(gadget);
-                return gadget.applyEffect();
+                return gadget.ApplyEffect();
             }
 
             return false;
         }
 
         // Removed a gadget from the the ship.
-        public bool removeGadget(AbstractGadget gadget)
+        public bool RemoveGadget(AbstractGadget gadget)
         {
             if (Gadgets.Remove(gadget))
             {
-                return gadget.removeEffect();
+                return gadget.RemoveEffect();
             }
 
             return false;
@@ -332,25 +337,28 @@ namespace SpaceTraders
          }
 
         // Returns a Map of attribute name to atribute value.
-        public Dictionary<String, Int32> specs()
-        {
-            Dictionary<String, Int32> retval = new Dictionary<String, Int32>
-            {
-                {"Max Fuel", MaxFuel},
-                {"Fuel Cost", FuelCost},
-                {"Base Price", Price},
-                {"Bounty", Bounty},
-                {"Hull Strength", HullStrength},
-                {"Police Disposition", PoliceAggression},
-                {"Pirate Aggression", PirateAggression},
-                {"Cargo Size", cargoSize()},
-                {"Weapons Size", weaponsSize()},
-                {"Crew Size", crewSize()},
-                {"Gadget Size", gadgetSize()},
-                {"Shield Size", shieldsSize()}
-            };
+        //public Dictionary<String, Int32> specs()
+        //{
+        //    Dictionary<String, Int32> retval = new Dictionary<String, Int32>
+        //    {
+        //        {"Max Fuel", MaxFuel},
+        //        {"Fuel Cost", FuelCost},
+        //        {"Base Price", Price},
+        //        {"Bounty", Bounty},
+        //        {"Hull Strength", HullStrength},
+        //        {"Police Disposition", PoliceAggression},
+        //        {"Pirate Aggression", PirateAggression},
+        //        {"Cargo Size", cargoSize()},
+        //        {"Weapons Size", weaponsSize()},
+        //        {"Crew Size", crewSize()},
+        //        {"Gadget Size", gadgetSize()},
+        //        {"Shield Size", shieldsSize()}
+        //    };
 
-            return retval;
-        }
+        //    return retval;
+        //}
+
+        // Private ship constructor. Makes new ships through methods.
+        public Ship() { }
     }
 }

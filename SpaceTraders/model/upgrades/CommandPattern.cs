@@ -7,19 +7,19 @@
  * @author ngraves3
  *
  */
-public interface CommandPattern {
+public interface ICommandPattern {
 
     /**
      * Applies the object's effect.
      *
      * @return true iff effect was applied, false otherwise
      */
-    bool applyEffect();
+    bool ApplyEffect();
 
     /**
      * Removes the object's effect.
      *
      * @return true iff the effect was removed, false otherwise
      */
-    bool removeEffect();
+    bool RemoveEffect();
 }

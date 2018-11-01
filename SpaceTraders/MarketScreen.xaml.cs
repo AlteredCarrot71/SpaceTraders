@@ -50,6 +50,7 @@ namespace SpaceTraders
             }
 
             EnablingButtons();
+            PlayerMoney.Text = Game.Instance.Player.Money.ToString();
         }
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
@@ -69,6 +70,7 @@ namespace SpaceTraders
             }
 
             EnablingButtons();
+            PlayerMoney.Text = Game.Instance.Player.Money.ToString();
         }
 
         private void SellButton_Click(object sender, RoutedEventArgs e)
@@ -82,6 +84,7 @@ namespace SpaceTraders
             }
 
             EnablingButtons();
+            PlayerMoney.Text = Game.Instance.Player.Money.ToString();
         }
     }
 }

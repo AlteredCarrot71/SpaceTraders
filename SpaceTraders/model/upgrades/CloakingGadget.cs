@@ -17,7 +17,7 @@ namespace SpaceTraders
             return 2000;
         }
 
-        protected override bool effect()
+        protected override bool Effect()
         {
             if (effectApplied) return false;
             ship.IsVisible = false;
@@ -25,7 +25,7 @@ namespace SpaceTraders
             return true;
         }
 
-        protected override bool uneffect()
+        protected override bool Uneffect()
         {
             if (effectApplied)
             {
