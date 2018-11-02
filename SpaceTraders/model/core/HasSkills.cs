@@ -1,21 +1,22 @@
 // Interface to ensure skills are available for a Player/Crew.
 namespace SpaceTraders
 {
-    public interface HasSkills
+    public interface IHasSkills
     {
         // Returns trading skill.
-        int getTradeSkill();
+        int TradeSkill();
 
         // Returns engineering skill.
-        int getEngineeringSkill();
+        int EngineeringSkill();
 
         // Returns piloting skill.
-        int getPilotSkill();
+        int PilotSkill();
 
         // Returns fighting skill.
-        int getFightingSkill();
+        int FightingSkill();
 
         // Returns investing skill.
-        int getInvestingSkill();
+        //TODO: what is investing skill? and we need that?
+        int InvestingSkill();
     }
 }

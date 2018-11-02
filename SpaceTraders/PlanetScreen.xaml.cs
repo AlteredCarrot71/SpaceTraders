@@ -8,30 +8,23 @@ namespace SpaceTraders
 {
     public sealed partial class PlanetScreen : Page
     {
-        private Game game;
-        private Planet curPlanet;
-        private Player player;
-
         public PlanetScreen()
         {
             this.InitializeComponent();
-            game = Game.Instance;
-            curPlanet = game.CurrentPlanet;
-            player = game.Player;
             Random r = new Random();
             ColorList cl = new ColorList();
             PlanetImg.Fill = new SolidColorBrush(cl.ElementAt(r.Next(cl.Count)));
-            Refuel.Content = "Refuel: " + player.GetRefuelCost() + " cr";
-            TitleScreen.Text = curPlanet.Name;
-            Description.Text = curPlanet.GetInfo();
-            Fuel.Text = "Fuel: " + player.Ship.CurrentFuel;
-            Money.Text = "Money: " + player.Money;
+            Refuel.Content = "Refuel: " + RefuelCost() + " cr";
+            TitleScreen.Text = Game.Instance.CurrentPlanet.Name;
+            Description.Text = Game.Instance.CurrentPlanet.GetInfo();
+            Fuel.Text = "Fuel: " + Game.Instance.Player.Ship.CurrentFuel;
+            Money.Text = "Money: " + Game.Instance.Player.Money;
 
-            if (curPlanet.Techlevel.Equals(TechLevel.POST_INDUSTRIAL))
+            if (Game.Instance.CurrentPlanet.Techlevel.Equals(TechLevel.POST_INDUSTRIAL))
             {
                 enterShipyard.IsEnabled = true;
             }
-            else if ( curPlanet.HasShipYard() )
+            else if (Game.Instance.CurrentPlanet.HasShipYard() )
             {
                 enterShipyard.IsEnabled = true;
             }
@@ -66,29 +59,53 @@ namespace SpaceTraders
 
         private void EnterMarket_Click(object sender, RoutedEventArgs e)
         {
-            game.CurrentPlanet.EnterMarket(game.Player);
+            Game.Instance.CurrentPlanet.EnterMarket(Game.Instance.Player);
             this.Frame.Navigate(typeof (MarketScreen));
         }
 
         private void EnterShipyard_Click(object sender, RoutedEventArgs e)
         {
-            game.CurrentPlanet.EnterShipyard(game.Player);
+            Game.Instance.CurrentPlanet.EnterShipyard(Game.Instance.Player);
             this.Frame.Navigate(typeof (ShipyardScreen));
         }
 
+        // Adds fuel to the player's ship and removes the appropriate amount of money from the player.
         private void Refuel_Click(object sender, RoutedEventArgs e)
         {
-            player.BuyFuel();
-            Fuel.Text = "Fuel: " + player.Ship.CurrentFuel;
-            Money.Text = "Money: " + player.Money;
+            Game.Instance.Player.Money -= RefuelCost();
+            Game.Instance.Player.Ship.CurrentFuel += RefuelQuantity();
+            Fuel.Text = "Fuel: " + Game.Instance.Player.Ship.CurrentFuel;
+            Money.Text = "Money: " + Game.Instance.Player.Money;
             Refuel.Content = "Refuel: " + 0 + " cr";
         }
 
         private void Repair_Click(object sender, RoutedEventArgs e)
         {
             //TODO: Implement repair functionality
-
             Repair.IsEnabled = false;
+        }
+
+        // Returns the total cost of refueling a ship.
+        public static int RefuelCost()
+        {
+            return RefuelQuantity() * Game.Instance.Player.Ship.FuelCost;
+        }
+
+        // Calculates the amount of fuel a player can buy based on money and fuel cost.
+        private static int RefuelQuantity()
+        {
+            int fuelAmount;
+
+            if ( ((Game.Instance.Player.Ship.MaxFuel - Game.Instance.Player.Ship.CurrentFuel) * Game.Instance.Player.Ship.FuelCost) > Game.Instance.Player.Money )
+            {
+                fuelAmount = Game.Instance.Player.Money / Game.Instance.Player.Ship.FuelCost;
+            }
+            else
+            {
+                fuelAmount = Game.Instance.Player.Ship.MaxFuel - Game.Instance.Player.Ship.CurrentFuel;
+            }
+
+            return fuelAmount;
         }
     }
 }

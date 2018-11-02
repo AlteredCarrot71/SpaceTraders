@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace SpaceTraders
 {
     // This class represents the Player and his state.
-    public class Player : HasSkills
+    public class Player : IHasSkills
     {
         // Nameof character.
         public String Name { get; set; }
@@ -49,48 +49,8 @@ namespace SpaceTraders
             return upgrades;
         }
  
-        // Adds fuel to the player's ship and removes the appropriate amount of money from the player.
-        public void BuyFuel()
-        {
-            int quantity = CalculateFuelQuantity();
-            Ship.CurrentFuel += quantity;
-            Money -= (quantity * Ship.FuelCost);
-        }
-
-        // Returns the total cost of refueling a ship.
-         public int GetRefuelCost()
-        {
-            return CalculateFuelQuantity() * Ship.FuelCost;
-        }
-
-        // Calculates the amount of fuel a player can buy based on money and fuel cost.
-        private int CalculateFuelQuantity()
-        {
-            int fuelAmount = Ship.MaxFuel - Ship.CurrentFuel;
-
-            if ((fuelAmount * Ship.FuelCost) > Money)
-            {
-                fuelAmount = Money / Ship.FuelCost;
-            }
-
-            return fuelAmount;
-        }
-
-        public String GetInfo()
-        {
-            String term = "\n";
-            String retval = "Name: " + Name + term;
-            retval += "Piloting skill: " + getPilotSkill() + term;
-            retval += "Fighting skill: " + getFightingSkill() + term;
-            retval += "Engineering skill: " + getEngineeringSkill() + term;
-            retval += "Trading Skill: " + getTradeSkill() + term;
-            retval += "Investing Skill: " + getInvestingSkill() + term;
-            retval += "Ship: " + Ship.Name;
-            return retval;
-        }
-
         // The below methods need to account for a Crew members skill too
-        public int getTradeSkill()
+        public int TradeSkill()
         {
             int total = Skills.Trading;
             foreach (Crew member in Ship.getCrew())
@@ -100,7 +60,7 @@ namespace SpaceTraders
             return total;
         }
 
-        public int getEngineeringSkill()
+        public int EngineeringSkill()
         {
             int total = Skills.Engineering;
             foreach (Crew member in Ship.getCrew())
@@ -110,7 +70,7 @@ namespace SpaceTraders
             return total;
         }
 
-        public int getPilotSkill()
+        public int PilotSkill()
         {
             int total = Skills.Piloting;
             foreach (Crew member in Ship.getCrew())
@@ -120,7 +80,7 @@ namespace SpaceTraders
             return total;
         }
 
-        public int getFightingSkill()
+        public int FightingSkill()
         {
             int total = Skills.Fighting;
             foreach (Crew member in Ship.getCrew())
@@ -130,7 +90,7 @@ namespace SpaceTraders
             return total;
         }
 
-        public int getInvestingSkill()
+        public int InvestingSkill()
         {
             int total = Skills.Investing;
             foreach (Crew member in Ship.getCrew())
