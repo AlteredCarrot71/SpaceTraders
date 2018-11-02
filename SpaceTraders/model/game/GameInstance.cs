@@ -120,7 +120,6 @@ namespace SpaceTraders
                     CurrentPlanet = planet;
                     setCurrentSolarSystem(solarsystem);
                 }
-
             }
         }
 
@@ -150,13 +149,13 @@ namespace SpaceTraders
 
             foreach (SolarSystem s in solarSystems)
             {
-                gameString.Append(" ").Append(s.toString());
+                gameString.Append(" ").Append(s.GetInfo());
             }
 
             String term = "\n\n";
             gameString.Append(term).Append(" Current Player: ").Append(Player.GetInfo()).Append(term);
             gameString.Append("Current Planet: ").Append(CurrentPlanet.GetInfo()).Append(term);
-            gameString.Append("Current SolarSystem: ").Append(currentSolarSystem.toString()).Append(term);
+            gameString.Append("Current SolarSystem: ").Append(currentSolarSystem.GetInfo()).Append(term);
 
             return gameString.ToString();
         }

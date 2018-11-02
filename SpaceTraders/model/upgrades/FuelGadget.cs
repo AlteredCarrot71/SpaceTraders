@@ -12,7 +12,7 @@ namespace SpaceTraders
     public class FuelGadget : AbstractGadget
     {
         // Divide current fuel cost by this amount.
-        private int fuelModifier = 2;
+        private readonly int fuelModifier = 2;
 
         // Need to know original cost to avoid truncation errors.
         private int originalFuelCost;

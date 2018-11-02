@@ -22,6 +22,7 @@
         <Button x:Name="enterShipyard" Content="Shipyard" HorizontalAlignment="Left" Margin="950,230,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="103" Width="300" Background="White" Foreground="Black" FontSize="24" Click="EnterShipyard_Click"/>
         <Button x:Name="enterMarket" Content="Market" HorizontalAlignment="Left" Margin="950,362,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="103" Width="300" Background="White" Foreground="Black" FontSize="24" Click="EnterMarket_Click"/>
         <Button x:Name="Refuel" Content="Refuel" HorizontalAlignment="Left" Margin="532,602,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="103" Width="300" Background="White" Foreground="Black" FontSize="24" Click="Refuel_Click"/>
+        <Button x:Name="Repair" Content="Repair" HorizontalAlignment="Left" Margin="200,602,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="103" Width="300" Background="White" Foreground="Black" FontSize="24" Click="Repair_Click"/>
         <Button x:Name="ToMap" Content="Universe" HorizontalAlignment="Left" Margin="952,495,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="103" Width="300" Background="White" Foreground="Black" FontSize="24" Click="ToMap_Click"/>
         <Ellipse x:Name="PlanetImg" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="300" Margin="525,220,0,0" Stroke="Black" VerticalAlignment="Top" Width="300"/>
 

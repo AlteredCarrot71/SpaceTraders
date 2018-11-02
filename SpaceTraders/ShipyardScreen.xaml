@@ -25,7 +25,6 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <Button x:Name="TradeButton" Content="Trade" HorizontalAlignment="Left" Margin="137,625,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="68" Width="268" Background="White" Foreground="Black" FontSize="24" IsEnabled="False" Click="TradeButton_Click"/>
-        <Button x:Name="RepairButton" Content="Repair" HorizontalAlignment="Left" Margin="1010,482,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="68" Width="268" Background="White" Foreground="Black" FontSize="24" Click="RepairButton_Click"/>
         <Button x:Name="DoneButton" Content="Done Shopping!" HorizontalAlignment="Left" Margin="1007,610,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="68" Width="268" Background="White" Foreground="Black" FontSize="24" Click="DoneButton_Click"/>
         <TextBlock x:Name="ShipInfo" HorizontalAlignment="Left" Margin="570,185,0,0" TextWrapping="Wrap" Text="asddw" VerticalAlignment="Top" Height="375" Width="320" FontSize="22"/>
 

@@ -39,6 +39,24 @@ namespace SpaceTraders
             {
                 enterShipyard.IsEnabled = false;
             }
+
+            if (Game.Instance.Player.Ship.MaxFuel > Game.Instance.Player.Ship.CurrentFuel )
+            {
+                Refuel.IsEnabled = true;
+            }
+            else
+            {
+                Refuel.IsEnabled = false;
+            }
+
+            if (Game.Instance.Player.Ship.HullStrength > Game.Instance.Player.Ship.CurrentHullStrength)
+            {
+                Repair.IsEnabled = true;
+            }
+            else
+            {
+                Repair.IsEnabled = false;
+            }
         }
 
         private void ToMap_Click(object sender, RoutedEventArgs e)
@@ -64,6 +82,13 @@ namespace SpaceTraders
             Fuel.Text = "Fuel: " + player.Ship.CurrentFuel;
             Money.Text = "Money: " + player.Money;
             Refuel.Content = "Refuel: " + 0 + " cr";
+        }
+
+        private void Repair_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Implement repair functionality
+
+            Repair.IsEnabled = false;
         }
     }
 }

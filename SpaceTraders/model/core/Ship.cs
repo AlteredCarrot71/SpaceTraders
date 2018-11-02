@@ -76,7 +76,7 @@ namespace SpaceTraders
         }
 
         // used with CargoGadget.
-        public void setCargo(PresizedList<Good> newCargo)
+        public void setCargo(List<Good> newCargo)
         {
             Cargo = newCargo;
         }

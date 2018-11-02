@@ -26,15 +26,6 @@ namespace SpaceTraders
 
             ShipCombo.ItemsSource = options;
             PlayerMoney.Text = Game.Instance.Player.Money.ToString();
-
-            if ( Game.Instance.Player.Ship.HullStrength > Game.Instance.Player.Ship.CurrentHullStrength )
-            {
-                RepairButton.IsEnabled = true;
-            }
-            else
-            {
-                RepairButton.IsEnabled = false;
-            }
         }
 
         private void ShipCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,10 +50,6 @@ namespace SpaceTraders
         }
 
         private void TradeButton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void RepairButton_Click(object sender, RoutedEventArgs e)
         {
         }
     }

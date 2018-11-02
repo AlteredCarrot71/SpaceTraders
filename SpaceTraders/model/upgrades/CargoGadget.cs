@@ -50,7 +50,7 @@ namespace SpaceTraders
             if (!effectApplied)
             {
                 effectApplied = true;
-                //TODO add cargo room to ship
+                //TODO: add cargo room to ship
                 IList<Good> currentCargo = ship.getCargo();
                 PresizedList<Good> bigger =
                                 new PresizedList<Good>(ship.cargoSize() + additionalSize);

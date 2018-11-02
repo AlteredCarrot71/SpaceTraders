@@ -1,4 +1,5 @@
-
+using System;
+using System.Collections.Generic;
 
 /**
  * The abstraction of the Command design pattern. has an effect and it at can
@@ -8,14 +9,9 @@
  *
  */
 
-using System;
-using System.Collections.Generic;
-
-public abstract class AbstractCommand : ICommandPattern {
-
-    /**
-     * applyEffect := true, removeEffect := false.
-     */
+public abstract class AbstractCommand : ICommandPattern
+{
+    // applyEffect := true, removeEffect := false.
     private Stack<Boolean> stack = new Stack<Boolean>();
 
     /**
@@ -23,8 +19,8 @@ public abstract class AbstractCommand : ICommandPattern {
      *
      * @return true if effect was applied, false otherwise
      */
-    
-    public bool ApplyEffect() {
+    public bool ApplyEffect()
+    {
         if (Effect()) {
             stack.Push(true);
             return true;
@@ -37,10 +33,12 @@ public abstract class AbstractCommand : ICommandPattern {
      *
      * @return true if effect was undone, false otherwise
      */
-    
-    public bool RemoveEffect() {
-        if (stack.Peek()) {
-            if (Uneffect()) {
+    public bool RemoveEffect()
+    {
+        if (stack.Peek())
+        {
+            if (Uneffect())
+            {
                 return stack.Pop(); //we know top of stack is 'true'
             }
         }

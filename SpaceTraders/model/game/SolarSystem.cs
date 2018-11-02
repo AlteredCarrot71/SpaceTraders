@@ -29,7 +29,7 @@ namespace SpaceTraders
             return Position.Distance(other.Position);
         }
 
-        public String toString()
+        public String GetInfo()
         {
             StringBuilder planetString = new StringBuilder();
 

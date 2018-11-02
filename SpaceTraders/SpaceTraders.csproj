@@ -108,6 +108,7 @@
     <Compile Include="MarketScreen.xaml.cs">
       <DependentUpon>MarketScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="model\commerce\Good.cs" />
     <Compile Include="model\commerce\Goods.cs" />
     <Compile Include="model\commerce\Marketplace.cs" />
     <Compile Include="model\commerce\Shipyard.cs" />

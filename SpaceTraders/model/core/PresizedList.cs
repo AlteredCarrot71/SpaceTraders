@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+
 /**
  * This class is used as backing data for most items in a Ship. It is
  * essentially an array with the nitty-gritty abstracted into add(T) and
@@ -13,16 +13,12 @@ using System.Collections.Generic;
  * @param <T>
  */
 
-public class PresizedList<T> : AbstractPresizedList<T> {
-
-    /**
-     * Backing array.
-     */
+public class PresizedList<T> : AbstractPresizedList<T>
+{
+    // Backing array.
     private T[] backing;
 
-    /**
-     * Size of list.
-     */
+    // Size of list.
     private int size;
 
     /**
@@ -41,7 +37,6 @@ public class PresizedList<T> : AbstractPresizedList<T> {
      *
      * @return max quantity of elements
      */
-    
     public override int maxSize() {
         return backing.Length;
     }
@@ -51,22 +46,18 @@ public class PresizedList<T> : AbstractPresizedList<T> {
      *
      * @return true iff the list has room
      */
-    
     public override bool hasRoom() {
         return size < backing.Length;
     }
 
-    
     public int Size {
         get { return size; }
     }
-
     
     public bool isEmpty() {
         return size == 0;
     }
 
-    
     public new bool Add(T item) {
         if (item == null) 
         {
@@ -80,7 +71,6 @@ public class PresizedList<T> : AbstractPresizedList<T> {
         size++;
         return true;
     }
-
 
     /**
      * Looks for the item in the list and removes it.
@@ -126,7 +116,6 @@ public class PresizedList<T> : AbstractPresizedList<T> {
         }
         return retval != null;
     }
-
     
     public T get(int index) {
         /**
