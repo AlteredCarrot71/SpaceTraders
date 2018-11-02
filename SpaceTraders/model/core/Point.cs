@@ -3,7 +3,6 @@ using System;
 // Represents a coordinate position for a SolarSystem.
 public class Point
 {
-
     public int Xpos { get; set; }
     public int Ypos { get; set; }
 

@@ -38,7 +38,6 @@ namespace SpaceTraders
             game = Game.Instance;
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
-            
         }
 
         /// <summary>

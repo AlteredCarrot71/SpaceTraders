@@ -3,7 +3,6 @@ namespace SpaceTraders
 {
     public class CloakingGadget : AbstractGadget
     {
-
         // Constructor for a cloaking gadget.
         public CloakingGadget(Ship ship)
             : base("Stealth Generator", ship)

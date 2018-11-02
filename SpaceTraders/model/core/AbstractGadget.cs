@@ -13,7 +13,6 @@ namespace SpaceTraders
      */
     public abstract class AbstractGadget : AbstractCommand, HasPrice
     {
-
         /**
          * name of the gadget.
          */

@@ -6,8 +6,8 @@
  *
  */
 
- public interface ICommandPattern {
-
+public interface ICommandPattern
+{
     /**
      * Applies the object's effect.
      *

@@ -81,8 +81,8 @@ public class PresizedList<T> : AbstractPresizedList<T>
      * @throws IllegalArgumentException
      *         if item is null
      */
-    private T removeHelper(T item) {
-        
+    private T removeHelper(T item)
+    {
         if (item == null) {
             throw new ArgumentException("Items cannot be null");
         }

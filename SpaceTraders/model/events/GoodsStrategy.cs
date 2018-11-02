@@ -33,7 +33,6 @@ namespace SpaceTraders
 
             if (rand.NextDouble() > .5)
             {
-
                 List<Good> items = Goods.Values;
                 Good toAdd = items[rand.Next(items.Count)];
 
@@ -67,7 +66,5 @@ namespace SpaceTraders
                 }
             }
         }
-
     }
-
 }
