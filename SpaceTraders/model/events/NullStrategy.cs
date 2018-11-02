@@ -11,11 +11,9 @@ using System;
 
 namespace SpaceTraders
 {
-    public class NullStrategy : EventStrategy
+    public class NullStrategy : IEventStrategy
     {
-
-
-        public String execute(Player p)
+        public String Execute(Player p)
         {
             return "";
         }

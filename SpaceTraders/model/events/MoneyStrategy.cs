@@ -9,7 +9,7 @@ using System;
 
 namespace SpaceTraders
 {
-    public class MoneyStrategy : EventStrategy
+    public class MoneyStrategy : IEventStrategy
     {
         /**
          * Phrases for gaining money.
@@ -31,7 +31,7 @@ namespace SpaceTraders
                 "Unexpected taxes in this market cost you {0} credits!",
                 "You gave {0} credits to a crying orphan!"};
 
-        public String execute(Player player)
+        public String Execute(Player player)
         {
             Random rand = new Random();
             int money = rand.Next((player.Money * 2) + 1);

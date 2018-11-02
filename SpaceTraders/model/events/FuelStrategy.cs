@@ -1,27 +1,16 @@
 using System;
 
-
 namespace SpaceTraders
 {
-    /**
-     * Strategy for handling fuel events.
-     *
-     * @author ngraves3
-     *
-     */
-    public class FuelStrategy : EventStrategy
+    // Strategy for handling fuel events.
+    public class FuelStrategy : IEventStrategy
     {
-
-        /**
-         * Phrases for losing fuel.
-         */
+        // Phrases for losing fuel.
         private String[] losePhrases = {"{0} units of your fuel leaked out!",
                 "A thief stole {0} units of fuel!"}; //i'm all out of ideas for phrases now
 
-
-        public String execute(Player player)
+        public String Execute(Player player)
         {
-
             Random rand = new Random();
 
             int fuelLeakage = rand.Next(player.Ship.CurrentFuel + 1);

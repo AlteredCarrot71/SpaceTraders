@@ -13,13 +13,8 @@ using Windows.UI.Xaml.Shapes;
 
 namespace SpaceTraders
 {
-
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MapScreen : Page
     {
-
         private ISet<SolarSystem> universe;
         private ColorList colorList = new ColorList();
         private Planet curPlanet;
@@ -76,14 +71,13 @@ namespace SpaceTraders
                 mapPane.addEventHandler(MouseEvent.MOUSE_CLICKED, drawLine);
                 mapPane.addEventHandler(MouseEvent.MOUSE_CLICKED, handleLabels);
                 circle.setUserData(s);
-                 */
+                */
                 MapPane.Children.Add(cor);
             }
         }
 
         private void CorOnTapped(object sender, TappedRoutedEventArgs tappedRoutedEventArgs)
         {
-
             Ellipse clickedCircle = (Ellipse) sender;
             currentLine.X2 = clickedCircle.Clip.Rect.X + (currentCircle.Clip.Rect.Width/2);
             currentLine.Y2 = clickedCircle.Clip.Rect.Y + (currentCircle.Clip.Rect.Height/2);
@@ -94,11 +88,11 @@ namespace SpaceTraders
                 Xpos = (int)((int)clickedCircle.Clip.Rect.X + (currentCircle.Clip.Rect.Width / 2)),
                 Ypos = (int)((int)clickedCircle.Clip.Rect.Y + (currentCircle.Clip.Rect.Height / 2))
             };
+
             /*
             currentLine.X1 = currentCircle.Clip.Rect.X + (currentCircle.Clip.Rect.Width/2);
             currentLine.Y1 = currentCircle.Clip.Rect.Y + (currentCircle.Clip.Rect.Height/2);
-             */
-            
+            */
             
             currentCircle.Stroke = new SolidColorBrush(colorList.ElementAt(random.Next()));
             currentCircle = clickedCircle;
@@ -110,7 +104,7 @@ namespace SpaceTraders
         {
             Game.Instance.Player.Ship.CurrentFuel -= travelDistance;
             Game.Instance.CurrentPlanet = Game.Instance.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString()));
-            RandomEvent randomEvent = EventFactory.createRandomEvent(Game.Instance.Player);
+            RandomEvent randomEvent = new RandomEvent(Game.Instance.Player);
             String even = randomEvent.Event();
             if (even.Length != 0) {
                 MessageDialog c = new MessageDialog(even, "Something has happened...");

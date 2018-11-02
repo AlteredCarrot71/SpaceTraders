@@ -130,7 +130,6 @@
     <Compile Include="model\core\TechLevel.cs" />
     <Compile Include="model\game\Universe.cs" />
     <Compile Include="model\core\Utilities.cs" />
-    <Compile Include="model\events\EventFactory.cs" />
     <Compile Include="model\events\EventStrategy.cs" />
     <Compile Include="model\events\FuelStrategy.cs" />
     <Compile Include="model\events\GoodsStrategy.cs" />

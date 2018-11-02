@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace SpaceTraders
 {
-    public class GoodsStrategy : EventStrategy
+    public class GoodsStrategy : IEventStrategy
     {
         /**
          * Phrases for losing an item.
@@ -27,7 +27,7 @@ namespace SpaceTraders
                 "A retiring trader gave you his last {0}!", "{0} fell from the sky into your hands!",
                 "A shady looking man gave you his {0} and ran away!", "You found free {0} under a bush!"};
 
-        public String execute(Player player)
+        public String Execute(Player player)
         {
             Random rand = new Random();
 
