@@ -113,6 +113,7 @@
     <Compile Include="model\commerce\Marketplace.cs" />
     <Compile Include="model\commerce\Shipyard.cs" />
     <Compile Include="model\core\AbstractPresizedList.cs" />
+    <Compile Include="model\core\ColorList.cs" />
     <Compile Include="model\core\Shields.cs" />
     <Compile Include="model\core\Ships.cs" />
     <Compile Include="model\core\Weapons.cs" />
