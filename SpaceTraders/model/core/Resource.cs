@@ -1,4 +1,3 @@
-
 /**
  * Enum of possible resources that a planet can have. These will contribute to
  * the prices a trader can get for his goods on a specific.
@@ -6,57 +5,45 @@
  * @author Nick
  *
  */
-public enum Resource {
-    /**
-     * None resource.
-     */
+
+ public enum Resource
+{
+    // None resource.
     NONE,
-    /**
-     * Mineral resource.
-     */
+
+    // Mineral resource.
     MINERAL_RICH,
-    /**
-     * Lesser mineral resource.
-     */
+
+    // Lesser mineral resource.
     MINERAL_POOR,
-    /**
-     * No resources.
-     */
+
+    // No resources.
     DESERT,
-    /**
-     * Water resource.
-     */
+
+    // Water resource.
     WATER,
-    /**
-     * Fertile resource.
-     */
+
+    // Fertile resource.
     RICH_SOIL,
-    /**
-     * Lesser fertility resource.
-     */
+
+    // Lesser fertility resource.
     POOR_SOIL,
-    /**
-     * Fauna resource.
-     */
+
+    // Fauna resource.
     RICH_FAUNA,
-    /**
-     * No life resource.
-     */
+
+    // No life resource.
     LIFELESS,
-    /**
-     * Weird mushroom resource.
-     */
+
+    // Weird mushroom resource.
     MUSHROOMS,
-    /**
-     * "herbs" resource.
-     */
+
+    // "herbs" resource.
     HERBS,
-    /**
-     * How is art a resource?
-     */
+
+    // How is art a resource?
     ARTISTIC,
-    /**
-     * War is a resource I guess.
-     */
+
+    // War is a resource I guess.
     WARLIKE
 }

@@ -2,15 +2,9 @@ using System;
 
 namespace SpaceTraders
 {
-    /**
-     * The interface for events applying the strategy pattern. Each behavior does some different effect
-     *
-     * @author ngraves3
-     *
-     */
+    // The interface for events applying the strategy pattern. Each behavior does some different effect
     public interface EventStrategy
     {
-
         /**
          * Applies the given action to the player.
          *
@@ -19,6 +13,5 @@ namespace SpaceTraders
          * @return the message associated with the outcome of the event
          */
         String execute(Player p);
-
     }
 }

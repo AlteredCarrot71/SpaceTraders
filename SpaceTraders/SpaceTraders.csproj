@@ -112,18 +112,21 @@
     <Compile Include="model\commerce\Marketplace.cs" />
     <Compile Include="model\commerce\Shipyard.cs" />
     <Compile Include="model\core\AbstractPresizedList.cs" />
-    <Compile Include="model\core\GameInstance.cs" />
+    <Compile Include="model\core\Shields.cs" />
+    <Compile Include="model\core\Ships.cs" />
+    <Compile Include="model\core\Weapons.cs" />
+    <Compile Include="model\game\GameInstance.cs" />
     <Compile Include="model\core\HasSkills.cs" />
-    <Compile Include="model\core\Planet.cs" />
-    <Compile Include="model\core\Player.cs" />
+    <Compile Include="model\game\Planet.cs" />
+    <Compile Include="model\game\Player.cs" />
     <Compile Include="model\core\Point.cs" />
     <Compile Include="model\core\PresizedList.cs" />
     <Compile Include="model\core\Resource.cs" />
     <Compile Include="model\core\Ship.cs" />
     <Compile Include="model\core\SkillSet.cs" />
-    <Compile Include="model\core\SolarSystem.cs" />
+    <Compile Include="model\game\SolarSystem.cs" />
     <Compile Include="model\core\TechLevel.cs" />
-    <Compile Include="model\core\Universe.cs" />
+    <Compile Include="model\game\Universe.cs" />
     <Compile Include="model\core\Utilities.cs" />
     <Compile Include="model\events\EventFactory.cs" />
     <Compile Include="model\events\EventStrategy.cs" />
@@ -133,15 +136,15 @@
     <Compile Include="model\events\NullStrategy.cs" />
     <Compile Include="model\events\RandomEvent.cs" />
     <Compile Include="model\upgrades\AbstractCommand.cs" />
-    <Compile Include="model\upgrades\AbstractGadget.cs" />
+    <Compile Include="model\core\AbstractGadget.cs" />
     <Compile Include="model\upgrades\CargoGadget.cs" />
     <Compile Include="model\upgrades\CloakingGadget.cs" />
     <Compile Include="model\upgrades\CommandPattern.cs" />
-    <Compile Include="model\upgrades\Crew.cs" />
+    <Compile Include="model\core\Crew.cs" />
     <Compile Include="model\upgrades\FuelGadget.cs" />
-    <Compile Include="model\upgrades\HasPrice.cs" />
-    <Compile Include="model\upgrades\Shield.cs" />
-    <Compile Include="model\upgrades\Weapon.cs" />
+    <Compile Include="model\core\HasPrice.cs" />
+    <Compile Include="model\core\Shield.cs" />
+    <Compile Include="model\core\Weapon.cs" />
     <Compile Include="PlanetScreen.xaml.cs">
       <DependentUpon>PlanetScreen.xaml</DependentUpon>
     </Compile>

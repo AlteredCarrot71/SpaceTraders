@@ -1,7 +1,7 @@
 // This class holds all the specs for skills in a Player/Crew.
 
-public class SkillSet {
-
+public class SkillSet
+{
     // Skills
     public int Trading { get; set; }
     public int Fighting { get; set; }
@@ -13,8 +13,8 @@ public class SkillSet {
     public SkillSet() { }
 
     // Returns the total number of skill points represented by this set of skills.
-    public int TotalSkill() {
+    public int TotalSkill()
+    {
         return Trading + Fighting + Engineering + Piloting + Investing;
     }
-
 }

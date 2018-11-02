@@ -1,4 +1,4 @@
-
+using System;
 
 /**
  * A factory class for creating RandomEvents.
@@ -7,24 +7,14 @@
  *
  */
 
-using System;
-
 namespace SpaceTraders
 {
     public class EventFactory
     {
-
-        /**
-         * The chance that an actual event is generated and not a NullStrategy event.
-         */
+        // The chance that an actual event is generated and not a NullStrategy event.
         private static double eventChance = 0.10;
 
-        /**
-         * The differnt types of events.
-         *
-         * @author ngraves3
-         *
-         */
+        // The differnt types of events.
         public enum EventType
         {
             NULL_EVENT, FUEL_EVENT, MONEY_EVENT, GOODS_EVENT
@@ -37,12 +27,10 @@ namespace SpaceTraders
          */
         private static EventType getNonNullEvent()
         {
-
             int index = new Random().Next(Enum.GetValues(typeof(EventType)).Length - 1) + 1;
 
             return (EventType)index;
         }
-
 
         /**
          * Creates a truly random RandomEvent.
@@ -53,7 +41,6 @@ namespace SpaceTraders
          */
         public static RandomEvent createRandomEvent(Player player)
         {
-
             EventType et = (new Random().NextDouble() <= eventChance)
                             ? getNonNullEvent() : EventType.NULL_EVENT;
 
@@ -69,7 +56,6 @@ namespace SpaceTraders
          */
         public static RandomEvent createEvent(Player player, EventType eventType)
         {
-
             EventStrategy strategy;
 
             switch (eventType)
@@ -93,7 +79,5 @@ namespace SpaceTraders
 
             return new RandomEvent(player, strategy);
         }
-
-
     }
 }

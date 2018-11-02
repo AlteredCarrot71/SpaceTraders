@@ -1,14 +1,14 @@
 using System;
 
-
 /**
  * Class containing lots of useful methods for various things that don't really belong in a class.
  *
  * @author ngraves3
  *
  */
-public class Utilities {
 
+public class Utilities
+{
     /**
      * Capitalizes a string.
      *
@@ -30,5 +30,4 @@ public class Utilities {
 
         return str[0] + str.Substring(1, str.Length).ToLower();
     }
-
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace SpaceTraders
 {
@@ -22,13 +22,5 @@ namespace SpaceTraders
             Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Weapon/Military/Name"),
             Price = 1500
         };
-    }
-
-    public class Weapon
-    {
-        public String Name { get; set; }
-        public int Price { get; set; }
-
-        public Weapon() { }
     }
 }
