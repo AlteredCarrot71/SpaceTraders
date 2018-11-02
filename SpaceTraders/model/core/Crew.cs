@@ -1,6 +1,6 @@
 // This class is a Crew member on a ship. A Crew member contributes skills to the player's overall total
 
-public class Crew
+public class Crew : HasPrice
 {
     // The crew member's skills.
     public SkillSet Skills { get; set; }
