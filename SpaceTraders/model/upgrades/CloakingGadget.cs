@@ -8,7 +8,6 @@ namespace SpaceTraders
         public CloakingGadget(Ship ship)
             : base("Stealth Generator", ship)
         {
-            ;
         }
 
         public override int getPrice()

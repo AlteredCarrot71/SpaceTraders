@@ -1,4 +1,4 @@
-
+using System.Collections.Generic;
 
 /**
  * This class represents an object that adds extra cargo to a Ship. It uses the
@@ -8,16 +8,11 @@
  *
  */
 
-using System.Collections.Generic;
-
 namespace SpaceTraders
 {
     public class CargoGadget : AbstractGadget
     {
-
-        /**
-         * The extra size added.
-         */
+        // The extra size added.
         private int additionalSize;
 
         /**
@@ -42,16 +37,13 @@ namespace SpaceTraders
          */
         public CargoGadget(Ship ship) : this(ship, 5)
         {
-            ;
         }
-
 
         public override int getPrice()
         {
             // arbitrary number
             return 1000;
         }
-
 
         protected override bool Effect()
         {
@@ -71,9 +63,7 @@ namespace SpaceTraders
             }
 
             return false;
-
         }
-
 
         protected override bool Uneffect()
         {
@@ -89,14 +79,10 @@ namespace SpaceTraders
                         smaller.Add(cargo);
                     }
 
-                    /*
-                     * Apply effect
-                     */
-
+                    // Apply effect
                     ship.setCargo(smaller);
                     effectApplied = false;
                     return true;
-
                 }
                 else
                 {
@@ -106,8 +92,6 @@ namespace SpaceTraders
             }
 
             return false;
-
         }
-
     }
 }

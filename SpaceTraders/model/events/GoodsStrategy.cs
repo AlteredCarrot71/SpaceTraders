@@ -1,4 +1,5 @@
-
+using System;
+using System.Collections.Generic;
 
 /**
  * Private class to handle events involving cargo.
@@ -7,14 +8,10 @@
  *
  */
 
-using System;
-using System.Collections.Generic;
-
 namespace SpaceTraders
 {
     public class GoodsStrategy : EventStrategy
     {
-
         /**
          * Phrases for losing an item.
          */
@@ -30,11 +27,8 @@ namespace SpaceTraders
                 "A retiring trader gave you his last {0}!", "{0} fell from the sky into your hands!",
                 "A shady looking man gave you his {0} and ran away!", "You found free {0} under a bush!"};
 
-
-
         public String execute(Player player)
         {
-
             Random rand = new Random();
 
             if (rand.NextDouble() > .5)

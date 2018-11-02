@@ -68,7 +68,7 @@ public class PresizedList<T> : AbstractPresizedList<T> {
 
     
     public new bool Add(T item) {
-        if (null == item) 
+        if (item == null) 
         {
             throw new ArgumentException("Items can't be null");
         }

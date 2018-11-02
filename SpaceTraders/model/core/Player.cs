@@ -25,27 +25,27 @@ namespace SpaceTraders
         public IList<HasPrice> GetUpgrades()
         {
             IList<HasPrice> upgrades = new List<HasPrice>();
-
+        
             foreach (HasPrice weapon in Ship.getWeapons())
             {
                 upgrades.Add(weapon);
             }
-
+        
             foreach (HasPrice shield in Ship.getShields())
             {
                 upgrades.Add(shield);
             }
-
+        
             foreach (Crew crew in Ship.getCrew())
             {
                 upgrades.Add(crew);
             }
-
+        
             foreach (AbstractGadget gadget in Ship.getGadgets())
             {
                 upgrades.Add(gadget);
             }
-
+        
             return upgrades;
         }
  

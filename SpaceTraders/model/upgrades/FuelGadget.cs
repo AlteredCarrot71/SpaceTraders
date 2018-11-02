@@ -1,3 +1,4 @@
+using System;
 
 /**
  * This class is a gadget that reduces fuel cost for the ship.
@@ -5,8 +6,6 @@
  * @author ngraves3
  *
  */
-
-using System;
 
 namespace SpaceTraders
 {

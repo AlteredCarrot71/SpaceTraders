@@ -1,4 +1,4 @@
-
+using System;
 
 /**
  * Private class to handle money events.
@@ -7,13 +7,10 @@
  *
  */
 
-using System;
-
 namespace SpaceTraders
 {
     public class MoneyStrategy : EventStrategy
     {
-
         /**
          * Phrases for gaining money.
          */
@@ -34,11 +31,10 @@ namespace SpaceTraders
                 "Unexpected taxes in this market cost you {0} credits!",
                 "You gave {0} credits to a crying orphan!"};
 
-
         public String execute(Player player)
         {
             Random rand = new Random();
-            int money = rand.Next(player.Money * 2 + 1);
+            int money = rand.Next((player.Money * 2) + 1);
             money -= player.Money;
 
             if (money == 0)
@@ -58,5 +54,4 @@ namespace SpaceTraders
             }
         }
     }
-
 }

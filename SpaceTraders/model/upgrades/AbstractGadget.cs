@@ -47,7 +47,6 @@ namespace SpaceTraders
 
         protected AbstractGadget()
         {
-            ;
         }
 
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SpaceTraders
 {
-    public class Goods
+    public static class Goods
     {
         // values for Water good.
         public static readonly Good WATER = new Good
@@ -177,7 +177,6 @@ namespace SpaceTraders
             TechLevel mainProducerLocal, int basePriceLocal, int priceIncreasePerLevelLocal,
             int varianceLocal, int minSpacePriceLocal, int maxSpacePriceLocal, String aname)
         {
-
             MinTechToProduce = minTechProduceLocal;
             MinTechToUse = minTechToUseLocal;
             MainProducer = mainProducerLocal;
