@@ -30,8 +30,8 @@ namespace SpaceTraders
         {
             this.InitializeComponent();
             curPlanet = Game.Instance.CurrentPlanet;
-            universe = Game.Instance.getSolarSystems();
-            playerLocation = Game.Instance.getCurrentSolarSystem().Position;
+            universe = Game.Instance.GetSolarSystems();
+            playerLocation = Game.Instance.GetCurrentSolarSystem().Position;
             CurrentFuel.Text = "Current Fuel: " + Game.Instance.Player.Ship.CurrentFuel;
             currentLine = new Line
             {

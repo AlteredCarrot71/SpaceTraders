@@ -72,13 +72,13 @@ namespace SpaceTraders
             "Zalkon", "Zuul"};
 
         // Creates a universe with number of planets equal to the length of our default list of planet names.
-        public void createUniverse()
+        public void CreateUniverse()
         {
-            createUniverse(Math.Min(planetNames.Length, solarSystemNames.Length) - 1);
+            CreateUniverse(Math.Min(planetNames.Length, solarSystemNames.Length) - 1);
         }
 
         // create universe with specified number of planets.
-        public void createUniverse(int number)
+        public void CreateUniverse(int number)
         {
             Planets = new List<Planet>();
 
@@ -118,49 +118,30 @@ namespace SpaceTraders
                 if (startingLocation == i)
                 {
                     CurrentPlanet = planet;
-                    setCurrentSolarSystem(solarsystem);
+                    SetCurrentSolarSystem(solarsystem);
                 }
             }
         }
 
         // Returns the solar system the player is in.
-        public SolarSystem getCurrentSolarSystem()
+        public SolarSystem GetCurrentSolarSystem()
         {
             return currentSolarSystem;
         }
 
         // Sets the current solar system to whatever is passed in.
-        public void setCurrentSolarSystem(SolarSystem destination)
+        public void SetCurrentSolarSystem(SolarSystem destination)
         {
             currentSolarSystem = destination;
         }
 
         // Returns a Set of the solar systems.
-        public ISet<SolarSystem> getSolarSystems()
+        public ISet<SolarSystem> GetSolarSystems()
         {
             return solarSystems;
         }
 
-        public String toString()
-        {
-
-            StringBuilder gameString = new StringBuilder();
-            gameString.Append("SOLAR: ");
-
-            foreach (SolarSystem s in solarSystems)
-            {
-                gameString.Append(" ").Append(s.GetInfo());
-            }
-
-            String term = "\n\n";
-            gameString.Append(term).Append(" Current Player: ").Append(Player.GetInfo()).Append(term);
-            gameString.Append("Current Planet: ").Append(CurrentPlanet.GetInfo()).Append(term);
-            gameString.Append("Current SolarSystem: ").Append(currentSolarSystem.GetInfo()).Append(term);
-
-            return gameString.ToString();
-        }
-
-        public void SaveState()
+        public static void SaveState()
         {
             //string path = LocalFolder.Path.ToString() + "/savegame.xml";
             //FileStream fileStream = new FileStream(path, FileMode.Create);
@@ -175,7 +156,7 @@ namespace SpaceTraders
             //serializer.WriteObject(writer, Game.Instance);
         }
 
-        public void LoadState()
+        public static void LoadState()
         {
             //string path = LocalFolder.Path.ToString() + "/" + Game.Instance.Player.Name.ToString() + ".xml";
             //using (Stream stream = new MemoryStream())

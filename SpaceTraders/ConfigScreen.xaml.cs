@@ -50,7 +50,7 @@ namespace SpaceTraders
                                             Money = 10000,
                                             Ship = Ships.Gnat
                                         };
-            Game.Instance.createUniverse();
+            Game.Instance.CreateUniverse();
 
             Game.Instance.Player.Ship.IsVisible = false;
             Game.Instance.Player.Ship.CurrentFuel = Ships.Gnat.MaxFuel;

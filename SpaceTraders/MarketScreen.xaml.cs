@@ -55,7 +55,7 @@ namespace SpaceTraders
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            Game.Instance.SaveState();
+            //Game.Instance.SaveState();
             this.Frame.Navigate(typeof(PlanetScreen));
         }
 
