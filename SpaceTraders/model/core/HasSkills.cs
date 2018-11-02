@@ -3,20 +3,20 @@ namespace SpaceTraders
 {
     public interface IHasSkills
     {
-        // Returns trading skill.
-        int TradeSkill();
+        // Trading skill.
+        int TradeSkill { get; set; }
 
-        // Returns engineering skill.
-        int EngineeringSkill();
+        // Engineering skill.
+        int EngineeringSkill { get; set; }
 
-        // Returns piloting skill.
-        int PilotSkill();
+        // Piloting skill.
+        int PilotSkill { get; set; }
 
-        // Returns fighting skill.
-        int FightingSkill();
+        // Fighting skill.
+        int FightingSkill { get; set; }
 
-        // Returns investing skill.
+        // Investing skill.
         //TODO: what is investing skill? and we need that?
-        int InvestingSkill();
+        int InvestingSkill { get; set; }
     }
 }

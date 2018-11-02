@@ -125,7 +125,6 @@
     <Compile Include="model\core\PresizedList.cs" />
     <Compile Include="model\core\Resource.cs" />
     <Compile Include="model\core\Ship.cs" />
-    <Compile Include="model\core\SkillSet.cs" />
     <Compile Include="model\game\SolarSystem.cs" />
     <Compile Include="model\core\TechLevel.cs" />
     <Compile Include="model\game\Universe.cs" />
@@ -141,7 +140,7 @@
     <Compile Include="model\upgrades\CargoGadget.cs" />
     <Compile Include="model\upgrades\CloakingGadget.cs" />
     <Compile Include="model\upgrades\CommandPattern.cs" />
-    <Compile Include="model\core\Crew.cs" />
+    <Compile Include="model\game\CrewMember.cs" />
     <Compile Include="model\upgrades\FuelGadget.cs" />
     <Compile Include="model\core\HasPrice.cs" />
     <Compile Include="model\core\Shield.cs" />

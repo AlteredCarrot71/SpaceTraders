@@ -48,11 +48,6 @@ namespace SpaceTraders
         {
         }
 
-        public String toString()
-        {
-            return Utilities.capitalize(name);
-        }
-
         public abstract int getPrice();
     }
 }

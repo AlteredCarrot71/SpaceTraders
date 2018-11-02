@@ -1,5 +1,4 @@
-﻿using System;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 
@@ -39,14 +38,11 @@ namespace SpaceTraders
             Game.Instance.Player = new Player
                                         {
                                             Name = PlayerName.Text,
-                                            Skills = new SkillSet
-                                                            {
-                                                                Trading = (int)TradeSkill.Value,
-                                                                Fighting = (int)FightSkill.Value,
-                                                                Engineering = (int)EngSkill.Value,
-                                                                Piloting = (int)PilotSkill.Value,
-                                                                Investing = (int)InvestSkill.Value
-                                                            },
+                                            TradeSkill = (int)TradeSkill.Value,
+                                            FightingSkill = (int)FightSkill.Value,
+                                            EngineeringSkill = (int)EngSkill.Value,
+                                            PilotSkill = (int)PilotSkill.Value,
+                                            InvestingSkill = (int)InvestSkill.Value,
                                             Money = 10000,
                                             Ship = Ships.Gnat
                                         };

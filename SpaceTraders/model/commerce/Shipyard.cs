@@ -24,10 +24,7 @@ namespace SpaceTraders
                 total -= marketplace.GetPrice(cargo);
             }
 
-            foreach (HasPrice upgrade in Game.Instance.Player.GetUpgrades())
-            {
-                total -= upgrade.getPrice();
-            }
+            //TODO: implement gadgets
 
             total -= Game.Instance.Player.Ship.Price;
 

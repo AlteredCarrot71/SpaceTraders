@@ -44,7 +44,7 @@ namespace SpaceTraders
         public Planet CurrentPlanet { get; set; }
 
         // Players current location.
-        private SolarSystem currentSolarSystem;
+        public SolarSystem CurrentSolarSystem { get; set; }
         
         // All the planet names. May or may not use all of them.
         private String[] planetNames = {"Acamar", "Adahn", "Aldea", "Andevian", "Antedi", "Balosnee",
@@ -118,21 +118,9 @@ namespace SpaceTraders
                 if (startingLocation == i)
                 {
                     CurrentPlanet = planet;
-                    SetCurrentSolarSystem(solarsystem);
+                    CurrentSolarSystem = solarsystem;
                 }
             }
-        }
-
-        // Returns the solar system the player is in.
-        public SolarSystem GetCurrentSolarSystem()
-        {
-            return currentSolarSystem;
-        }
-
-        // Sets the current solar system to whatever is passed in.
-        public void SetCurrentSolarSystem(SolarSystem destination)
-        {
-            currentSolarSystem = destination;
         }
 
         // Returns a Set of the solar systems.

@@ -25,7 +25,7 @@ namespace SpaceTraders
         public List<AbstractGadget> Gadgets { get; set; }
 
         // Ship crew.
-        public List<Crew> Crew { get; set; }
+        public List<CrewMember> Crew { get; set; }
 
         // Maximum fuel this ship can hold.
         public int MaxFuel { get; set; }
@@ -124,7 +124,7 @@ namespace SpaceTraders
         }
 
         // Adds a crew member to the ship.
-        public bool addCrew(Crew member)
+        public bool addCrew(CrewMember member)
         {
             if (Crew.Count < Crew.Capacity)
             {
@@ -136,7 +136,7 @@ namespace SpaceTraders
         }
 
         // Removes a crew member from the ship.
-        public bool removeCrew(Crew member)
+        public bool removeCrew(CrewMember member)
         {
             return Crew.Remove(member);
         }
@@ -226,7 +226,7 @@ namespace SpaceTraders
         }
 
         // Returns a list of the ship's crew.
-        public IList<Crew> getCrew()
+        public IList<CrewMember> getCrew()
         {
             return Crew;
          }

@@ -6,28 +6,29 @@ using System;
  * @author ngraves3
  *
  */
-
-public class Utilities
+namespace SpaceTraders
 {
-    /**
-     * Capitalizes a string.
-     *
-     * @param str
-     *        the string to capitalize
-     * @return the capitalized string; null if input is null; empty string if string is empty
-     */
-    public static String capitalize(String str) {
-        if (str == null) {
-            return null;
+    public static class Utilities
+    {
+        // Capitalizes a string.
+        public static String Capitalize(String str)
+        {
+            if (str == null)
+            {
+                return null;
+            }
+            else if (str.Length == 0)
+            {
+                return str;
+            }
+            else if (str.Length == 1)
+            {
+                return str.ToUpper();
+            }
+            else
+            {
+                return str[0] + str.Substring(1, str.Length).ToLower();
+            }
         }
-
-        if (str.Length == 0) {
-            return str;
-        }
-        if (str.Length == 1) {
-            return str.ToUpper();
-        }
-
-        return str[0] + str.Substring(1, str.Length).ToLower();
     }
 }

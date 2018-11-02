@@ -31,7 +31,7 @@ namespace SpaceTraders
             this.InitializeComponent();
             curPlanet = Game.Instance.CurrentPlanet;
             universe = Game.Instance.GetSolarSystems();
-            playerLocation = Game.Instance.GetCurrentSolarSystem().Position;
+            playerLocation = Game.Instance.CurrentSolarSystem.Position;
             CurrentFuel.Text = "Current Fuel: " + Game.Instance.Player.Ship.CurrentFuel;
             currentLine = new Line
             {
@@ -45,6 +45,7 @@ namespace SpaceTraders
         }
 
         // Creates the map for the map screen.
+
         private void CreateMap()
         {
             foreach (SolarSystem s in universe)
@@ -67,7 +68,7 @@ namespace SpaceTraders
                 };
                 cor.Tapped += CorOnTapped;
                 /*
-                circle.addEventHandler(MouseEvent.MOUSE_CLICKED, drawClickedCircle);
+                 circle.addEventHandler(MouseEvent.MOUSE_CLICKED, drawClickedCircle);
                 mapPane.addEventHandler(MouseEvent.MOUSE_CLICKED, drawLine);
                 mapPane.addEventHandler(MouseEvent.MOUSE_CLICKED, handleLabels);
                 circle.setUserData(s);

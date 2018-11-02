@@ -63,7 +63,6 @@ namespace SpaceTraders
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame
                 {
-                    // TODO: change this value to a cache size that is appropriate for your application
                     CacheSize = 1
                 };
 

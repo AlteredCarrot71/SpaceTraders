@@ -32,7 +32,8 @@ namespace SpaceTraders
             this.player = Game.Instance.Player;
             productionPrices = new Dictionary<Good, Int32>();
             purchasePrices = new Dictionary<Good, Int32>();
-            TradeSkillModifier = new Random().Next((2 * player.TradeSkill()) + 1);
+            //TODO: implement crew skills
+            TradeSkillModifier = new Random().Next((2 * player.TradeSkill) + 1);
 
             // Initialize goods the planet can produce
             foreach (Good item in Goods.Values)
