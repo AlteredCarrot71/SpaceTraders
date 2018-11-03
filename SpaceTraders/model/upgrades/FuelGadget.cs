@@ -15,7 +15,7 @@ namespace SpaceTraders
         private readonly int fuelModifier = 2;
 
         // Need to know original cost to avoid truncation errors.
-        private int originalFuelCost;
+        private readonly int originalFuelCost;
 
         // Constructor for a fuel gadget.
         public FuelGadget(Ship ship)
@@ -24,10 +24,7 @@ namespace SpaceTraders
             originalFuelCost = ship.FuelCost;
         }
 
-        public override int getPrice()
-        {
-            return 500;
-        }
+        new public int Price = 500;
 
         protected override bool Effect()
         {

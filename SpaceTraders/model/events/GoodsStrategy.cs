@@ -39,9 +39,9 @@ namespace SpaceTraders
                 int msg = rand.Next(getPhrases.Length);
                 String output = String.Format(getPhrases[msg], toAdd.Name);
 
-                if (player.Ship.CargoRoomLeft() >= 1)
+                if ( player.Ship.Cargo.Capacity > player.Ship.Cargo.Count )
                 {
-                    player.Ship.addCargo(toAdd);
+                    player.Ship.Cargo.Add(toAdd);
                 }
                 else
                 {
@@ -52,11 +52,11 @@ namespace SpaceTraders
             }
             else
             {
-                if (player.Ship.getCargo().Count > 0)
+                if (player.Ship.Cargo.Count > 0)
                 {
-                    int cargoIndex = rand.Next(player.Ship.getCargo().Count);
-                    Good toRemove = player.Ship.getCargo()[cargoIndex];
-                    player.Ship.removeCargo(toRemove);
+                    int cargoIndex = rand.Next(player.Ship.Cargo.Count);
+                    Good toRemove = player.Ship.Cargo[cargoIndex];
+                    player.Ship.Cargo.Remove(toRemove);
                     int msg = rand.Next(losePhrases.Length);
                     return String.Format(losePhrases[msg], toRemove.Name);
                 }

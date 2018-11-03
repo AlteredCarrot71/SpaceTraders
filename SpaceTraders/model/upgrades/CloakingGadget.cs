@@ -9,11 +9,7 @@ namespace SpaceTraders
         {
         }
 
-        public override int getPrice()
-        {
-            //arbitrary number
-            return 2000;
-        }
+        new public int Price = 2000;
 
         protected override bool Effect()
         {

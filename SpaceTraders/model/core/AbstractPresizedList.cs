@@ -12,17 +12,9 @@ using System.Collections.ObjectModel;
  */
 public abstract class AbstractPresizedList<T> : List<T>
 {
-    /**
-     * Returns whether another item can be added to the list.
-     *
-     * @return whether another item can be added to the list.
-     */
+    // Returns whether another item can be added to the list.
     public abstract bool hasRoom();
 
-    /**
-     * Returns the max size of the list.
-     *
-     * @return the max size of the list.
-     */
+    // Returns the max size of the list.
     public abstract int maxSize();
 }

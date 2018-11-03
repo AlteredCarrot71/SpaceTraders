@@ -84,10 +84,10 @@ namespace SpaceTraders
         // can't buy that many, don't let him/her.
         public bool PlayerBuys(Good item)
         {
-            if ( player.Ship.CargoRoomLeft() > 0 )
+            if ( player.Ship.Cargo.Capacity > player.Ship.Cargo.Count )
             {
                 Supply.Remove(item);
-                player.Ship.addCargo(item);
+                player.Ship.Cargo.Add(item);
                 player.Money -= purchasePrices[item];
                 return true;
             }
@@ -102,7 +102,7 @@ namespace SpaceTraders
         {
             if ( item.MinTechToUse <= planetTech )
             {
-                player.Ship.removeCargo(item);
+                player.Ship.Cargo.Remove(item);
                 Supply.Add(item);
                 player.Money += purchasePrices[item];
                 return true;

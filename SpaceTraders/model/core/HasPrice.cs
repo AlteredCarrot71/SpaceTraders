@@ -1,9 +1,9 @@
 // Interface for objects that have a price.
 namespace SpaceTraders
 {
-    public interface HasPrice
+    public interface IHasPrice
     {
         // Returns the price of the object.
-        int getPrice();
+        int Price { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace SpaceTraders
         {
             int total = shipToBuy.Price;
 
-            foreach (Good cargo in Game.Instance.Player.Ship.getCargo())
+            foreach (Good cargo in Game.Instance.Player.Ship.Cargo)
             {
                 total -= marketplace.GetPrice(cargo);
             }

@@ -3,7 +3,7 @@ using System;
 // This class is a Crew member on a ship. A Crew member contributes skills to the player's overall total
 namespace SpaceTraders
 {
-    public class CrewMember : IHasSkills, HasPrice
+    public class CrewMember : IHasSkills, IHasPrice
     {
         // The crew member's name
         public String Name { get; set; }
@@ -24,13 +24,10 @@ namespace SpaceTraders
         // Investing skill.
         public int InvestingSkill { get; set; }
 
+        // Hire price for crew member
+        public int Price { get; set; }
+
         // Constructor for the crew member.
         public CrewMember() { }
-
-        public int getPrice()
-        {
-            //price for a crew member is 10 times his total skills; open to change
-            return ( TradeSkill + EngineeringSkill + PilotSkill + FightingSkill + InvestingSkill ) * 10;
-        }
     }
 }

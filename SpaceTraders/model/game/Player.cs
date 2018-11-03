@@ -30,7 +30,7 @@ namespace SpaceTraders
         // Player's ship.
         public Ship Ship { get; set; }
 
-        // Consstrcutor for player.
+        // Constrcutor for player.
         public Player() { }
     }
 }

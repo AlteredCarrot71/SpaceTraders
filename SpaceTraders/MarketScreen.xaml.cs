@@ -13,7 +13,7 @@ namespace SpaceTraders
 
         private void EnablingButtons()
         {
-            if (Game.Instance.Player.Ship.CargoRoomLeft() > 0)
+            if ( Game.Instance.Player.Ship.Cargo.Capacity > Game.Instance.Player.Ship.Cargo.Count )
             {
                 BuyButton.IsEnabled = true;
             }
@@ -22,7 +22,7 @@ namespace SpaceTraders
                 BuyButton.IsEnabled = false;
             }
 
-            if (Game.Instance.Player.Ship.cargoSize() - Game.Instance.Player.Ship.CargoRoomLeft() > 0 )
+            if ( Game.Instance.Player.Ship.Cargo.Count > 0 )
             {
                 SellButton.IsEnabled = true;
             }
@@ -44,7 +44,7 @@ namespace SpaceTraders
                 marketGoods.Add(good.Name);
             }
 
-            foreach (Good good in Game.Instance.Player.Ship.getCargo())
+            foreach (Good good in Game.Instance.Player.Ship.Cargo)
             {
                 shipGoods.Add(good.Name);
             }

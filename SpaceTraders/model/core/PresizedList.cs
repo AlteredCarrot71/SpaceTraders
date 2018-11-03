@@ -3,7 +3,7 @@ using System;
 /**
  * This class is used as backing data for most items in a Ship. It is
  * essentially an array with the nitty-gritty abstracted into add(T) and
- * remove(T). Chose not to implement List<T> because there were way too many
+ * remove(T). Choose not to implement List<T> because there were way too many
  * unecessary methods.
  *
  * USE THIS: http://docs.oracle.com/javase/7/docs/api/java/util/AbstractList.html

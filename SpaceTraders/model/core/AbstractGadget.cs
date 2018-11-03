@@ -11,32 +11,21 @@ namespace SpaceTraders
      * @author ngraves3
      *
      */
-    public abstract class AbstractGadget : AbstractCommand, HasPrice
+    public abstract class AbstractGadget : AbstractCommand, IHasPrice
     {
-        /**
-         * name of the gadget.
-         */
-        private String name;
+        // name of the gadget
+        private readonly String name;
 
-        /**
-         * The ship to affect.
-         */
+        // price of the gadget
+        public int Price { get; set; }
+
+        // The ship to affect
         protected Ship ship;
 
-        /**
-         * whether or not the effect was applied.
-         */
+        // whether or not the effect was applied.
         protected bool effectApplied;
 
-        /**
-         * Constructor for an abstract gadget.
-         *
-         * @param nameArg
-         *        name of gadget
-         * @param shipArg
-         *        the ship to affect
-         */
-
+        // Constructor for an abstract gadget.
         protected AbstractGadget(String nameArg, Ship shipArg)
         {
             this.ship = shipArg;
@@ -47,7 +36,5 @@ namespace SpaceTraders
         protected AbstractGadget()
         {
         }
-
-        public abstract int getPrice();
     }
 }

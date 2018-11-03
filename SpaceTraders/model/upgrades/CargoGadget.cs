@@ -13,7 +13,7 @@ namespace SpaceTraders
     public class CargoGadget : AbstractGadget
     {
         // The extra size added.
-        private int additionalSize;
+        private readonly int additionalSize;
 
         /**
          * Constructor for the gadget.
@@ -39,11 +39,7 @@ namespace SpaceTraders
         {
         }
 
-        public override int getPrice()
-        {
-            // arbitrary number
-            return 1000;
-        }
+        new public readonly int Price = 1000;
 
         protected override bool Effect()
         {
@@ -51,14 +47,14 @@ namespace SpaceTraders
             {
                 effectApplied = true;
                 //TODO: add cargo room to ship
-                IList<Good> currentCargo = ship.getCargo();
+                IList<Good> currentCargo = ship.Cargo;
                 PresizedList<Good> bigger =
-                                new PresizedList<Good>(ship.cargoSize() + additionalSize);
+                                new PresizedList<Good>(ship.Cargo.Capacity + additionalSize);
                 foreach (Good cargo in currentCargo)
                 {
                     bigger.Add(cargo);
                 }
-                ship.setCargo(bigger);
+                ship.Cargo = bigger;
                 return true;
             }
 
@@ -69,18 +65,18 @@ namespace SpaceTraders
         {
             if (effectApplied)
             {
-                IList<Good> currentCargo = ship.getCargo();
-                if ((ship.cargoSize() - additionalSize) >= currentCargo.Count)
+                IList<Good> currentCargo = ship.Cargo;
+                if ((ship.Cargo.Capacity - additionalSize) >= currentCargo.Count)
                 {
                     PresizedList<Good> smaller =
-                                    new PresizedList<Good>(ship.cargoSize() - additionalSize);
+                                    new PresizedList<Good>(ship.Cargo.Capacity - additionalSize);
                     foreach (Good cargo in currentCargo)
                     {
                         smaller.Add(cargo);
                     }
 
                     // Apply effect
-                    ship.setCargo(smaller);
+                    ship.Cargo = smaller;
                     effectApplied = false;
                     return true;
                 }
