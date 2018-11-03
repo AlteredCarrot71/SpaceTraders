@@ -20,7 +20,7 @@ namespace SpaceTraders
             Fuel.Text = "Fuel: " + Game.Instance.Player.Ship.CurrentFuel;
             Money.Text = "Money: " + Game.Instance.Player.Money;
 
-            if (Game.Instance.CurrentPlanet.Techlevel.Equals(TechLevel.POST_INDUSTRIAL))
+            if ( Game.Instance.CurrentPlanet.Techlevel >= TechLevel.POST_INDUSTRIAL )
             {
                 enterShipyard.IsEnabled = true;
             }
@@ -32,6 +32,13 @@ namespace SpaceTraders
             {
                 enterShipyard.IsEnabled = false;
             }
+
+#if DEBUG
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                enterShipyard.IsEnabled = true;
+            }
+#endif
 
             if (Game.Instance.Player.Ship.MaxFuel > Game.Instance.Player.Ship.CurrentFuel )
             {

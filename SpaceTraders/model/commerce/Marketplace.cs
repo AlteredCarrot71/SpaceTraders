@@ -84,7 +84,7 @@ namespace SpaceTraders
         // can't buy that many, don't let him/her.
         public bool PlayerBuys(Good item)
         {
-            if ( player.Ship.Cargo.Capacity > player.Ship.Cargo.Count )
+            if ( player.Ship.MaxCargo > player.Ship.Cargo.Count )
             {
                 Supply.Remove(item);
                 player.Ship.Cargo.Add(item);

@@ -22,7 +22,6 @@
             <Slider x:Name="EngSkill" HorizontalAlignment="Center" Margin="10,0,15,0" VerticalAlignment="Top" FontFamily="Global User Interface" Maximum="10" TickFrequency="1" TickPlacement="Inline" Width="500" Header="Engineering" ValueChanged="Sliders"/>
             <Slider x:Name="TradeSkill" HorizontalAlignment="Center" Margin="10,0,15,0" VerticalAlignment="Top" FontFamily="Global User Interface" Maximum="10" TickFrequency="1" TickPlacement="Inline" Width="500" Header="Trading" ValueChanged="Sliders"/>
             <Slider x:Name="FightSkill" HorizontalAlignment="Center" Margin="10,0,15,0" VerticalAlignment="Top" FontFamily="Global User Interface" Maximum="10" TickFrequency="1" TickPlacement="Inline" Width="500" Header="Fighting" ValueChanged="Sliders"/>
-            <Slider x:Name="InvestSkill" HorizontalAlignment="Center" Margin="10,0,15,0" VerticalAlignment="Top" FontFamily="Global User Interface" Maximum="10" TickFrequency="1" TickPlacement="Inline" Width="500" Header="Investing" ValueChanged="Sliders"/>
             <Slider x:Name="PilotSkill" HorizontalAlignment="Center" Margin="10,0,15,0" VerticalAlignment="Top" FontFamily="Global User Interface" Maximum="10" TickFrequency="1" TickPlacement="Inline" Width="500" Header="Piloting" ValueChanged="Sliders"/>
         </StackPanel>
         <TextBlock x:Name="SkillPoints" Margin="951,415,116,0" TextWrapping="Wrap" Text="Remaining Skill Points: 15" VerticalAlignment="Top" Height="50" FontSize="24" HorizontalAlignment="Center" Width="299"/>

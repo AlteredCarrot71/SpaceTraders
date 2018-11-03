@@ -21,9 +21,6 @@ namespace SpaceTraders
         // Fighting skill.
         public int FightingSkill { get; set; }
 
-        // Investing skill.
-        public int InvestingSkill { get; set; }
-
         // Hire price for crew member
         public int Price { get; set; }
 

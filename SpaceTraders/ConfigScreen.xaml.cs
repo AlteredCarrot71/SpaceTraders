@@ -17,10 +17,10 @@ namespace SpaceTraders
         private void Sliders(object sender, RangeBaseValueChangedEventArgs e)
         {
             int total =
-                (int)(EngSkill.Value + TradeSkill.Value + FightSkill.Value + InvestSkill.Value + PilotSkill.Value);
-            int val = 15 - total;
+                (int)(EngSkill.Value + TradeSkill.Value + FightSkill.Value + PilotSkill.Value);
+            int val = 16 - total;
             SkillPoints.Text = "Remaining Skill Points: " + val;
-            if (total > 15 || PlayerName.Text.Length == 0)
+            if (total > 16 || PlayerName.Text.Length == 0)
             {
                 Go.IsEnabled = false;
             }
@@ -32,7 +32,7 @@ namespace SpaceTraders
 
         private void Go_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!(EngSkill.Value + TradeSkill.Value + FightSkill.Value + InvestSkill.Value + PilotSkill.Value <= 15) ||
+            if (!(EngSkill.Value + TradeSkill.Value + FightSkill.Value + PilotSkill.Value <= 16) ||
                 PlayerName.Text.Length == 0) return;
 
             Game.Instance.Player = new Player
@@ -42,7 +42,6 @@ namespace SpaceTraders
                                             FightingSkill = (int)FightSkill.Value,
                                             EngineeringSkill = (int)EngSkill.Value,
                                             PilotSkill = (int)PilotSkill.Value,
-                                            InvestingSkill = (int)InvestSkill.Value,
                                             Money = 10000,
                                             Ship = Ships.Gnat
                                         };

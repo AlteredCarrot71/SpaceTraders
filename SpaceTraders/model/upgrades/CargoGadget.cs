@@ -49,7 +49,7 @@ namespace SpaceTraders
                 //TODO: add cargo room to ship
                 IList<Good> currentCargo = ship.Cargo;
                 PresizedList<Good> bigger =
-                                new PresizedList<Good>(ship.Cargo.Capacity + additionalSize);
+                                new PresizedList<Good>(ship.MaxCargo + additionalSize);
                 foreach (Good cargo in currentCargo)
                 {
                     bigger.Add(cargo);
@@ -66,10 +66,10 @@ namespace SpaceTraders
             if (effectApplied)
             {
                 IList<Good> currentCargo = ship.Cargo;
-                if ((ship.Cargo.Capacity - additionalSize) >= currentCargo.Count)
+                if ((ship.MaxCargo - additionalSize) >= currentCargo.Count)
                 {
                     PresizedList<Good> smaller =
-                                    new PresizedList<Good>(ship.Cargo.Capacity - additionalSize);
+                                    new PresizedList<Good>(ship.MaxCargo - additionalSize);
                     foreach (Good cargo in currentCargo)
                     {
                         smaller.Add(cargo);

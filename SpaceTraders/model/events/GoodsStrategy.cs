@@ -39,7 +39,7 @@ namespace SpaceTraders
                 int msg = rand.Next(getPhrases.Length);
                 String output = String.Format(getPhrases[msg], toAdd.Name);
 
-                if ( player.Ship.Cargo.Capacity > player.Ship.Cargo.Count )
+                if ( player.Ship.MaxCargo > player.Ship.Cargo.Count )
                 {
                     player.Ship.Cargo.Add(toAdd);
                 }

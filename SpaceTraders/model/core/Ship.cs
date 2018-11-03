@@ -15,20 +15,38 @@ namespace SpaceTraders
         // ship cargo.
         public List<Good> Cargo { get; set; }
 
+        // cargo max size
+        public int MaxCargo { get; set; }
+        
         // ship weapons.
         public List<Weapon> Weapons { get; set; }
+
+        // weapons max size
+        public int MaxWeapon { get; set; }
 
         // Ship shields.
         public List<Shield> Shields { get; set; }
 
+        // shields max size
+        public int MaxShield { get; set; }
+
         // Ship gadgets.
         public List<AbstractGadget> Gadgets { get; set; }
+
+        // gadgets max size
+        public int MaxGadget { get; set; }
+
+        // crew max size
+        public int MaxCrew { get; set; }
 
         // Ship crew.
         public List<CrewMember> Crew { get; set; }
 
         // Maximum fuel this ship can hold.
         public int MaxFuel { get; set; }
+
+        // the current amount of fuel.
+        public int CurrentFuel { get; set; }
 
         // cost per unit of fuel.
         public int FuelCost { get; set; }
@@ -42,6 +60,9 @@ namespace SpaceTraders
         // hull strength for fights.
         public int HullStrength { get; set; }
 
+        // the current amount of hull strength
+        public int CurrentHullStrength { get; set; }
+
         // Police disposition towards ship.
         public int PoliceAggression { get; set; }
 
@@ -54,12 +75,6 @@ namespace SpaceTraders
         // Description of a ship
         public String Text { get; set; }
 
-        // the current amount of fuel.
-        public int CurrentFuel { get; set; }
-
-        // the current amount of hull strength
-        public int CurrentHullStrength { get; set; }
-        
         // whether can ship be seen by others during travel.
         public bool IsVisible { get; set; }
 
