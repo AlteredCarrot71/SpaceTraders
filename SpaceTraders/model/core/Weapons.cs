@@ -1,4 +1,5 @@
-﻿using Windows.ApplicationModel.Resources;
+﻿using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 
 namespace SpaceTraders
 {
@@ -30,5 +31,7 @@ namespace SpaceTraders
             MinTechLevel = TechLevel.HI_TECH,
             SkillModifier = 4
         };
+
+        public static readonly List<Weapon> Values = new List<Weapon> { PULSE_LASER, BEAM_LASER, MILITARY_LASER };
     }
 }

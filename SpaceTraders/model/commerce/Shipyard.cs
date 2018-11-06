@@ -9,7 +9,7 @@ namespace SpaceTraders
         // Constructor for shipyard.
         public Shipyard()
         {
-            marketplace = Game.Instance.CurrentPlanet.Marketplace;
+            marketplace = Game.Instance.Universe.CurrentPlanet.Marketplace;
         }
 
         // Returns the cost (or income) to buy the ship. If cost is negative, than
@@ -25,7 +25,6 @@ namespace SpaceTraders
             }
 
             //TODO: implement gadgets
-
             total -= Game.Instance.Player.Ship.Price;
 
             return total;

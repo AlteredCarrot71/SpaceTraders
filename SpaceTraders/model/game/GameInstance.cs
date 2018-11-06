@@ -15,6 +15,12 @@ namespace SpaceTraders
 {
     public class Game
     {
+        // Player
+        public Player Player { get; set; }
+
+        // Universe
+        public Universe Universe { get; set; }
+
         // Folder, that stores the saved states
         private readonly Windows.Storage.StorageFolder LocalFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
 
@@ -31,104 +37,7 @@ namespace SpaceTraders
             //
         }
 
-        // Player
-        public Player Player { get; set; }
-        
-        // The solar systems in the game.
-        private ISet<SolarSystem> solarSystems = new HashSet<SolarSystem>();
-
-        // The planets in the game.
-        public List<Planet> Planets { get; private set; }
-        
-        // Player's current location.
-        public Planet CurrentPlanet { get; set; }
-
-        // Players current location.
-        public SolarSystem CurrentSolarSystem { get; set; }
-        
-        // All the planet names. May or may not use all of them.
-        private String[] planetNames = {"Acamar", "Adahn", "Aldea", "Andevian", "Antedi", "Balosnee",
-            "Baratas", "Brax", "Bretel", "Calondia", "Campor", "Capelle", "Carzon", "Castor",
-            "Cestus", "Cheron", "Courteney", "Daled", "Damast", "Davlos", "Deneb", "Deneva",
-            "Devidia", "Draylon", "Drema", "Endor", "Esmee", "Exo", "Ferris", "Festen", "Fourmi",
-            "Frolix", "Gemulon", "Guinifer", "Hades", "Hamlet", "Helena", "Hulst", "Iodine",
-            "Iralius", "Janus", "Japori", "Jarada", "Jason", "Kaylon", "Khefka", "Kira", "Klaatu",
-            "Klaestron", "Korma", "Kravat", "Krios", "Laertes", "Largo", "Lave", "Ligon", "Lowry",
-            "Magrat", "Malcoria", "Melina", "Mentar", "Merik", "Mintaka", "Montor", "Mordan",
-            "Myrthe"};
-        // Solar system names for the game. May or may not use all.
-        private String[] solarSystemNames = {"Nelvana", "Nix", "Nyle",
-            "Odet", "Og", "Omega", "Omphalos", "Orias", "Othello",
-            "Parade", "Penthara", "Picard", "Pollux",
-            "Quator", "Rakhar", "Ran", "Regulas", "Relva", "Rhymus", "Rochani", "Rubicum", "Rutia",
-            "Sarpeidon", "Sefalla", "Seltrice", "Sigma", "Sol", "Somari",
-            "Stakoron", "Styris", "Talani", "Tamus", "Tantalos", "Tanuga",
-            "Tarchannen", "Terosa", "Thera", "Titan", "Torin", "Triacus",
-            "Turkana", "Tyrus",
-            "Umberlee", "Utopia",
-            "Vadera", "Vagra", "Vandor", "Ventax",
-            "Xenon", "Xerxes",
-            "Yew", "Yojimbo",
-            "Zalkon", "Zuul"};
-
-        // Creates a universe with number of planets equal to the length of our default list of planet names.
-        public void CreateUniverse()
-        {
-            CreateUniverse(Math.Min(planetNames.Length, solarSystemNames.Length) - 1);
-        }
-
-        // create universe with specified number of planets.
-        public void CreateUniverse(int number)
-        {
-            Planets = new List<Planet>();
-
-            solarSystems.Clear();
-            Random rand = new Random();
-            int startingLocation = rand.Next(number) - 1;
-            int planetCount = 0;
-            int solarSystemCount = 0;
-            for (int i = 0; i < number; i++)
-            {
-                int resourceNum = rand.Next(Goods.Values.Count);
-                int techLevelNum = rand.Next(Enum.GetValues(typeof(TechLevel)).Length);
-
-                Point point = new Point { Xpos = rand.Next(340) + 5, Ypos = rand.Next(340) + 5 };
-                while ( Planets.Exists(x => x.Location.Equals(point)) )
-                {
-                    point = new Point { Xpos = rand.Next(340) + 5, Ypos = rand.Next(340) + 5 };
-                }
-
-                Planet planet = new Planet
-                {
-                    Name = planetNames[planetCount],
-                    Techlevel = (TechLevel)techLevelNum,
-                    Resource = Goods.Values[resourceNum],
-                    Location = point
-                };
-                Planets.Add(planet);
-
-                planetCount++;
-                SolarSystem solarsystem =
-                        new SolarSystem(solarSystemNames[solarSystemCount],
-                                point, planet);
-                solarSystemCount++;
-
-                solarSystems.Add(solarsystem);
-
-                if (startingLocation == i)
-                {
-                    CurrentPlanet = planet;
-                    CurrentSolarSystem = solarsystem;
-                }
-            }
-        }
-
-        // Returns a Set of the solar systems.
-        public ISet<SolarSystem> GetSolarSystems()
-        {
-            return solarSystems;
-        }
-
+        // Saving game state
         public static void SaveState()
         {
             //string path = LocalFolder.Path.ToString() + "/savegame.xml";
@@ -144,6 +53,7 @@ namespace SpaceTraders
             //serializer.WriteObject(writer, Game.Instance);
         }
 
+        // Loading game state
         public static void LoadState()
         {
             //string path = LocalFolder.Path.ToString() + "/" + Game.Instance.Player.Name.ToString() + ".xml";

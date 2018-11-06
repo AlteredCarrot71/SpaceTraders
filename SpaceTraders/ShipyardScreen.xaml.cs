@@ -7,7 +7,8 @@ namespace SpaceTraders
     public sealed partial class ShipyardScreen : Page
     {
         //private Shipyard shipyard;
-        private ObservableCollection<string> options;
+        private ObservableCollection<string> shipsforsale;
+        private ObservableCollection<string> weaponsforsale;
 
         public ShipyardScreen()
         {
@@ -15,16 +16,21 @@ namespace SpaceTraders
 
             currShip.Text = "Current Ship: " + Game.Instance.Player.Ship.Name;
             ShipInfo.Text = Game.Instance.Player.Ship.Text;
-            ShipyardTitle.Text = Game.Instance.CurrentPlanet.Name + " Shipyard";
+            ShipyardTitle.Text = Game.Instance.Universe.CurrentPlanet.Name + " Shipyard";
 
-            options = new ObservableCollection<string>();
-
-            foreach ( Ship ship in Ships.Values.FindAll(x => x.MinTechLevel <= Game.Instance.CurrentPlanet.Techlevel ) )
+            shipsforsale = new ObservableCollection<string>();
+            foreach ( Ship ship in Ships.Values.FindAll(x => x.MinTechLevel <= Game.Instance.Universe.CurrentPlanet.Techlevel ) )
             {
-                options.Add(ship.Name);
+                shipsforsale.Add(ship.Name);
+            }
+            ShipCombo.ItemsSource = shipsforsale;
+
+            weaponsforsale = new ObservableCollection<string>();
+            foreach (Weapon weapon in Weapons.Values.FindAll(x => x.MinTechLevel <= Game.Instance.Universe.CurrentPlanet.Techlevel))
+            {
+                weaponsforsale.Add(weapon.Name);
             }
 
-            ShipCombo.ItemsSource = options;
             PlayerMoney.Text = Game.Instance.Player.Money.ToString();
         }
 

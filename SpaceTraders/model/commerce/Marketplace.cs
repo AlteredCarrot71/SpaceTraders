@@ -28,7 +28,7 @@ namespace SpaceTraders
         // Instantiates a marketplace with the given planet's tech level.
         public Marketplace()
         {
-            this.planetTech = Game.Instance.CurrentPlanet.Techlevel;
+            this.planetTech = Game.Instance.Universe.CurrentPlanet.Techlevel;
             this.player = Game.Instance.Player;
             productionPrices = new Dictionary<Good, Int32>();
             purchasePrices = new Dictionary<Good, Int32>();

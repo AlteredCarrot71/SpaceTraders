@@ -15,7 +15,7 @@ namespace SpaceTraders
 {
     public sealed partial class MapScreen : Page
     {
-        private ISet<SolarSystem> universe;
+        private List<Planet> universe;
         private ColorList colorList = new ColorList();
         private Planet curPlanet;
         private int travelDistance;
@@ -24,14 +24,13 @@ namespace SpaceTraders
         private Line currentLine;
         private Ellipse currentCircle;
         private Random random = new Random();
-        private Dictionary<String, SolarSystem> nameMap = new Dictionary<String, SolarSystem>(); 
 
         public MapScreen()
         {
             this.InitializeComponent();
-            curPlanet = Game.Instance.CurrentPlanet;
-            universe = Game.Instance.GetSolarSystems();
-            playerLocation = Game.Instance.CurrentSolarSystem.Position;
+            universe = Game.Instance.Universe.Planets;
+            curPlanet = Game.Instance.Universe.CurrentPlanet;
+            playerLocation = Game.Instance.Universe.CurrentPlanet.Location;
             CurrentFuel.Text = "Current Fuel: " + Game.Instance.Player.Ship.CurrentFuel;
             currentLine = new Line
             {
@@ -48,12 +47,11 @@ namespace SpaceTraders
 
         private void CreateMap()
         {
-            foreach (SolarSystem s in universe)
+            foreach (Planet s in universe)
             {
-                nameMap.Add(s.Planets.ElementAt(0).Name, s);
-                ListPlanet.Items.Add(s.Planets.ElementAt(0).Name);
+                ListPlanet.Items.Add(s.Name);
 
-                Point point = s.Position;
+                Point point = s.Location;
                 SolidColorBrush c = new SolidColorBrush(colorList.ElementAt(random.Next(colorList.Count)));
                 Ellipse cor = new Ellipse
                 {
@@ -67,12 +65,6 @@ namespace SpaceTraders
                     Tag = s
                 };
                 cor.Tapped += CorOnTapped;
-                /*
-                 circle.addEventHandler(MouseEvent.MOUSE_CLICKED, drawClickedCircle);
-                mapPane.addEventHandler(MouseEvent.MOUSE_CLICKED, drawLine);
-                mapPane.addEventHandler(MouseEvent.MOUSE_CLICKED, handleLabels);
-                circle.setUserData(s);
-                */
                 MapPane.Children.Add(cor);
             }
         }
@@ -90,11 +82,6 @@ namespace SpaceTraders
                 Ypos = (int)((int)clickedCircle.Clip.Rect.Y + (currentCircle.Clip.Rect.Height / 2))
             };
 
-            /*
-            currentLine.X1 = currentCircle.Clip.Rect.X + (currentCircle.Clip.Rect.Width/2);
-            currentLine.Y1 = currentCircle.Clip.Rect.Y + (currentCircle.Clip.Rect.Height/2);
-            */
-            
             currentCircle.Stroke = new SolidColorBrush(colorList.ElementAt(random.Next()));
             currentCircle = clickedCircle;
             currentCirclePoint = chosenPlanet;
@@ -104,7 +91,7 @@ namespace SpaceTraders
         private async void Travel_Click(object sender, RoutedEventArgs e)
         {
             Game.Instance.Player.Ship.CurrentFuel -= travelDistance;
-            Game.Instance.CurrentPlanet = Game.Instance.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString()));
+            Game.Instance.Universe.CurrentPlanet = Game.Instance.Universe.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString()));
             RandomEvent randomEvent = new RandomEvent(Game.Instance.Player);
             String even = randomEvent.Event();
             if (even.Length != 0) {
@@ -124,7 +111,7 @@ namespace SpaceTraders
         {
             Travel.IsEnabled = true;
             Travel.Content = "Travel";
-            travelDistance = Game.Instance.CurrentPlanet.Location.Distance(Game.Instance.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString())).Location);
+            travelDistance = Game.Instance.Universe.CurrentPlanet.Location.Distance(Game.Instance.Universe.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString())).Location);
             NeededFuel.Text = "Needed Fuel: " + travelDistance;
 
             if (travelDistance > Game.Instance.Player.Ship.CurrentFuel)

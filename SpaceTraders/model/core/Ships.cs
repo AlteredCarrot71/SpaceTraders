@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 
 namespace SpaceTraders
 {
@@ -27,7 +27,7 @@ namespace SpaceTraders
             PoliceAggression = -1,
             PirateAggression = -1,
             MinTechLevel = TechLevel.EARLY_INDUSTRIAL,
-            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Flea/Description")
+            Text = ResourceLoader.GetForViewIndependentUse().GetString("Ship/Flea/Description")
         };
 
         // Makes a gnat.
@@ -52,7 +52,7 @@ namespace SpaceTraders
             PoliceAggression = 0,
             PirateAggression = 0,
             MinTechLevel = TechLevel.INDUSTRIAL,
-            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Gnat/Description")
+            Text = ResourceLoader.GetForViewIndependentUse().GetString("Ship/Gnat/Description")
         };
 
         // Makes a firefly.
@@ -77,7 +77,7 @@ namespace SpaceTraders
             PoliceAggression = 0,
             PirateAggression = 0,
             MinTechLevel = TechLevel.INDUSTRIAL,
-            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Firefly/Description")
+            Text = ResourceLoader.GetForViewIndependentUse().GetString("Ship/Firefly/Description")
         };
 
         // makes a mosquito.
@@ -102,7 +102,7 @@ namespace SpaceTraders
             PoliceAggression = 0,
             PirateAggression = 1,
             MinTechLevel = TechLevel.POST_INDUSTRIAL,
-            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Mosquito/Description")
+            Text = ResourceLoader.GetForViewIndependentUse().GetString("Ship/Mosquito/Description")
         };
 
         // Makes a bumblebee.
@@ -127,7 +127,7 @@ namespace SpaceTraders
             PoliceAggression = 0,
             PirateAggression = 1,
             MinTechLevel = TechLevel.HI_TECH,
-            Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Ship/Bumblebee/Description")
+            Text = ResourceLoader.GetForViewIndependentUse().GetString("Ship/Bumblebee/Description")
         };
 
         public static readonly List<Ship> Values = new List<Ship> { Flea, Gnat, Firefly, Mosquito, Bumblebee };

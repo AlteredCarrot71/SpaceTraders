@@ -36,8 +36,8 @@ namespace SpaceTraders
         {
             this.InitializeComponent();
 
-            MarketTitle.Text = Game.Instance.CurrentPlanet.Name + " Market";
-            marketplace = Game.Instance.CurrentPlanet.Marketplace;
+            MarketTitle.Text = Game.Instance.Universe.CurrentPlanet.Name + " Market";
+            marketplace = Game.Instance.Universe.CurrentPlanet.Marketplace;
 
             foreach (Good good in marketplace.Supply)
             {

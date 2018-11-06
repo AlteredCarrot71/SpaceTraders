@@ -15,16 +15,17 @@ namespace SpaceTraders
             ColorList cl = new ColorList();
             PlanetImg.Fill = new SolidColorBrush(cl.ElementAt(r.Next(cl.Count)));
             Refuel.Content = "Refuel: " + RefuelCost() + " cr";
-            TitleScreen.Text = Game.Instance.CurrentPlanet.Name;
-            Description.Text = Game.Instance.CurrentPlanet.GetInfo();
+            TitleScreen.Text = Game.Instance.Universe.CurrentPlanet.Name;
+            Description.Text = Game.Instance.Universe.CurrentPlanet.GetInfo();
+
             Fuel.Text = "Fuel: " + Game.Instance.Player.Ship.CurrentFuel;
             Money.Text = "Money: " + Game.Instance.Player.Money;
 
-            if ( Game.Instance.CurrentPlanet.Techlevel >= TechLevel.POST_INDUSTRIAL )
+            if (Game.Instance.Universe.CurrentPlanet.Techlevel >= TechLevel.POST_INDUSTRIAL)
             {
                 enterShipyard.IsEnabled = true;
             }
-            else if (Game.Instance.CurrentPlanet.HasShipYard() )
+            else if (Game.Instance.Universe.CurrentPlanet.HasShipYard())
             {
                 enterShipyard.IsEnabled = true;
             }
@@ -66,13 +67,13 @@ namespace SpaceTraders
 
         private void EnterMarket_Click(object sender, RoutedEventArgs e)
         {
-            Game.Instance.CurrentPlanet.EnterMarket(Game.Instance.Player);
+            Game.Instance.Universe.CurrentPlanet.EnterMarket(Game.Instance.Player);
             this.Frame.Navigate(typeof (MarketScreen));
         }
 
         private void EnterShipyard_Click(object sender, RoutedEventArgs e)
         {
-            Game.Instance.CurrentPlanet.EnterShipyard(Game.Instance.Player);
+            Game.Instance.Universe.CurrentPlanet.EnterShipyard(Game.Instance.Player);
             this.Frame.Navigate(typeof (ShipyardScreen));
         }
 

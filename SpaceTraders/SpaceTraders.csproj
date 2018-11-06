@@ -125,7 +125,6 @@
     <Compile Include="model\core\PresizedList.cs" />
     <Compile Include="model\core\Resource.cs" />
     <Compile Include="model\core\Ship.cs" />
-    <Compile Include="model\game\SolarSystem.cs" />
     <Compile Include="model\core\TechLevel.cs" />
     <Compile Include="model\game\Universe.cs" />
     <Compile Include="model\core\Utilities.cs" />
