@@ -39,7 +39,7 @@ namespace SpaceTraders
         // Determines if a Planet has as shipyard (techLevel is HI_TECH).
         public bool HasShipYard()
         {
-            return Techlevel == TechLevel.HI_TECH;
+            return Techlevel >= TechLevel.EARLY_INDUSTRIAL;
         }
 
         public String GetInfo()
