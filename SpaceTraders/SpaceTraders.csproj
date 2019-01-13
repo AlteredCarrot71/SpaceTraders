@@ -96,16 +96,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConfigScreen.xaml.cs">
+    <Compile Include="Views\ConfigScreen.xaml.cs">
       <DependentUpon>ConfigScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MapScreen.xaml.cs">
+    <Compile Include="Views\MapScreen.xaml.cs">
       <DependentUpon>MapScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MarketScreen.xaml.cs">
+    <Compile Include="Views\MarketScreen.xaml.cs">
       <DependentUpon>MarketScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\Objects\Good.cs" />
@@ -144,11 +144,11 @@
     <Compile Include="Common\Interfaces\HasPrice.cs" />
     <Compile Include="Common\Objects\Shield.cs" />
     <Compile Include="Common\Objects\Weapon.cs" />
-    <Compile Include="PlanetScreen.xaml.cs">
+    <Compile Include="Views\PlanetScreen.xaml.cs">
       <DependentUpon>PlanetScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShipyardScreen.xaml.cs">
+    <Compile Include="Views\ShipyardScreen.xaml.cs">
       <DependentUpon>ShipyardScreen.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -172,27 +172,27 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ConfigScreen.xaml">
+    <Page Include="Views\ConfigScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MapScreen.xaml">
+    <Page Include="Views\MapScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MarketScreen.xaml">
+    <Page Include="Views\MarketScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PlanetScreen.xaml">
+    <Page Include="Views\PlanetScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ShipyardScreen.xaml">
+    <Page Include="Views\ShipyardScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
