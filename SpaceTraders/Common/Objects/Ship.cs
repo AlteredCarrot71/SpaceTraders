@@ -31,7 +31,7 @@ namespace SpaceTraders
         public int MaxShield { get; set; }
 
         // Ship gadgets.
-        public List<AbstractGadget> Gadgets { get; set; }
+        public List<Abstract.Gadget> Gadgets { get; set; }
 
         // gadgets max size
         public int MaxGadget { get; set; }
@@ -40,7 +40,7 @@ namespace SpaceTraders
         public int MaxCrew { get; set; }
 
         // Ship crew.
-        public List<CrewMember> Crew { get; set; }
+        public List<Abstract.CrewMember> Crew { get; set; }
 
         // Maximum fuel this ship can hold.
         public int MaxFuel { get; set; }

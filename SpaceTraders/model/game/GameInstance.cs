@@ -8,8 +8,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Windows.Storage;
 
-// Singleton game monitor. The game model will control the passing of turns and
-// random events
+// Singleton game monitor. The game model will control the passing of turns and random events
 
 namespace SpaceTraders
 {

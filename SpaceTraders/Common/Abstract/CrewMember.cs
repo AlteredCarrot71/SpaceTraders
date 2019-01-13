@@ -1,7 +1,7 @@
 using System;
 
 // This class is a Crew member on a ship. A Crew member contributes skills to the player's overall total
-namespace SpaceTraders
+namespace SpaceTraders.Abstract
 {
     public class CrewMember : IHasSkills, IHasPrice
     {

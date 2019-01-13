@@ -1,7 +1,7 @@
 // The gadget the makes the player invisible to encounters.
 namespace SpaceTraders
 {
-    public class CloakingGadget : AbstractGadget
+    public class CloakingGadget : Abstract.Gadget
     {
         // Constructor for a cloaking gadget.
         public CloakingGadget(Ship ship)

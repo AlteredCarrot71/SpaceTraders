@@ -9,7 +9,7 @@ using System;
 
 namespace SpaceTraders
 {
-    public class FuelGadget : AbstractGadget
+    public class FuelGadget : Abstract.Gadget
     {
         // Divide current fuel cost by this amount.
         private readonly int fuelModifier = 2;

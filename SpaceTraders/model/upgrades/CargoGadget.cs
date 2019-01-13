@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace SpaceTraders
 {
-    public class CargoGadget : AbstractGadget
+    public class CargoGadget : Abstract.Gadget
     {
         // The extra size added.
         private readonly int additionalSize;

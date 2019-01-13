@@ -1,6 +1,6 @@
 using System;
 
-namespace SpaceTraders
+namespace SpaceTraders.Abstract
 {
     /**
      * An abstract representation of a gadget. Not much can be said about gadgets
@@ -11,7 +11,7 @@ namespace SpaceTraders
      * @author ngraves3
      *
      */
-    public abstract class AbstractGadget : AbstractCommand, IHasPrice
+    public abstract class Gadget : Abstract.Command, IHasPrice
     {
         // name of the gadget
         private readonly String name;
@@ -26,14 +26,14 @@ namespace SpaceTraders
         protected bool effectApplied;
 
         // Constructor for an abstract gadget.
-        protected AbstractGadget(String nameArg, Ship shipArg)
+        protected Gadget(String nameArg, Ship shipArg)
         {
             this.ship = shipArg;
             this.name = nameArg;
             effectApplied = false;
         }
 
-        protected AbstractGadget()
+        protected Gadget()
         {
         }
     }
