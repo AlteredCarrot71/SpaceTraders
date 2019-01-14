@@ -7,17 +7,14 @@ namespace SpaceTraders
     // gadgets, and crew. It also has fuel, a purchasing price, and NPC disposition
     // modifiers. Converted from enum to class so object would be serialized
     // correctly
-    public class Ship
+    public class Ship : Abstract.Item
     {
-        // Name of a ship.
-        public String Name { get; set; }
+        // cargo max size
+        public int MaxCargo { get; set; }
 
         // ship cargo.
         public List<Good> Cargo { get; set; }
 
-        // cargo max size
-        public int MaxCargo { get; set; }
-        
         // ship weapons.
         public List<Weapon> Weapons { get; set; }
 
@@ -31,7 +28,7 @@ namespace SpaceTraders
         public int MaxShield { get; set; }
 
         // Ship gadgets.
-        public List<Abstract.Gadget> Gadgets { get; set; }
+        public List<Abstract.Item> Gadgets { get; set; }
 
         // gadgets max size
         public int MaxGadget { get; set; }
@@ -50,9 +47,6 @@ namespace SpaceTraders
 
         // cost per unit of fuel.
         public int FuelCost { get; set; }
-
-        // base price of ship.
-        public int Price { get; set; }
 
         // Bounty on ship.
         public int Bounty { get; set; }

@@ -96,6 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\Abstract\Item.cs" />
     <Compile Include="Views\ConfigScreen.xaml.cs">
       <DependentUpon>ConfigScreen.xaml</DependentUpon>
     </Compile>
@@ -135,13 +136,8 @@
     <Compile Include="Common\Events\Random\NullStrategy.cs" />
     <Compile Include="Common\Events\Random\RandomEvent.cs" />
     <Compile Include="Common\Abstract\Command.cs" />
-    <Compile Include="Common\Abstract\Gadget.cs" />
-    <Compile Include="Common\Events\Upgrades\CargoGadget.cs" />
-    <Compile Include="Common\Events\Upgrades\CloakingGadget.cs" />
     <Compile Include="Common\Interfaces\CommandPattern.cs" />
     <Compile Include="Common\Abstract\CrewMember.cs" />
-    <Compile Include="Common\Events\Upgrades\FuelGadget.cs" />
-    <Compile Include="Common\Interfaces\HasPrice.cs" />
     <Compile Include="Common\Objects\Shield.cs" />
     <Compile Include="Common\Objects\Weapon.cs" />
     <Compile Include="Views\PlanetScreen.xaml.cs">
