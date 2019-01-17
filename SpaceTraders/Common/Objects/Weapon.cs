@@ -1,5 +1,4 @@
-using System;
-
+// A class representing weapons for use in combat.
 namespace SpaceTraders
 {
     public class Weapon : Abstract.Item

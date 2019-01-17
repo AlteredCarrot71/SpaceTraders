@@ -92,9 +92,11 @@ namespace SpaceTraders
         {
             Game.Instance.Player.Ship.CurrentFuel -= travelDistance;
             Game.Instance.Universe.CurrentPlanet = Game.Instance.Universe.Planets.Find(x => x.Name.Equals(ListPlanet.SelectedItem.ToString()));
+            //TODO: move to separate page
             RandomEvent randomEvent = new RandomEvent(Game.Instance.Player);
             String even = randomEvent.Event();
             if (even.Length != 0) {
+                //TODO: move to Strings
                 MessageDialog c = new MessageDialog(even, "Something has happened...");
                 await c.ShowAsync();
             }

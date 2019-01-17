@@ -113,13 +113,11 @@
     <Compile Include="Common\Objects\Goods.cs" />
     <Compile Include="Common\Events\Commerce\Marketplace.cs" />
     <Compile Include="Common\Events\Commerce\Shipyard.cs" />
-    <Compile Include="Common\Abstract\PresizedList.cs" />
     <Compile Include="Common\Enumerations\ColorList.cs" />
     <Compile Include="Common\Objects\Shields.cs" />
     <Compile Include="Common\Objects\Ships.cs" />
     <Compile Include="Common\Objects\Weapons.cs" />
     <Compile Include="Common\Game\GameInstance.cs" />
-    <Compile Include="Common\Interfaces\HasSkills.cs" />
     <Compile Include="Common\Objects\Planet.cs" />
     <Compile Include="Common\Game\Player.cs" />
     <Compile Include="Common\Utilities\Point.cs" />
@@ -128,7 +126,6 @@
     <Compile Include="Common\Objects\Ship.cs" />
     <Compile Include="Common\Enumerations\TechLevel.cs" />
     <Compile Include="Common\Game\Universe.cs" />
-    <Compile Include="Common\Utilities\Utilities.cs" />
     <Compile Include="Common\Events\Random\EventStrategy.cs" />
     <Compile Include="Common\Events\Random\FuelStrategy.cs" />
     <Compile Include="Common\Events\Random\GoodsStrategy.cs" />
@@ -136,7 +133,6 @@
     <Compile Include="Common\Events\Random\NullStrategy.cs" />
     <Compile Include="Common\Events\Random\RandomEvent.cs" />
     <Compile Include="Common\Abstract\Command.cs" />
-    <Compile Include="Common\Interfaces\CommandPattern.cs" />
     <Compile Include="Common\Abstract\CrewMember.cs" />
     <Compile Include="Common\Objects\Shield.cs" />
     <Compile Include="Common\Objects\Weapon.cs" />

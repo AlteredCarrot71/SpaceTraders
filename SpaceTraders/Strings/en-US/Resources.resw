@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Agrument.ReachedMaxSize" xml:space="preserve">
+    <value>You've reached the max size of list</value>
+  </data>
+  <data name="Argument.Invalid.Null" xml:space="preserve">
+    <value>Items can't be null</value>
+  </data>
   <data name="Good.Firearms.Name" xml:space="preserve">
     <value>Firearms</value>
   </data>

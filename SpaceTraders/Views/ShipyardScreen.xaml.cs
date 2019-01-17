@@ -9,6 +9,7 @@ namespace SpaceTraders
         //private Shipyard shipyard;
         private ObservableCollection<string> shipsforsale;
         private ObservableCollection<string> weaponsforsale;
+        //TODO: implement gadgets
 
         public ShipyardScreen()
         {
@@ -57,6 +58,7 @@ namespace SpaceTraders
 
         private void TradeButton_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: implement shipyard actions
         }
     }
 }

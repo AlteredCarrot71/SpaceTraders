@@ -13,7 +13,7 @@ namespace SpaceTraders
 
         private void EnablingButtons()
         {
-            if ( Game.Instance.Player.Ship.MaxCargo > Game.Instance.Player.Ship.Cargo.Count )
+            if ( Game.Instance.Player.Ship.Cargo.maxSize > Game.Instance.Player.Ship.Cargo.Count )
             {
                 BuyButton.IsEnabled = true;
             }

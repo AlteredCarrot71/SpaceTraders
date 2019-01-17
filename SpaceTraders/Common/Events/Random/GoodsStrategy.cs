@@ -39,11 +39,11 @@ namespace SpaceTraders
                 int msg = rand.Next(getPhrases.Length);
                 String output = String.Format(getPhrases[msg], toAdd.Name);
 
-                if ( player.Ship.MaxCargo > player.Ship.Cargo.Count )
+                try
                 {
                     player.Ship.Cargo.Add(toAdd);
                 }
-                else
+                catch(ArgumentException)
                 {
                     output = output.Substring(0, output.Length - 1);
                     output += ", but you don't have room in your cargo for it!";

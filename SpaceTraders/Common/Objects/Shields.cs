@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 
 namespace SpaceTraders
 {
@@ -7,15 +8,21 @@ namespace SpaceTraders
         // A basic shield.
         public static readonly Shield ENERGY_SHIELD = new Shield
         {
-            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Shield/Energy/Name"),
-            Price = 500
+            Name = ResourceLoader.GetForViewIndependentUse().GetString("Shield/Energy/Name"),
+            Price = 500,
+            MinTechLevel = TechLevel.INDUSTRIAL,
+            SkillModifier = 1
         };
 
         // A premium shield.
         public static readonly Shield REFLECTIVE_SHIELD = new Shield
         {
-            Name = Windows.ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse().GetString("Shield/Reflective/Name"),
-            Price = 1000
+            Name = ResourceLoader.GetForViewIndependentUse().GetString("Shield/Reflective/Name"),
+            Price = 1000,
+            MinTechLevel = TechLevel.HI_TECH,
+            SkillModifier = 3
         };
+
+        public static readonly List<Shield> Values = new List<Shield> { ENERGY_SHIELD, REFLECTIVE_SHIELD };
     }
 }

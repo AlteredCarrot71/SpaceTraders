@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 // Represents a trade good. All goods have prices and different attributes
 namespace SpaceTraders
 {
-    public class Good
+    public class Good : Abstract.Item
     {
-        public String Name { get; set; }
-
         // Min tech to produce on Planet.
         public TechLevel MinTechToProduce { get; set; }
         // Min tech to sell to a planet.
@@ -44,7 +41,7 @@ namespace SpaceTraders
         }
 
         // Gets the adjusted price of a good.
-        public int Price(TechLevel planetTech)
+        public new int Price(TechLevel planetTech)
         {
             int randomVariance = new Random().Next(2 * Variance) - Variance;
             return BasePrice

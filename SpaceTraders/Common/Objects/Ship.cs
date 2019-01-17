@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace SpaceTraders
 {
@@ -9,35 +8,20 @@ namespace SpaceTraders
     // correctly
     public class Ship : Abstract.Item
     {
-        // cargo max size
-        public int MaxCargo { get; set; }
-
         // ship cargo.
-        public List<Good> Cargo { get; set; }
+        public PresizedList<Good> Cargo { get; set; }
 
         // ship weapons.
-        public List<Weapon> Weapons { get; set; }
-
-        // weapons max size
-        public int MaxWeapon { get; set; }
+        public PresizedList<Weapon> Weapons { get; set; }
 
         // Ship shields.
-        public List<Shield> Shields { get; set; }
-
-        // shields max size
-        public int MaxShield { get; set; }
+        public PresizedList<Shield> Shields { get; set; }
 
         // Ship gadgets.
-        public List<Abstract.Item> Gadgets { get; set; }
-
-        // gadgets max size
-        public int MaxGadget { get; set; }
-
-        // crew max size
-        public int MaxCrew { get; set; }
+        public PresizedList<Abstract.Item> Gadgets { get; set; }
 
         // Ship crew.
-        public List<Abstract.CrewMember> Crew { get; set; }
+        public PresizedList<Abstract.CrewMember> Crew { get; set; }
 
         // Maximum fuel this ship can hold.
         public int MaxFuel { get; set; }

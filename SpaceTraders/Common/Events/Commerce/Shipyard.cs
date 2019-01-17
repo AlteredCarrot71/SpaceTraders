@@ -38,5 +38,7 @@ namespace SpaceTraders
             Game.Instance.Player.Money -= CostToBuy(shipToBuy);
             Game.Instance.Player.Ship = shipToBuy;
         }
+
+        //TODO: implement gadgets
     }
 }

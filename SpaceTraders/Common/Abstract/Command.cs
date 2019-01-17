@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace SpaceTraders.Abstract
 {
-    public abstract class Command : ICommandPattern
+    public abstract class Command
     {
         // applyEffect := true, removeEffect := false.
         private Stack<Boolean> stack = new Stack<Boolean>();

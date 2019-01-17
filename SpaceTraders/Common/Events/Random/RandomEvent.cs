@@ -16,7 +16,7 @@ namespace SpaceTraders
         private readonly double EventChance = 0.10;
 
         // The differnt types of events.
-        //TODO: implement opponents (police, pirate)
+        //TODO: implement opponents (police, pirate) and combat screen
         private enum EventType
         {
             NULL_EVENT, FUEL_EVENT, MONEY_EVENT, GOODS_EVENT
